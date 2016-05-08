@@ -60,6 +60,11 @@
 		521A8EAA19F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
+		9DC0BA811CDEFD93003E5BAD /* libcsv.c in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA781CDEFD93003E5BAD /* libcsv.c */; };
+		9DC0BA821CDEFD93003E5BAD /* TableHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA791CDEFD93003E5BAD /* TableHelper.cpp */; };
+		9DC0BA831CDEFD93003E5BAD /* DataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA7B1CDEFD93003E5BAD /* DataManager.cpp */; };
+		9DC0BA841CDEFD93003E5BAD /* Role.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA7D1CDEFD93003E5BAD /* Role.cpp */; };
+		9DC0BA851CDEFD93003E5BAD /* Stage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA7F1CDEFD93003E5BAD /* Stage.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -154,6 +159,16 @@
 		521A8EA819F11F5000D177D7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		9DC0BA771CDEFD93003E5BAD /* csv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = csv.h; sourceTree = "<group>"; };
+		9DC0BA781CDEFD93003E5BAD /* libcsv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = libcsv.c; sourceTree = "<group>"; };
+		9DC0BA791CDEFD93003E5BAD /* TableHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TableHelper.cpp; sourceTree = "<group>"; };
+		9DC0BA7A1CDEFD93003E5BAD /* TableHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableHelper.h; sourceTree = "<group>"; };
+		9DC0BA7B1CDEFD93003E5BAD /* DataManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataManager.cpp; sourceTree = "<group>"; };
+		9DC0BA7C1CDEFD93003E5BAD /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		9DC0BA7D1CDEFD93003E5BAD /* Role.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Role.cpp; sourceTree = "<group>"; };
+		9DC0BA7E1CDEFD93003E5BAD /* Role.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Role.h; sourceTree = "<group>"; };
+		9DC0BA7F1CDEFD93003E5BAD /* Stage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stage.cpp; sourceTree = "<group>"; };
+		9DC0BA801CDEFD93003E5BAD /* Stage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stage.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -297,6 +312,7 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9DC0BA741CDEFD93003E5BAD /* core */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */,
@@ -352,6 +368,39 @@
 			name = Icons;
 			path = ios;
 			sourceTree = SOURCE_ROOT;
+		};
+		9DC0BA741CDEFD93003E5BAD /* core */ = {
+			isa = PBXGroup;
+			children = (
+				9DC0BA751CDEFD93003E5BAD /* data */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
+		9DC0BA751CDEFD93003E5BAD /* data */ = {
+			isa = PBXGroup;
+			children = (
+				9DC0BA761CDEFD93003E5BAD /* database */,
+				9DC0BA7B1CDEFD93003E5BAD /* DataManager.cpp */,
+				9DC0BA7C1CDEFD93003E5BAD /* DataManager.h */,
+				9DC0BA7D1CDEFD93003E5BAD /* Role.cpp */,
+				9DC0BA7E1CDEFD93003E5BAD /* Role.h */,
+				9DC0BA7F1CDEFD93003E5BAD /* Stage.cpp */,
+				9DC0BA801CDEFD93003E5BAD /* Stage.h */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		9DC0BA761CDEFD93003E5BAD /* database */ = {
+			isa = PBXGroup;
+			children = (
+				9DC0BA771CDEFD93003E5BAD /* csv.h */,
+				9DC0BA781CDEFD93003E5BAD /* libcsv.c */,
+				9DC0BA791CDEFD93003E5BAD /* TableHelper.cpp */,
+				9DC0BA7A1CDEFD93003E5BAD /* TableHelper.h */,
+			);
+			path = database;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -494,9 +543,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DC0BA841CDEFD93003E5BAD /* Role.cpp in Sources */,
+				9DC0BA821CDEFD93003E5BAD /* TableHelper.cpp in Sources */,
+				9DC0BA851CDEFD93003E5BAD /* Stage.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
+				9DC0BA811CDEFD93003E5BAD /* libcsv.c in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				9DC0BA831CDEFD93003E5BAD /* DataManager.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);
