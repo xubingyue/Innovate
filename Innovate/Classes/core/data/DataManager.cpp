@@ -7,7 +7,10 @@ std::string jsonpath = FileUtils::getInstance()->fullPathForFilename(tableFile);
 data = FileUtils::getInstance()->getDataFromFile(jsonpath);\
 tablePtr = new tableClass(data.getBytes(), (int)data.getSize());\
 count++;\
+if (callback != nullptr)\
+{\
 callback(count);\
+}\
 }
 
 static DataManager* _instance = nullptr;

@@ -1,4 +1,5 @@
 #include "HelloWorldScene.h"
+#include "DataManager.h"
 
 USING_NS_CC;
 
@@ -71,6 +72,11 @@ bool HelloWorld::init()
 
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
+    DataManager::getInstance()->loadTable(nullptr, "staticdata");
+    
+    auto role = ROLE_TABLE->getRoleVo(1);
+    
+    CCLOG("====>%s", role->name.c_str());
     
     return true;
 }
