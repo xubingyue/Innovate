@@ -60,6 +60,8 @@
 		521A8EAA19F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
+		9D675B991CE56A2A00E9A98A /* MemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D675B971CE56A2A00E9A98A /* MemManager.cpp */; };
+		9D675BA11CE5A7CB00E9A98A /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D675B9F1CE5A7CB00E9A98A /* md5.cpp */; };
 		9DC0BA811CDEFD93003E5BAD /* libcsv.c in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA781CDEFD93003E5BAD /* libcsv.c */; };
 		9DC0BA821CDEFD93003E5BAD /* TableHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA791CDEFD93003E5BAD /* TableHelper.cpp */; };
 		9DC0BA831CDEFD93003E5BAD /* DataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA7B1CDEFD93003E5BAD /* DataManager.cpp */; };
@@ -160,6 +162,10 @@
 		521A8EA819F11F5000D177D7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		52B47A461A53D09B004E4C60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		8262943D1AAF051F00CB7CF7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		9D675B961CE569FE00E9A98A /* MemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MemManager.h; path = memory/MemManager.h; sourceTree = "<group>"; };
+		9D675B971CE56A2A00E9A98A /* MemManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MemManager.cpp; path = memory/MemManager.cpp; sourceTree = "<group>"; };
+		9D675B9F1CE5A7CB00E9A98A /* md5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = md5.cpp; sourceTree = "<group>"; };
+		9D675BA01CE5A7CB00E9A98A /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
 		9DC0BA771CDEFD93003E5BAD /* csv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = csv.h; sourceTree = "<group>"; };
 		9DC0BA781CDEFD93003E5BAD /* libcsv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = libcsv.c; sourceTree = "<group>"; };
 		9DC0BA791CDEFD93003E5BAD /* TableHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TableHelper.cpp; sourceTree = "<group>"; };
@@ -372,9 +378,29 @@
 			path = ios;
 			sourceTree = SOURCE_ROOT;
 		};
+		9D675B951CE5696F00E9A98A /* memory */ = {
+			isa = PBXGroup;
+			children = (
+				9D675B961CE569FE00E9A98A /* MemManager.h */,
+				9D675B971CE56A2A00E9A98A /* MemManager.cpp */,
+			);
+			name = memory;
+			sourceTree = "<group>";
+		};
+		9D675B9E1CE5A7CB00E9A98A /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				9D675B9F1CE5A7CB00E9A98A /* md5.cpp */,
+				9D675BA01CE5A7CB00E9A98A /* md5.h */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
 		9DC0BA741CDEFD93003E5BAD /* core */ = {
 			isa = PBXGroup;
 			children = (
+				9D675B9E1CE5A7CB00E9A98A /* utils */,
+				9D675B951CE5696F00E9A98A /* memory */,
 				9DC0BA751CDEFD93003E5BAD /* data */,
 			);
 			path = core;
@@ -549,9 +575,11 @@
 			files = (
 				9DC0BA841CDEFD93003E5BAD /* Role.cpp in Sources */,
 				9DC0BA821CDEFD93003E5BAD /* TableHelper.cpp in Sources */,
+				9D675B991CE56A2A00E9A98A /* MemManager.cpp in Sources */,
 				9DC0BA851CDEFD93003E5BAD /* Stage.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
+				9D675BA11CE5A7CB00E9A98A /* md5.cpp in Sources */,
 				9DC0BA811CDEFD93003E5BAD /* libcsv.c in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				9DC0BA831CDEFD93003E5BAD /* DataManager.cpp in Sources */,

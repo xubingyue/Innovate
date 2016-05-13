@@ -1,5 +1,6 @@
 #include "HelloWorldScene.h"
 #include "DataManager.h"
+#include "MemManager.h"
 
 USING_NS_CC;
 
@@ -78,6 +79,15 @@ bool HelloWorld::init()
     
     CCLOG("====>%s", role->name.c_str());
     
+    int temp = 0;
+    
+    m_int sto = MemManager::getInstance()->encode(temp);
+    
+    CCLOG("%d ===== %s", sto.value, sto.md5.c_str());
+    
+    int result = MemManager::getInstance()->decode(sto);
+    
+    CCLOG("====>>>>>%d", result);
     return true;
 }
 
