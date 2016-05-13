@@ -62,6 +62,7 @@
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
 		9D675B991CE56A2A00E9A98A /* MemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D675B971CE56A2A00E9A98A /* MemManager.cpp */; };
 		9D675BA11CE5A7CB00E9A98A /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D675B9F1CE5A7CB00E9A98A /* md5.cpp */; };
+		9D675BA41CE5C62000E9A98A /* LoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D675BA21CE5C62000E9A98A /* LoadingScene.cpp */; };
 		9DC0BA811CDEFD93003E5BAD /* libcsv.c in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA781CDEFD93003E5BAD /* libcsv.c */; };
 		9DC0BA821CDEFD93003E5BAD /* TableHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA791CDEFD93003E5BAD /* TableHelper.cpp */; };
 		9DC0BA831CDEFD93003E5BAD /* DataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA7B1CDEFD93003E5BAD /* DataManager.cpp */; };
@@ -166,6 +167,8 @@
 		9D675B971CE56A2A00E9A98A /* MemManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MemManager.cpp; path = memory/MemManager.cpp; sourceTree = "<group>"; };
 		9D675B9F1CE5A7CB00E9A98A /* md5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = md5.cpp; sourceTree = "<group>"; };
 		9D675BA01CE5A7CB00E9A98A /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
+		9D675BA21CE5C62000E9A98A /* LoadingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadingScene.cpp; sourceTree = "<group>"; };
+		9D675BA31CE5C62000E9A98A /* LoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingScene.h; sourceTree = "<group>"; };
 		9DC0BA771CDEFD93003E5BAD /* csv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = csv.h; sourceTree = "<group>"; };
 		9DC0BA781CDEFD93003E5BAD /* libcsv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = libcsv.c; sourceTree = "<group>"; };
 		9DC0BA791CDEFD93003E5BAD /* TableHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TableHelper.cpp; sourceTree = "<group>"; };
@@ -326,6 +329,8 @@
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */,
 				46880B8719C43A87006E1F66 /* HelloWorldScene.h */,
+				9D675BA21CE5C62000E9A98A /* LoadingScene.cpp */,
+				9D675BA31CE5C62000E9A98A /* LoadingScene.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -575,6 +580,7 @@
 			files = (
 				9DC0BA841CDEFD93003E5BAD /* Role.cpp in Sources */,
 				9DC0BA821CDEFD93003E5BAD /* TableHelper.cpp in Sources */,
+				9D675BA41CE5C62000E9A98A /* LoadingScene.cpp in Sources */,
 				9D675B991CE56A2A00E9A98A /* MemManager.cpp in Sources */,
 				9DC0BA851CDEFD93003E5BAD /* Stage.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,

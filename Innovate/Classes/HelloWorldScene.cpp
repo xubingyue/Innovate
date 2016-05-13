@@ -73,13 +73,11 @@ bool HelloWorld::init()
 
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
-    DataManager::getInstance()->loadTable(nullptr, "staticdata");
-    
     auto role = ROLE_TABLE->getRoleVo(1);
     
     CCLOG("====>%s", role->name.c_str());
     
-    int temp = 0;
+    int temp = 99;
     
     m_int sto = MemManager::getInstance()->encode(temp);
     
