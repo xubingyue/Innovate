@@ -2,6 +2,7 @@
 #include "DataManager.h"
 #include "MemManager.h"
 #include "StageMapView.h"
+#include "LayerManager.h"
 
 USING_NS_CC;
 using namespace std;
@@ -51,6 +52,9 @@ bool HelloWorld::init()
     auto menu = Menu::create(closeItem, NULL);
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
+    
+    //初始化层级
+    LayerManager::getInstance()->initLayer(this);
 
     //初始化世界地图
     initWorldMap();
@@ -93,7 +97,26 @@ bool HelloWorld::init()
 void HelloWorld::initWorldMap(string id)
 {
     auto map = StageMapView::create("res/map/world_" + id + ".tmx");
-    this->addChild(map);
+    auto mapLayer = LayerManager::getInstance()->getLayerByTag(LayerType::MAP_LAYER);
+    mapLayer->addChild(map);
+    
+    auto land = map->getLayer("BG");
+    
+    auto groups = map->getObjectGroup("Key");
+    auto& objs = groups->getObjects();
+    for (auto& o : objs) {
+        ValueMap& dict = o.asValueMap();
+        string name = dict["name"].asString();
+        if (name == "player")
+        {
+            auto player = Sprite::create("res/grossinis.png");
+            mapLayer->addChild(player);
+            player->setPosition(Vec2(100,140));
+        }
+        
+    }
+//    CCLOG("===>%s", objs->getGroupName().c_str());
+    
 }
 
 void HelloWorld::menuCloseCallback(Ref* pSender)

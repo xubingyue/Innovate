@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="64" tileheight="64" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="64" tileheight="64" nextobjectid="2">
  <tileset firstgid="1" name="BG" tilewidth="64" tileheight="64" spacing="2" margin="2">
   <image source="tmw_desert_spacing-hd.png" width="530" height="398"/>
  </tileset>
@@ -13,4 +13,9 @@
    eJztWEkOwzAIzFv6/0f2VKmKvACzmEYdqZfEDIudAfe6/vhlvIJrZr8uiOZRtZ3ZVeqxstlxfNug+1GNIcqNvM/4Ye9rlmP1fbhicHEgPN00A4EiDzYnoolqv1m+FafqTKlrM9JxRTwMDRv1iHsumf5XgUo/qnqNxtJljmL24tNwxhCdm7qd95Efhw+1H/UsePejzCfiQ5FTZi1T85n1jHJV+lemlzJQOQO7vcn2OHUu0bPBuO8y0aHfMeDQsapdZt8d/cUF9Z648JQ8Pv4UfR/9TwWxdffclT3qHwWjHui8xtLLyPrqe1Ue1Rl0ty7CseJTzUvM+TmyfnRfReYq1z1o9wyJ4eS9tDK7nwSiS12AnpUO6NBrn8Rx0n82jplOozND1m7HOfKhuMMp9QXRYodWVHr2aSjiRM5xhxqy/bvzOF2/TngDYdkn2Q==
   </data>
  </layer>
+ <objectgroup name="Key">
+  <object id="1" name="player" type="1" x="1230.05" y="1545.95" width="35.6548" height="36.7796">
+   <ellipse/>
+  </object>
+ </objectgroup>
 </map>
