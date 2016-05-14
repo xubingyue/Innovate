@@ -1,8 +1,10 @@
 #include "HelloWorldScene.h"
 #include "DataManager.h"
 #include "MemManager.h"
+#include "StageMapView.h"
 
 USING_NS_CC;
+using namespace std;
 
 Scene* HelloWorld::createScene()
 {
@@ -50,45 +52,49 @@ bool HelloWorld::init()
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
 
-    /////////////////////////////
-    // 3. add your codes below...
+    //初始化世界地图
+    initWorldMap();
 
-    // add a label shows "Hello World"
-    // create and initialize a label
     
-    auto label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
     
-    // position the label on the center of the screen
-    label->setPosition(Vec2(origin.x + visibleSize.width/2,
-                            origin.y + visibleSize.height - label->getContentSize().height));
-
-    // add the label as a child to this layer
-    this->addChild(label, 1);
-
-    // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("res/HelloWorld.png");
-
-    // position the sprite on the center of the screen
-    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-
-    // add the sprite as a child to this layer
-    this->addChild(sprite, 0);
-    auto role = ROLE_TABLE->getRoleVo(1);
-    
-    CCLOG("====>%s", role->name.c_str());
-    
-    int temp = 99;
-    
-    m_int sto = MemManager::getInstance()->encode(temp);
-    
-    CCLOG("%d ===== %s", sto.value, sto.md5.c_str());
-    
-    int result = MemManager::getInstance()->decode(sto);
-    
-    CCLOG("====>>>>>%d", result);
+//    auto label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
+//    
+//    // position the label on the center of the screen
+//    label->setPosition(Vec2(origin.x + visibleSize.width/2,
+//                            origin.y + visibleSize.height - label->getContentSize().height));
+//
+//    // add the label as a child to this layer
+//    this->addChild(label, 1);
+//
+//    // add "HelloWorld" splash screen"
+//    auto sprite = Sprite::create("res/HelloWorld.png");
+//
+//    // position the sprite on the center of the screen
+//    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+//
+//    // add the sprite as a child to this layer
+//    this->addChild(sprite, 0);
+//    auto role = ROLE_TABLE->getRoleVo(1);
+//    
+//    CCLOG("====>%s", role->name.c_str());
+//    
+//    int temp = 99;
+//    
+//    m_int sto = MemManager::getInstance()->encode(temp);
+//    
+//    CCLOG("%d ===== %s", sto.value, sto.md5.c_str());
+//    
+//    int result = MemManager::getInstance()->decode(sto);
+//    
+//    CCLOG("====>>>>>%d", result);
     return true;
 }
 
+void HelloWorld::initWorldMap(string id)
+{
+    auto map = StageMapView::create("res/map/world_" + id + ".tmx");
+    this->addChild(map);
+}
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {

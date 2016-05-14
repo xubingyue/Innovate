@@ -15,6 +15,9 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
+    
+private:
+    void initWorldMap(std::string id = "1");
 };
 
 #endif // __HELLOWORLD_SCENE_H__
