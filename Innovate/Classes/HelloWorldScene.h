@@ -3,6 +3,8 @@
 
 #include "cocos2d.h"
 #include "RoleSprite.h"
+#include "AStarPathSearch.h"
+#include "StageMapView.h"
 
 class HelloWorld : public cocos2d::Layer
 {
@@ -19,9 +21,15 @@ public:
     
 private:
     void initWorldMap(std::string id = "1");
+    void touch2Move(Ref *obj);
     
 private:
+    //角色
     RoleSprite *m_player;
+    //A*寻路算法
+    AStarPathSearch* p_aStar;
+    //当前地图
+    StageMapView *p_map;
     
 };
 

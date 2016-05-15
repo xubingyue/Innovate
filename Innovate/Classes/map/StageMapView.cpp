@@ -7,6 +7,7 @@
 //
 
 #include "StageMapView.h"
+#include "../NotificationType.h"
 
 StageMapView* StageMapView::create(std::string map)
 {
@@ -80,5 +81,6 @@ void StageMapView::onTouchEnded(Touch *touch, Event *unused_event)
     auto sp = layer->getTileAt(v);
     if (sp)
     {
-        sp->setColor(Color3B::GREEN);
-    }}
+        __NotificationCenter::getInstance()->postNotification(TOUCH_MAP_TO_MOVE, touch);
+    }
+}

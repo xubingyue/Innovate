@@ -1,8 +1,8 @@
 #include "HelloWorldScene.h"
 #include "DataManager.h"
 #include "MemManager.h"
-#include "StageMapView.h"
 #include "LayerManager.h"
+#include "NotificationType.h"
 
 USING_NS_CC;
 using namespace std;
@@ -40,19 +40,7 @@ bool HelloWorld::init()
     //    you may modify it.
 
     // add a "close" icon to exit the progress. it's an autorelease object
-    auto closeItem = MenuItemImage::create(
-                                           "res/CloseNormal.png",
-                                           "res/CloseSelected.png",
-                                           CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
-    
-	closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
-                                origin.y + closeItem->getContentSize().height/2));
 
-    // create menu, it's an autorelease object
-    auto menu = Menu::create(closeItem, NULL);
-    menu->setPosition(Vec2::ZERO);
-    this->addChild(menu, 1);
-    
     //初始化层级
     LayerManager::getInstance()->initLayer(this);
 
@@ -91,32 +79,59 @@ bool HelloWorld::init()
 //    int result = MemManager::getInstance()->decode(sto);
 //    
 //    CCLOG("====>>>>>%d", result);
+    __NotificationCenter::getInstance()->addObserver(this, CC_CALLFUNCO_SELECTOR
+                                                     (HelloWorld::touch2Move),
+                                                     TOUCH_MAP_TO_MOVE, nullptr);
     return true;
+}
+
+void HelloWorld::touch2Move(Ref *obj)
+{
+    Vec2 playerVec = p_map->tileCoordForPosition(m_player->getPosition());
+    
+    Vec2 toVec = p_map->tileCoordForPosition(((Touch*)obj)->getLocation());
+    
+    vector<Vec2> *path = p_aStar->move2TileCoord(playerVec, toVec);
+    
+    Vector<FiniteTimeAction*> actions;
+    for (auto v : *path)
+    {
+        auto moveTo = MoveTo::create(0.5f, p_map->positionForTileCoord(v));
+        actions.pushBack(moveTo);
+    }
+    Sequence *seq = Sequence::create(actions);
+    
+    m_player->runAction(seq);
 }
 
 void HelloWorld::initWorldMap(string id)
 {
-    auto map = StageMapView::create("res/map/world_" + id + ".tmx");
+    //初始化地图
+    p_map = StageMapView::create("res/map/world_" + id + ".tmx");
     auto mapLayer = LayerManager::getInstance()->getLayerByTag(LayerType::MAP_LAYER);
-    mapLayer->addChild(map);
+    mapLayer->addChild(p_map);
 
-    
-//    auto land = map->getMap()->getLayer("BG");
-    
-    auto groups = map->getMap()->getObjectGroup("Key");
+    //初始化对象
+    auto groups = p_map->getMap()->getObjectGroup("Key");
     auto& objs = groups->getObjects();
     for (auto& o : objs) {
         ValueMap& dict = o.asValueMap();
         string name = dict["name"].asString();
         if (name == "player")
         {
-            auto ve = map->tileCoordForPosition(Point(dict["x"].asFloat(), dict["y"].asFloat()));
-            auto pos = map->positionForTileCoord(ve);
+            auto ve = p_map->tileCoordForPosition(Point(dict["x"].asFloat(), dict["y"].asFloat()));
+            auto pos = p_map->positionForTileCoord(ve);
             m_player = RoleSprite::create("res/grossinis.png");
             mapLayer->addChild(m_player);
             m_player->setPosition(pos);
         }
     }
+    
+    auto land = p_map->getMap()->getLayer("Road");
+    
+    p_aStar = new AStarPathSearch(land);
+    p_aStar->init("", p_map->getMap()->getMapSize().width, p_map->getMap()->getMapSize().height);
+    
 }
 
 //void HelloWorld::menuCloseCallback(Ref* pSender)
