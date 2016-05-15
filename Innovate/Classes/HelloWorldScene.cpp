@@ -99,10 +99,11 @@ void HelloWorld::initWorldMap(string id)
     auto map = StageMapView::create("res/map/world_" + id + ".tmx");
     auto mapLayer = LayerManager::getInstance()->getLayerByTag(LayerType::MAP_LAYER);
     mapLayer->addChild(map);
+
     
-    auto land = map->getLayer("BG");
+    auto land = map->getMap()->getLayer("BG");
     
-    auto groups = map->getObjectGroup("Key");
+    auto groups = map->getMap()->getObjectGroup("Key");
     auto& objs = groups->getObjects();
     for (auto& o : objs) {
         ValueMap& dict = o.asValueMap();
@@ -115,6 +116,8 @@ void HelloWorld::initWorldMap(string id)
         }
         
     }
+//
+//    map->tileCoordForPosition(1, 1);
 //    CCLOG("===>%s", objs->getGroupName().c_str());
     
 }

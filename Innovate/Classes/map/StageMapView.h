@@ -16,9 +16,24 @@
 using namespace cocos2d;
 
 
-class StageMapView : public experimental::TMXTiledMap
+//class StageMapView : public experimental::TMXTiledMap
+class StageMapView : public Node
 {
+public:
     
+    static StageMapView* create(std::string str);
+    
+    bool init(std::string str);
+    
+    Vec2 tileCoordForPosition(const Vec2& position);
+    // tile坐标转成瓦片格子中心的OpenGL坐标
+    Vec2 positionForTileCoord(const Vec2& tileCoord);
+    
+    TMXTiledMap* getMap();
+    
+public:
+    TMXTiledMap* tmxMap;
+
 };
 
 #endif /* StageMapView_hpp */
