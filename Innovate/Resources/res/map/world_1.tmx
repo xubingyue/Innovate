@@ -3,18 +3,18 @@
  <tileset firstgid="1" name="BG" tilewidth="64" tileheight="64" spacing="2" margin="2">
   <image source="tmw_desert_spacing-hd.png" width="530" height="398"/>
  </tileset>
- <layer name="BG" width="50" height="50">
+ <layer name="Road" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztl0EOgCAQA3kJ7smj/3+edxMjAayz0sMcJaULpdZSSjVTCIAGIhtAg2fZxn7jw6p+KFHckwOwTzUx4MH121XJlOEqrZk8+QsB0EDmKdsyntlrJzE5UHaNAOyX4MMMVBlBm1nGbKRCm61nbFoJgAYFX/Uqor/qXOjxgOgbGXrv6tXn/yHzJe5Q49zd4YDPqne92ftqXZv+BhBxL/wH7gnv4ncwl7cB0NCrRc2q2XECzeQmAA==
+   eJztmMEOgzAMQ/MlLCeO/P/n7VSpQkspWZvakEpPgk1DdryGwCYiWzIEBdCAyAdAQ2bZx27U4a31iCRinxwAPqPRP2pw/u1bYerhUVqZavIUFEADMle9jfE/e55JEg4iZw0F8ItQhxFE9Qi0zBh7Iypo2WbGSS8KoCGCVXMVYn2j+0KpgZDXrVDWah01nrkr0oN3LuzZt2hZeHIoi9WbGMfsPMnLKm/WHtYBWuvPR9/XvNdr+aqXJ4vWtVc9e4txzIClfbYPzTxMzeX8jg+U96ZXOpnyaNWfxYelVRrfRTPjeUwBNPzSYq2VmczoHdEePHwBQDsgVg==
   </data>
  </layer>
- <layer name="Box" width="50" height="50">
+ <layer name="BG" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztWEkOwzAIzFv6/0f2VKmKvACzmEYdqZfEDIudAfe6/vhlvIJrZr8uiOZRtZ3ZVeqxstlxfNug+1GNIcqNvM/4Ye9rlmP1fbhicHEgPN00A4EiDzYnoolqv1m+FafqTKlrM9JxRTwMDRv1iHsumf5XgUo/qnqNxtJljmL24tNwxhCdm7qd95Efhw+1H/UsePejzCfiQ5FTZi1T85n1jHJV+lemlzJQOQO7vcn2OHUu0bPBuO8y0aHfMeDQsapdZt8d/cUF9Z648JQ8Pv4UfR/9TwWxdffclT3qHwWjHui8xtLLyPrqe1Ue1Rl0ty7CseJTzUvM+TmyfnRfReYq1z1o9wyJ4eS9tDK7nwSiS12AnpUO6NBrn8Rx0n82jplOozND1m7HOfKhuMMp9QXRYodWVHr2aSjiRM5xhxqy/bvzOF2/TngDYdkn2Q==
+   eJztmFuOwyAMRVlJe9X9L3K+KkWRjV/XLq3mSFUJxC8gNsla/3wzL+c92u8UvHFkZTW5zHzsZCwdV5nqemR98OqujEfssNc1qmP3fEz5MKWjoue0nFGhIw62zkpO7LYb1bfT2bWnuudGyuMd/jBymFQj7rFE6l+GrvyRzddVX045RzFr8aeZ9MF7bjptv0t2Jmx02+k+C97tdMbjsdERU+ReZs5nzqdXV6Z+RWopg8wesNYmWuO6Y/HuDcb7LpMT6h2DiTyWlYus+0R9maJ7Tab4lTje9jrqfkUfinana64GVj2WKoz5AMGPDNG6aN0Dkj9dMlasWPqekvosW5F7ozFoQGln0b7hZM9V2XwIoe8RkNfiyMDO5wjalvqm3vsR7M8wEQuW/Kzfr6tMnjegtKNIz1U1DmtNn5c2lDYDxt7yykNps6h+e5HkIVxjM+7F+h4hfVepvMPB8Mcaz1LJxVocuFw/hfGojcl6cQWbPmnsTYefn5oDFlX/ofyW8N/B1PyjWT+DP/pVKMM=
   </data>
  </layer>
  <objectgroup name="Key">
-  <object id="1" name="player" type="1" x="1230.05" y="1545.95" width="35.6548" height="36.7796">
+  <object id="1" name="player" type="1" x="206.05" y="2709.95" width="35.6548" height="36.7796">
    <ellipse/>
   </object>
  </objectgroup>

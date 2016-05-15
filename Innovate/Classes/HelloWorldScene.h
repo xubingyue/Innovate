@@ -2,6 +2,7 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
+#include "RoleSprite.h"
 
 class HelloWorld : public cocos2d::Layer
 {
@@ -11,13 +12,17 @@ public:
     virtual bool init();
     
     // a selector callback
-    void menuCloseCallback(cocos2d::Ref* pSender);
+//    void menuCloseCallback(cocos2d::Ref* pSender);
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
     
 private:
     void initWorldMap(std::string id = "1");
+    
+private:
+    RoleSprite *m_player;
+    
 };
 
 #endif // __HELLOWORLD_SCENE_H__

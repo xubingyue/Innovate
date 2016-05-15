@@ -64,6 +64,7 @@
 		9DC0BA841CDEFD93003E5BAD /* Role.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA7D1CDEFD93003E5BAD /* Role.cpp */; };
 		9DC0BA851CDEFD93003E5BAD /* Stage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA7F1CDEFD93003E5BAD /* Stage.cpp */; };
 		9DC407F51CE7570D000E248B /* LayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC407F31CE7570D000E248B /* LayerManager.cpp */; };
+		9DC407F91CE81A04000E248B /* RoleSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC407F71CE81A04000E248B /* RoleSprite.cpp */; };
 		9DD5F3ED1CE55FC100F34658 /* staticdata in Resources */ = {isa = PBXBuildFile; fileRef = 9DD5F3EC1CE55FC100F34658 /* staticdata */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -176,6 +177,8 @@
 		9DC0BA801CDEFD93003E5BAD /* Stage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stage.h; sourceTree = "<group>"; };
 		9DC407F31CE7570D000E248B /* LayerManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LayerManager.cpp; sourceTree = "<group>"; };
 		9DC407F41CE7570D000E248B /* LayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayerManager.h; sourceTree = "<group>"; };
+		9DC407F71CE81A04000E248B /* RoleSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RoleSprite.cpp; sourceTree = "<group>"; };
+		9DC407F81CE81A04000E248B /* RoleSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoleSprite.h; sourceTree = "<group>"; };
 		9DD5F3EC1CE55FC100F34658 /* staticdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = staticdata; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -319,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				9DC0BA741CDEFD93003E5BAD /* core */,
+				9DC407F61CE819BE000E248B /* role */,
 				9D675BA51CE6C16400E9A98A /* map */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
@@ -440,6 +444,15 @@
 				9DC0BA7A1CDEFD93003E5BAD /* TableHelper.h */,
 			);
 			path = database;
+			sourceTree = "<group>";
+		};
+		9DC407F61CE819BE000E248B /* role */ = {
+			isa = PBXGroup;
+			children = (
+				9DC407F71CE81A04000E248B /* RoleSprite.cpp */,
+				9DC407F81CE81A04000E248B /* RoleSprite.h */,
+			);
+			path = role;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -591,6 +604,7 @@
 				9DC0BA851CDEFD93003E5BAD /* Stage.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
+				9DC407F91CE81A04000E248B /* RoleSprite.cpp in Sources */,
 				9D675BA11CE5A7CB00E9A98A /* md5.cpp in Sources */,
 				9DC0BA811CDEFD93003E5BAD /* libcsv.c in Sources */,
 				9DC407F51CE7570D000E248B /* LayerManager.cpp in Sources */,

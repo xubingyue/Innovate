@@ -101,7 +101,7 @@ void HelloWorld::initWorldMap(string id)
     mapLayer->addChild(map);
 
     
-    auto land = map->getMap()->getLayer("BG");
+//    auto land = map->getMap()->getLayer("BG");
     
     auto groups = map->getMap()->getObjectGroup("Key");
     auto& objs = groups->getObjects();
@@ -110,23 +110,20 @@ void HelloWorld::initWorldMap(string id)
         string name = dict["name"].asString();
         if (name == "player")
         {
-            auto player = Sprite::create("res/grossinis.png");
-            mapLayer->addChild(player);
-            player->setPosition(Vec2(100,140));
+            auto ve = map->tileCoordForPosition(Point(dict["x"].asFloat(), dict["y"].asFloat()));
+            auto pos = map->positionForTileCoord(ve);
+            m_player = RoleSprite::create("res/grossinis.png");
+            mapLayer->addChild(m_player);
+            m_player->setPosition(pos);
         }
-        
     }
+}
+
+//void HelloWorld::menuCloseCallback(Ref* pSender)
+//{
+//    Director::getInstance()->end();
 //
-//    map->tileCoordForPosition(1, 1);
-//    CCLOG("===>%s", objs->getGroupName().c_str());
-    
-}
-
-void HelloWorld::menuCloseCallback(Ref* pSender)
-{
-    Director::getInstance()->end();
-
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    exit(0);
-#endif
-}
+//#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+//    exit(0);
+//#endif
+//}

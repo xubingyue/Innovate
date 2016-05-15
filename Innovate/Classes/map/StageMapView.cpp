@@ -24,21 +24,29 @@ StageMapView* StageMapView::create(std::string map)
 
 bool StageMapView::init(std::string str)
 {
-    tmxMap = TMXTiledMap::create(str);
-    this->addChild(tmxMap);
+    p_tmxMap = TMXTiledMap::create(str);
+    this->addChild(p_tmxMap);
+    
+    auto listener = EventListenerTouchOneByOne::create();
+    listener->onTouchBegan = CC_CALLBACK_2(StageMapView::onTouchBegan, this);
+    listener->onTouchMoved = CC_CALLBACK_2(StageMapView::onTouchMoved, this);
+    listener->onTouchEnded = CC_CALLBACK_2(StageMapView::onTouchEnded, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+
+    
     return true;
 }
 
 TMXTiledMap* StageMapView::getMap()
 {
-    return tmxMap;
+    return p_tmxMap;
 }
 
 // OpenGL坐标转成格子坐标
 Vec2 StageMapView::tileCoordForPosition(const Vec2& position)
 {
-    Size mapSize = tmxMap->getMapSize();
-    Size tileSize = tmxMap->getTileSize();
+    Size mapSize = p_tmxMap->getMapSize();
+    Size tileSize = p_tmxMap->getTileSize();
     int x = position.x / tileSize.width;
     int y = (mapSize.height*tileSize.height - position.y) / tileSize.height;
     return Vec2(x, y);
@@ -46,9 +54,31 @@ Vec2 StageMapView::tileCoordForPosition(const Vec2& position)
 // tile坐标转成瓦片格子中心的OpenGL坐标
 Vec2 StageMapView::positionForTileCoord(const Vec2& tileCoord)
 {
-    Size mapSize = tmxMap->getMapSize();
-    Size tileSize = tmxMap->getTileSize();
+    Size mapSize = p_tmxMap->getMapSize();
+    Size tileSize = p_tmxMap->getTileSize();
     int x = tileCoord.x * tileSize.width + tileSize.width/2;
     int y = (mapSize.height-tileCoord.y)*tileSize.height - tileSize.height/2;
     return Vec2(x, y);
 }
+
+bool StageMapView::onTouchBegan(Touch *touch, Event *unused_event)
+{
+    
+    return true;
+}
+
+void StageMapView::onTouchMoved(Touch *touch, Event *unused_event)
+{
+}
+
+void StageMapView::onTouchEnded(Touch *touch, Event *unused_event)
+{
+    
+    Point p = touch->getLocation();
+    Vec2 v = tileCoordForPosition(p);
+    auto layer = getMap()->getLayer("Road");
+    auto sp = layer->getTileAt(v);
+    if (sp)
+    {
+        sp->setColor(Color3B::GREEN);
+    }}
