@@ -91,17 +91,18 @@ void HelloWorld::touch2Move(Ref *obj)
     
     Vec2 toVec = p_map->tileCoordForPosition(((Touch*)obj)->getLocation());
     
-    vector<Vec2> *path = p_aStar->move2TileCoord(playerVec, toVec);
+    vector<Vec2> *path = new vector<Vec2>();
+    path = p_aStar->findPath(playerVec, toVec, path);
     
     Vector<FiniteTimeAction*> actions;
     for (auto v : *path)
     {
-        auto moveTo = MoveTo::create(0.5f, p_map->positionForTileCoord(v));
+        auto moveTo = MoveTo::create(0.3f, p_map->positionForTileCoord(v));
         actions.pushBack(moveTo);
     }
     Sequence *seq = Sequence::create(actions);
-    
     m_player->runAction(seq);
+    delete path;
 }
 
 void HelloWorld::initWorldMap(string id)
@@ -122,6 +123,7 @@ void HelloWorld::initWorldMap(string id)
             auto ve = p_map->tileCoordForPosition(Point(dict["x"].asFloat(), dict["y"].asFloat()));
             auto pos = p_map->positionForTileCoord(ve);
             m_player = RoleSprite::create("res/grossinis.png");
+            m_player->setAnchorPoint(Vec2(0.5, 0));
             mapLayer->addChild(m_player);
             m_player->setPosition(pos);
         }
@@ -129,9 +131,7 @@ void HelloWorld::initWorldMap(string id)
     
     auto land = p_map->getMap()->getLayer("Road");
     
-    p_aStar = new AStarPathSearch(land);
-    p_aStar->init("", p_map->getMap()->getMapSize().width, p_map->getMap()->getMapSize().height);
-    
+    p_aStar = new AStarFindPath(land, p_map->getMap()->getMapSize().width, p_map->getMap()->getMapSize().height);
 }
 
 //void HelloWorld::menuCloseCallback(Ref* pSender)

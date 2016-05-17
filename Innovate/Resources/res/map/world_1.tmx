@@ -14,7 +14,7 @@
   </data>
  </layer>
  <objectgroup name="Key">
-  <object id="1" name="player" type="1" x="76.05" y="3021.95" width="35.6548" height="36.7796">
+  <object id="1" name="player" type="1" x="204.05" y="3023.95" width="35.6548" height="36.7796">
    <ellipse/>
   </object>
  </objectgroup>
