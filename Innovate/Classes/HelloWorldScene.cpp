@@ -87,7 +87,7 @@ void HelloWorld::touch2Move(Ref *obj)
     path = p_aStar->findPath(playerVec, toVec, path);
     
     if (path == nullptr) return;
-    
+    if (p_sp) p_sp->setColor(p_color);
     auto land = p_map->getMap()->getLayer("Road");
     p_sp = land->getTileAt(toVec);
     p_color = p_sp->getColor();
