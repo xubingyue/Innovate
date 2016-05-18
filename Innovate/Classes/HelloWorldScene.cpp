@@ -31,7 +31,9 @@ bool HelloWorld::init()
     {
         return false;
     }
-
+    //没有在寻路状态
+    p_isFinding = false;
+    p_isNull = true;
     //初始化层级
     LayerManager::getInstance()->initLayer(this);
 
@@ -60,21 +62,33 @@ bool HelloWorld::init()
 
 void HelloWorld::touch2Move(Ref *obj)
 {
+    if (p_isFinding)
+    {
+        CCLOG("正在寻路，保存队列");
+        p_targetPoint = ((Touch*)obj)->getLocation();
+        p_isNull = false;
+        return;
+    }
     //保存人物当前坐标
     p_prePoint = m_player->getPosition();
     
-    auto worldPoint = ((Touch*)obj)->getLocation();
+    Point worldPoint;
+    if (obj == nullptr)//队列中缓存的目标点
+    {
+        worldPoint = p_targetPoint;
+    } else {
+        worldPoint = ((Touch*)obj)->getLocation();
+    }
     auto currPoint = p_map->convertToNodeSpace(worldPoint);
     Vec2 playerVec = p_map->tileCoordForPosition(m_player->getPosition());
     Vec2 toVec = p_map->tileCoordForPosition(currPoint);
-    
-    
-    
     
     vector<Vec2> *path = new vector<Vec2>();
     path = p_aStar->findPath(playerVec, toVec, path);
     
     if (path == nullptr) return;
+    //进入寻路状态
+    p_isFinding = true;
     
     Vector<FiniteTimeAction*> actions;
     for (auto v : *path)
@@ -135,7 +149,6 @@ void HelloWorld::initPosition()
 
 void HelloWorld::updateMapByPlayer(float dt)
 {
-    CCLOG("***");
     auto mapLayer = LayerManager::getInstance()->getLayerByTag(LayerType::MAP_LAYER);
     Point result = p_prePoint - m_player->getPosition();
     mapLayer->setPosition(mapLayer->getPosition() + result);
@@ -145,12 +158,22 @@ void HelloWorld::updateMapByPlayer(float dt)
 void HelloWorld::moveCallBack()
 {
     CCLOG("one step over======");
+    if (!p_isNull) {
+        CCLOG("开始新的寻路");
+        p_isFinding = false;
+        p_isNull = true;
+        m_player->stopAllActions();
+        this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updateMapByPlayer));
+        touch2Move(nullptr);
+    }
 }
 
 void HelloWorld::movesCallBack()
 {
     this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updateMapByPlayer));
     CCLOG("all steps are over======");
+    //寻路结束，设置状态为非寻路状态。
+    p_isFinding = false;
 }
 
 

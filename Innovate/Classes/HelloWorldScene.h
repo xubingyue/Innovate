@@ -43,7 +43,12 @@ private:
     StageMapView *p_map;
     //player上一帧位置
     Point p_prePoint;
-    
+    //角色是否在寻路中
+    bool p_isFinding;
+    //队列中的目标点
+    Point p_targetPoint;
+    //目标点 队列是否为空
+    bool p_isNull;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
