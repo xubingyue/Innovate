@@ -49,6 +49,9 @@ private:
     Point p_targetPoint;
     //目标点 队列是否为空
     bool p_isNull;
+    //保存色值
+    Color3B p_color;
+    Sprite *p_sp;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

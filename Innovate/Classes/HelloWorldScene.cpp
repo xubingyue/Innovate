@@ -87,6 +87,11 @@ void HelloWorld::touch2Move(Ref *obj)
     path = p_aStar->findPath(playerVec, toVec, path);
     
     if (path == nullptr) return;
+    
+    auto land = p_map->getMap()->getLayer("Road");
+    p_sp = land->getTileAt(toVec);
+    p_color = p_sp->getColor();
+    p_sp->setColor(Color3B::GREEN);
     //进入寻路状态
     p_isFinding = true;
     
@@ -102,8 +107,8 @@ void HelloWorld::touch2Move(Ref *obj)
     actions.pushBack(callFun);
 
     Sequence *seq = Sequence::create(actions);
-    m_player->runAction(seq);
     this->schedule(CC_SCHEDULE_SELECTOR(HelloWorld::updateMapByPlayer), 0.01, CC_REPEAT_FOREVER, 0);
+    m_player->runAction(seq);
     delete path;
 }
 
@@ -174,6 +179,7 @@ void HelloWorld::movesCallBack()
     CCLOG("all steps are over======");
     //寻路结束，设置状态为非寻路状态。
     p_isFinding = false;
+    p_sp->setColor(p_color);
 }
 
 
