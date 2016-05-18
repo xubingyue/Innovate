@@ -25,6 +25,12 @@ private:
     void initWorldMap(std::string id = "1");
     //初始化人物在屏幕上的位置
     void initPosition();
+    //更新地图移动
+    void updateMapByPlayer(float dt);
+    //移动一步结束后的回调
+    void moveCallBack();
+    //移动一步结束后的回调
+    void movesCallBack();
     
     void touch2Move(Ref *obj);
     
@@ -35,6 +41,8 @@ private:
     AStarFindPath* p_aStar;
     //当前地图
     StageMapView *p_map;
+    //player上一帧位置
+    Point p_prePoint;
     
 };
 

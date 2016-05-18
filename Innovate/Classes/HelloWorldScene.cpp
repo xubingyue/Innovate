@@ -60,25 +60,36 @@ bool HelloWorld::init()
 
 void HelloWorld::touch2Move(Ref *obj)
 {
+    //保存人物当前坐标
+    p_prePoint = m_player->getPosition();
+    
     auto worldPoint = ((Touch*)obj)->getLocation();
     auto currPoint = p_map->convertToNodeSpace(worldPoint);
     Vec2 playerVec = p_map->tileCoordForPosition(m_player->getPosition());
     Vec2 toVec = p_map->tileCoordForPosition(currPoint);
     
-    auto ss = Sprite::create();
-    ss->getColor();
+    
+    
     
     vector<Vec2> *path = new vector<Vec2>();
     path = p_aStar->findPath(playerVec, toVec, path);
+    
+    if (path == nullptr) return;
     
     Vector<FiniteTimeAction*> actions;
     for (auto v : *path)
     {
         auto moveTo = MoveTo::create(0.3f, p_map->positionForTileCoord(v));
         actions.pushBack(moveTo);
+        auto callFun = CallFunc::create( CC_CALLBACK_0(HelloWorld::moveCallBack,this));
+        actions.pushBack(callFun);
     }
+    auto callFun = CallFunc::create( CC_CALLBACK_0(HelloWorld::movesCallBack,this));
+    actions.pushBack(callFun);
+
     Sequence *seq = Sequence::create(actions);
     m_player->runAction(seq);
+    this->schedule(CC_SCHEDULE_SELECTOR(HelloWorld::updateMapByPlayer), 0.01, CC_REPEAT_FOREVER, 0);
     delete path;
 }
 
@@ -121,6 +132,28 @@ void HelloWorld::initPosition()
     Point result = player - center;
     mapLayer->setPosition(mapLayer->getPosition() - result);
 }
+
+void HelloWorld::updateMapByPlayer(float dt)
+{
+    CCLOG("***");
+    auto mapLayer = LayerManager::getInstance()->getLayerByTag(LayerType::MAP_LAYER);
+    Point result = p_prePoint - m_player->getPosition();
+    mapLayer->setPosition(mapLayer->getPosition() + result);
+    p_prePoint = m_player->getPosition();
+}
+
+void HelloWorld::moveCallBack()
+{
+    CCLOG("one step over======");
+}
+
+void HelloWorld::movesCallBack()
+{
+    this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updateMapByPlayer));
+    CCLOG("all steps are over======");
+}
+
+
 
 //void HelloWorld::menuCloseCallback(Ref* pSender)
 //{
