@@ -26,7 +26,7 @@ AStarFindPath::~AStarFindPath()
 vector<Vec2>* AStarFindPath::findPath(Vec2 start, Vec2 end, vector<Vec2> *pathVec)
 {
     //起始点或者终点为空则路径为空
-    if (p_land->getTileAt(start) == nullptr || p_land->getTileAt(end) == nullptr || start == end)
+    if (!isInMap(toAS(end)) || p_land->getTileAt(start) == nullptr || p_land->getTileAt(end) == nullptr || start == end)
     {
         return nullptr;
     }
