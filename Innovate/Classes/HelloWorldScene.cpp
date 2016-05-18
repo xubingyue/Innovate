@@ -31,41 +31,14 @@ bool HelloWorld::init()
     {
         return false;
     }
-    
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
-
-    /////////////////////////////
-    // 2. add a menu item with "X" image, which is clicked to quit the program
-    //    you may modify it.
-
-    // add a "close" icon to exit the progress. it's an autorelease object
 
     //初始化层级
     LayerManager::getInstance()->initLayer(this);
 
     //初始化世界地图
     initWorldMap();
+    initPosition();
 
-    
-    
-//    auto label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
-//    
-//    // position the label on the center of the screen
-//    label->setPosition(Vec2(origin.x + visibleSize.width/2,
-//                            origin.y + visibleSize.height - label->getContentSize().height));
-//
-//    // add the label as a child to this layer
-//    this->addChild(label, 1);
-//
-//    // add "HelloWorld" splash screen"
-//    auto sprite = Sprite::create("res/HelloWorld.png");
-//
-//    // position the sprite on the center of the screen
-//    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-//
-//    // add the sprite as a child to this layer
-//    this->addChild(sprite, 0);
 //    auto role = ROLE_TABLE->getRoleVo(1);
 //    
 //    CCLOG("====>%s", role->name.c_str());
@@ -87,9 +60,13 @@ bool HelloWorld::init()
 
 void HelloWorld::touch2Move(Ref *obj)
 {
+    auto worldPoint = ((Touch*)obj)->getLocation();
+    auto currPoint = p_map->convertToNodeSpace(worldPoint);
     Vec2 playerVec = p_map->tileCoordForPosition(m_player->getPosition());
+    Vec2 toVec = p_map->tileCoordForPosition(currPoint);
     
-    Vec2 toVec = p_map->tileCoordForPosition(((Touch*)obj)->getLocation());
+    auto ss = Sprite::create();
+    ss->getColor();
     
     vector<Vec2> *path = new vector<Vec2>();
     path = p_aStar->findPath(playerVec, toVec, path);
@@ -132,6 +109,17 @@ void HelloWorld::initWorldMap(string id)
     auto land = p_map->getMap()->getLayer("Road");
     
     p_aStar = new AStarFindPath(land, p_map->getMap()->getMapSize().width, p_map->getMap()->getMapSize().height);
+}
+
+void HelloWorld::initPosition()
+{
+    auto mapLayer = LayerManager::getInstance()->getLayerByTag(LayerType::MAP_LAYER);
+    Size winSize = Director::getInstance()->getWinSize();
+    
+    Point center = Point(winSize.width/2, winSize.height/2);
+    Point player = m_player->getPosition();
+    Point result = player - center;
+    mapLayer->setPosition(mapLayer->getPosition() - result);
 }
 
 //void HelloWorld::menuCloseCallback(Ref* pSender)

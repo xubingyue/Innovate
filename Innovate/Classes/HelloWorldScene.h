@@ -21,7 +21,11 @@ public:
     CREATE_FUNC(HelloWorld);
     
 private:
+    //初始化地图
     void initWorldMap(std::string id = "1");
+    //初始化人物在屏幕上的位置
+    void initPosition();
+    
     void touch2Move(Ref *obj);
     
 private:
