@@ -60,6 +60,8 @@
 		9D675BA41CE5C62000E9A98A /* LoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D675BA21CE5C62000E9A98A /* LoadingScene.cpp */; };
 		9D675BA91CE6C1B000E9A98A /* StageMapView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D675BA71CE6C1B000E9A98A /* StageMapView.cpp */; };
 		9D70F7E91CECA9B1007461DF /* LocalDataUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D70F7E71CECA9B1007461DF /* LocalDataUtil.cpp */; };
+		9D70F7F11CED5FA7007461DF /* BattleController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D70F7EF1CED5FA7007461DF /* BattleController.cpp */; };
+		9D70F7F41CED8CD7007461DF /* BattleView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D70F7F21CED8CD7007461DF /* BattleView.cpp */; };
 		9DC0BA811CDEFD93003E5BAD /* libcsv.c in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA781CDEFD93003E5BAD /* libcsv.c */; };
 		9DC0BA821CDEFD93003E5BAD /* TableHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA791CDEFD93003E5BAD /* TableHelper.cpp */; };
 		9DC0BA831CDEFD93003E5BAD /* DataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA7B1CDEFD93003E5BAD /* DataManager.cpp */; };
@@ -171,6 +173,10 @@
 		9D675BA81CE6C1B000E9A98A /* StageMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageMapView.h; sourceTree = "<group>"; };
 		9D70F7E71CECA9B1007461DF /* LocalDataUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LocalDataUtil.cpp; sourceTree = "<group>"; };
 		9D70F7E81CECA9B1007461DF /* LocalDataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalDataUtil.h; sourceTree = "<group>"; };
+		9D70F7EF1CED5FA7007461DF /* BattleController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleController.cpp; sourceTree = "<group>"; };
+		9D70F7F01CED5FA7007461DF /* BattleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleController.h; sourceTree = "<group>"; };
+		9D70F7F21CED8CD7007461DF /* BattleView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleView.cpp; sourceTree = "<group>"; };
+		9D70F7F31CED8CD7007461DF /* BattleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleView.h; sourceTree = "<group>"; };
 		9DC0BA771CDEFD93003E5BAD /* csv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = csv.h; sourceTree = "<group>"; };
 		9DC0BA781CDEFD93003E5BAD /* libcsv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = libcsv.c; sourceTree = "<group>"; };
 		9DC0BA791CDEFD93003E5BAD /* TableHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TableHelper.cpp; sourceTree = "<group>"; };
@@ -331,6 +337,7 @@
 				9DC0BA741CDEFD93003E5BAD /* core */,
 				9DC407F61CE819BE000E248B /* role */,
 				9D675BA51CE6C16400E9A98A /* map */,
+				9D70F7EE1CED5EDC007461DF /* battle */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */,
@@ -419,6 +426,17 @@
 				9D675BA81CE6C1B000E9A98A /* StageMapView.h */,
 			);
 			path = map;
+			sourceTree = "<group>";
+		};
+		9D70F7EE1CED5EDC007461DF /* battle */ = {
+			isa = PBXGroup;
+			children = (
+				9D70F7EF1CED5FA7007461DF /* BattleController.cpp */,
+				9D70F7F01CED5FA7007461DF /* BattleController.h */,
+				9D70F7F21CED8CD7007461DF /* BattleView.cpp */,
+				9D70F7F31CED8CD7007461DF /* BattleView.h */,
+			);
+			path = battle;
 			sourceTree = "<group>";
 		};
 		9DC0BA741CDEFD93003E5BAD /* core */ = {
@@ -617,6 +635,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DC0BA841CDEFD93003E5BAD /* Role.cpp in Sources */,
+				9D70F7F11CED5FA7007461DF /* BattleController.cpp in Sources */,
 				9DC0BA821CDEFD93003E5BAD /* TableHelper.cpp in Sources */,
 				9D675BA41CE5C62000E9A98A /* LoadingScene.cpp in Sources */,
 				9D675B991CE56A2A00E9A98A /* MemManager.cpp in Sources */,
@@ -629,6 +648,7 @@
 				9DC0BA811CDEFD93003E5BAD /* libcsv.c in Sources */,
 				9D70F7E91CECA9B1007461DF /* LocalDataUtil.cpp in Sources */,
 				9DC407F51CE7570D000E248B /* LayerManager.cpp in Sources */,
+				9D70F7F41CED8CD7007461DF /* BattleView.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				9DC0BA831CDEFD93003E5BAD /* DataManager.cpp in Sources */,
 				9D1E58781CE9EB03007D065F /* AStarFindPath.cpp in Sources */,

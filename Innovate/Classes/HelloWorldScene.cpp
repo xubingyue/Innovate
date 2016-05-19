@@ -3,6 +3,8 @@
 #include "MemManager.h"
 #include "LayerManager.h"
 #include "NotificationType.h"
+#include "LocalDataUtil.h"
+#include "BattleController.h"
 
 USING_NS_CC;
 using namespace std;
@@ -37,8 +39,9 @@ bool HelloWorld::init()
     //初始化层级
     LayerManager::getInstance()->initLayer(this);
 
+    string mapId = LocalDataUtil::getInstance()->getStringForKey("map", "1");
     //初始化世界地图
-    initWorldMap();
+    initWorldMap(mapId);
     initPosition();
 
 //    auto role = ROLE_TABLE->getRoleVo(1);
@@ -163,6 +166,17 @@ void HelloWorld::updateMapByPlayer(float dt)
 void HelloWorld::moveCallBack()
 {
     CCLOG("one step over======");
+    bool isBattle = BattleController::getInstance()->isEnterBattle();
+    if (isBattle) {
+        CCLOG("===Enter the battle!!!");
+        this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updateMapByPlayer));
+        m_player->stopAllActions();
+        p_isNull = true;
+        p_isFinding = false;
+        p_sp->setColor(p_color);
+        BattleController::getInstance()->showBattle("", Point(0, 0));
+        return;
+    }
     if (!p_isNull) {
         CCLOG("开始新的寻路");
         p_isFinding = false;
@@ -180,6 +194,11 @@ void HelloWorld::movesCallBack()
     //寻路结束，设置状态为非寻路状态。
     p_isFinding = false;
     p_sp->setColor(p_color);
+    bool isBattle = BattleController::getInstance()->isEnterBattle();
+    if (isBattle) {
+        CCLOG("===Enter the battle!!!");
+        BattleController::getInstance()->showBattle("", Point(0, 0));
+    }
 }
 
 

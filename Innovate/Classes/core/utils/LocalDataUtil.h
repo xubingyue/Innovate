@@ -13,10 +13,12 @@ class LocalDataUtil
 {
 public:
     
-    static LocalDataUtil* getInstance();
     
     LocalDataUtil();
     ~LocalDataUtil();
+    
+    
+    static LocalDataUtil* getInstance();
     
     bool getBoolForKey(const char* key);
     bool getBoolForKey(const char* key, bool defaultValue);

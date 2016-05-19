@@ -15,6 +15,7 @@ USING_NS_CC;
 
 enum LayerType {
     MAP_LAYER = 10,
+    BATTLE_LAYER = 30,
     UI_LAYER = 50
 };
 

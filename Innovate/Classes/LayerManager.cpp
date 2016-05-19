@@ -38,6 +38,10 @@ void LayerManager::initLayer(Node *root)
     p_root->addChild(mapLayer, LayerType::MAP_LAYER);
     mapLayer->setTag(LayerType::MAP_LAYER);
     
+    auto battleLayer = Node::create();
+    p_root->addChild(battleLayer, LayerType::BATTLE_LAYER);
+    battleLayer->setTag(LayerType::BATTLE_LAYER);
+    
     auto uiLayer = Node::create();
     p_root->addChild(uiLayer, LayerType::UI_LAYER);
     uiLayer->setTag(LayerType::UI_LAYER);

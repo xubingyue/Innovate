@@ -76,11 +76,12 @@ void StageMapView::onTouchEnded(Touch *touch, Event *unused_event)
 {
     
     Point p = touch->getLocation();
-    Vec2 v = tileCoordForPosition(p);
-    auto layer = getMap()->getLayer("Road");
-    auto sp = layer->getTileAt(v);
-    if (sp)
-    {
-        __NotificationCenter::getInstance()->postNotification(TOUCH_MAP_TO_MOVE, touch);
-    }
+    auto currPoint = this->convertToNodeSpace(p);
+//    Vec2 v = tileCoordForPosition(currPoint);
+//    auto layer = getMap()->getLayer("Road");
+//    auto sp = layer->getTileAt(v);
+//    if (sp)
+//    {
+    __NotificationCenter::getInstance()->postNotification(TOUCH_MAP_TO_MOVE, touch);
+//    }
 }

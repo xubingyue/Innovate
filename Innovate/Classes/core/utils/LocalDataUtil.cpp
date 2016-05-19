@@ -12,7 +12,7 @@ USING_NS_CC;
 
 static LocalDataUtil* _instance = nullptr;
 
-LocalDataUtil* getInstance()
+LocalDataUtil* LocalDataUtil::getInstance()
 {
     if(_instance == nullptr)
     {
