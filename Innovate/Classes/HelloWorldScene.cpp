@@ -134,12 +134,11 @@ void HelloWorld::initWorldMap(string id)
             auto pos = p_map->positionForTileCoord(ve);
             m_player = RoleSprite::create("res/grossinis.png");
             m_player->setAnchorPoint(Vec2(0.5, 0));
-            mapLayer->addChild(m_player);
+            p_map->addChild(m_player);
             m_player->setPosition(pos);
+            
         }
-    }
-    
-    auto land = p_map->getMap()->getLayer("Road");
+    }    auto land = p_map->getMap()->getLayer("Road");
     
     p_aStar = new AStarFindPath(land, p_map->getMap()->getMapSize().width, p_map->getMap()->getMapSize().height);
 }
