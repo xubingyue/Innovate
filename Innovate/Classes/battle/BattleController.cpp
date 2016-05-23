@@ -45,7 +45,7 @@ bool BattleController::isEnterBattle()
 
 void BattleController::showBattle(string mapId, Vec2 point)
 {
-    auto battleView = BattleView::create();
+    auto battleView = BattleView::create(mapId, point);
     auto battleLayer = LayerManager::getInstance()->getLayerByTag(LayerType::BATTLE_LAYER);
     battleLayer->addChild(battleView);
 }

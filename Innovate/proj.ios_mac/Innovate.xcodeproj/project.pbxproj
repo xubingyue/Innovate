@@ -62,6 +62,7 @@
 		9D70F7E91CECA9B1007461DF /* LocalDataUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D70F7E71CECA9B1007461DF /* LocalDataUtil.cpp */; };
 		9D70F7F11CED5FA7007461DF /* BattleController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D70F7EF1CED5FA7007461DF /* BattleController.cpp */; };
 		9D70F7F41CED8CD7007461DF /* BattleView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D70F7F21CED8CD7007461DF /* BattleView.cpp */; };
+		9D70F7F91CEF1FEC007461DF /* BattleObjBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D70F7F71CEF1FEC007461DF /* BattleObjBase.cpp */; };
 		9DC0BA811CDEFD93003E5BAD /* libcsv.c in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA781CDEFD93003E5BAD /* libcsv.c */; };
 		9DC0BA821CDEFD93003E5BAD /* TableHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA791CDEFD93003E5BAD /* TableHelper.cpp */; };
 		9DC0BA831CDEFD93003E5BAD /* DataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA7B1CDEFD93003E5BAD /* DataManager.cpp */; };
@@ -178,6 +179,8 @@
 		9D70F7F21CED8CD7007461DF /* BattleView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleView.cpp; sourceTree = "<group>"; };
 		9D70F7F31CED8CD7007461DF /* BattleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleView.h; sourceTree = "<group>"; };
 		9D70F7F51CEF0501007461DF /* UICommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICommon.h; sourceTree = "<group>"; };
+		9D70F7F71CEF1FEC007461DF /* BattleObjBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleObjBase.cpp; sourceTree = "<group>"; };
+		9D70F7F81CEF1FEC007461DF /* BattleObjBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleObjBase.h; sourceTree = "<group>"; };
 		9DC0BA771CDEFD93003E5BAD /* csv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = csv.h; sourceTree = "<group>"; };
 		9DC0BA781CDEFD93003E5BAD /* libcsv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = libcsv.c; sourceTree = "<group>"; };
 		9DC0BA791CDEFD93003E5BAD /* TableHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TableHelper.cpp; sourceTree = "<group>"; };
@@ -433,12 +436,22 @@
 		9D70F7EE1CED5EDC007461DF /* battle */ = {
 			isa = PBXGroup;
 			children = (
+				9D70F7F61CEF1FC2007461DF /* BattleObj */,
 				9D70F7EF1CED5FA7007461DF /* BattleController.cpp */,
 				9D70F7F01CED5FA7007461DF /* BattleController.h */,
 				9D70F7F21CED8CD7007461DF /* BattleView.cpp */,
 				9D70F7F31CED8CD7007461DF /* BattleView.h */,
 			);
 			path = battle;
+			sourceTree = "<group>";
+		};
+		9D70F7F61CEF1FC2007461DF /* BattleObj */ = {
+			isa = PBXGroup;
+			children = (
+				9D70F7F71CEF1FEC007461DF /* BattleObjBase.cpp */,
+				9D70F7F81CEF1FEC007461DF /* BattleObjBase.h */,
+			);
+			path = BattleObj;
 			sourceTree = "<group>";
 		};
 		9DC0BA741CDEFD93003E5BAD /* core */ = {
@@ -642,6 +655,7 @@
 				9D675BA41CE5C62000E9A98A /* LoadingScene.cpp in Sources */,
 				9D675B991CE56A2A00E9A98A /* MemManager.cpp in Sources */,
 				9D675BA91CE6C1B000E9A98A /* StageMapView.cpp in Sources */,
+				9D70F7F91CEF1FEC007461DF /* BattleObjBase.cpp in Sources */,
 				9DC0BA851CDEFD93003E5BAD /* Stage.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,

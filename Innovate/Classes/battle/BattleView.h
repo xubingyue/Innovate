@@ -12,14 +12,15 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
+using namespace std;
 USING_NS_CC;
 
 class BattleView : public cocos2d::Layer
 {
 public:
-    static BattleView* create();
+    static BattleView* create(string mapId, Vec2 point);
     
-    virtual bool init() override;
+    bool init(string mapId, Vec2 point);
     
     virtual void onEnter() override;
     virtual void onExit() override;

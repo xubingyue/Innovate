@@ -16,10 +16,10 @@
 USING_NS_CC;
 using namespace cocos2d::ui;
 
-BattleView* BattleView::create()
+BattleView* BattleView::create(string mapId, Vec2 point)
 {
     BattleView * ret = new (std::nothrow) BattleView();
-    if (ret && ret->init())
+    if (ret && ret->init(mapId, point))
     {
         ret->autorelease();
     }
@@ -30,7 +30,7 @@ BattleView* BattleView::create()
     return ret;
 }
 
-bool BattleView::init()
+bool BattleView::init(string mapId, Vec2 point)
 {
     if (!Layer::init())
     {
@@ -50,17 +50,10 @@ bool BattleView::init()
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
     
     //加载ui
-//    Data data = FileUtils::getInstance()->getDataFromFile("res/ui/BattleView/BattleView.csb");
     Node* node = CSLoader::createNodeWithVisibleSize("res/ui/BattleView/BattleView.csb");
-//    cocostudio::timeline::ActionTimeline* action = CSLoader::createTimeline(data, "ActionTimeline/DemoPlayer.csb");
-//    node->runAction(action);
-//    action->gotoFrameAndPlay(0);
-//    node->setContentSize(winSize);
-//    ui::Helper::doLayout(node);
     addChild(node);
     
     Button *escapeBtn = static_cast<Button*>(Helper::seekWidgetByName(static_cast<Layout*>(node), "escape_btn"));
-//    Button *escapeBtn = HELPER_GET_BTN(node, "escape_btn");
     escapeBtn->addTouchEventListener(CC_CALLBACK_2(BattleView::touchEventCallback, this));
 
     return true;
@@ -70,7 +63,7 @@ void BattleView::touchEventCallback(Ref *sender, Widget::TouchEventType controlE
 {
     if (controlEvent == Widget::TouchEventType::ENDED) {
 //        _editBoxImpl->openKeyboard();
-        CCLOG("------->>>>");
+        CCLOG("------->>>>退出战斗！");
         this->removeFromParentAndCleanup(true);
     }
 }
