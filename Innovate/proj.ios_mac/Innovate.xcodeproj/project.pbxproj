@@ -63,6 +63,9 @@
 		9D70F7F11CED5FA7007461DF /* BattleController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D70F7EF1CED5FA7007461DF /* BattleController.cpp */; };
 		9D70F7F41CED8CD7007461DF /* BattleView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D70F7F21CED8CD7007461DF /* BattleView.cpp */; };
 		9D70F7F91CEF1FEC007461DF /* BattleObjBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D70F7F71CEF1FEC007461DF /* BattleObjBase.cpp */; };
+		9D70F7FC1CF29DB3007461DF /* BattleMonster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D70F7FA1CF29DB3007461DF /* BattleMonster.cpp */; };
+		9D70F7FF1CF29E7E007461DF /* BattlePlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D70F7FD1CF29E7E007461DF /* BattlePlayer.cpp */; };
+		9D70F8021CF29ED5007461DF /* BattleElf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D70F8001CF29ED5007461DF /* BattleElf.cpp */; };
 		9DC0BA811CDEFD93003E5BAD /* libcsv.c in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA781CDEFD93003E5BAD /* libcsv.c */; };
 		9DC0BA821CDEFD93003E5BAD /* TableHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA791CDEFD93003E5BAD /* TableHelper.cpp */; };
 		9DC0BA831CDEFD93003E5BAD /* DataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA7B1CDEFD93003E5BAD /* DataManager.cpp */; };
@@ -181,6 +184,12 @@
 		9D70F7F51CEF0501007461DF /* UICommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICommon.h; sourceTree = "<group>"; };
 		9D70F7F71CEF1FEC007461DF /* BattleObjBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleObjBase.cpp; sourceTree = "<group>"; };
 		9D70F7F81CEF1FEC007461DF /* BattleObjBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleObjBase.h; sourceTree = "<group>"; };
+		9D70F7FA1CF29DB3007461DF /* BattleMonster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleMonster.cpp; sourceTree = "<group>"; };
+		9D70F7FB1CF29DB3007461DF /* BattleMonster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleMonster.h; sourceTree = "<group>"; };
+		9D70F7FD1CF29E7E007461DF /* BattlePlayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattlePlayer.cpp; sourceTree = "<group>"; };
+		9D70F7FE1CF29E7E007461DF /* BattlePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattlePlayer.h; sourceTree = "<group>"; };
+		9D70F8001CF29ED5007461DF /* BattleElf.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleElf.cpp; sourceTree = "<group>"; };
+		9D70F8011CF29ED5007461DF /* BattleElf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleElf.h; sourceTree = "<group>"; };
 		9DC0BA771CDEFD93003E5BAD /* csv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = csv.h; sourceTree = "<group>"; };
 		9DC0BA781CDEFD93003E5BAD /* libcsv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = libcsv.c; sourceTree = "<group>"; };
 		9DC0BA791CDEFD93003E5BAD /* TableHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TableHelper.cpp; sourceTree = "<group>"; };
@@ -450,6 +459,12 @@
 			children = (
 				9D70F7F71CEF1FEC007461DF /* BattleObjBase.cpp */,
 				9D70F7F81CEF1FEC007461DF /* BattleObjBase.h */,
+				9D70F7FA1CF29DB3007461DF /* BattleMonster.cpp */,
+				9D70F7FB1CF29DB3007461DF /* BattleMonster.h */,
+				9D70F7FD1CF29E7E007461DF /* BattlePlayer.cpp */,
+				9D70F7FE1CF29E7E007461DF /* BattlePlayer.h */,
+				9D70F8001CF29ED5007461DF /* BattleElf.cpp */,
+				9D70F8011CF29ED5007461DF /* BattleElf.h */,
 			);
 			path = BattleObj;
 			sourceTree = "<group>";
@@ -650,12 +665,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DC0BA841CDEFD93003E5BAD /* Role.cpp in Sources */,
+				9D70F7FF1CF29E7E007461DF /* BattlePlayer.cpp in Sources */,
 				9D70F7F11CED5FA7007461DF /* BattleController.cpp in Sources */,
 				9DC0BA821CDEFD93003E5BAD /* TableHelper.cpp in Sources */,
 				9D675BA41CE5C62000E9A98A /* LoadingScene.cpp in Sources */,
 				9D675B991CE56A2A00E9A98A /* MemManager.cpp in Sources */,
 				9D675BA91CE6C1B000E9A98A /* StageMapView.cpp in Sources */,
+				9D70F7FC1CF29DB3007461DF /* BattleMonster.cpp in Sources */,
 				9D70F7F91CEF1FEC007461DF /* BattleObjBase.cpp in Sources */,
+				9D70F8021CF29ED5007461DF /* BattleElf.cpp in Sources */,
 				9DC0BA851CDEFD93003E5BAD /* Stage.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
