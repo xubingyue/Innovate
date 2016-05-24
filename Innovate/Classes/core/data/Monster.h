@@ -1,5 +1,5 @@
-#ifndef __TABLES_Role_H__
-#define __TABLES_Role_H__
+#ifndef __TABLES_Monster_H__
+#define __TABLES_Monster_H__
 #include "cocos2d.h"
 #include "TableHelper.h"
 
@@ -7,7 +7,7 @@ USING_NS_CC;
 
 namespace tables
 {
-	class Role_table 
+	class Monster_table 
 	{
 	public:
 		//id
@@ -20,9 +20,9 @@ namespace tables
 		int attack;
 		//速度
 		float velocity;
-		//战斗内形象
+		//形象
 		std::string character_in;
-		Role_table()
+		Monster_table()
 		{
 			memset(&id, 0, sizeof(id));
 			memset(&name, 0, sizeof(name));
@@ -33,18 +33,18 @@ namespace tables
 		}
 	};
 
-	class Role
+	class Monster
 	{
 	public:
-		Role(unsigned const char* data, size_t size);
-		~Role(void);
-		std::map<std::string, std::unique_ptr<Role_table>> m_data;
+		Monster(unsigned const char* data, size_t size);
+		~Monster(void);
+		std::map<std::string, std::unique_ptr<Monster_table>> m_data;
 		static const char* fileName();
 		std::string Error;
 		
-		Role_table* getRoleVo(int id);
+		Monster_table* getMonsterVo(int id);
 		std::string int2String(int num);
 	};
 }
 
-#endif  // __TABLES_Role_H__
+#endif  // __TABLES_Monster_H__

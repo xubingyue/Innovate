@@ -1,10 +1,10 @@
-#include "Role.h"
+#include "Config.h"
 
 #define KEY int2String(r->id)
 
 namespace tables
 {
-	Role::Role(unsigned const char* data, size_t size)
+	Config::Config(unsigned const char* data, size_t size)
 	{
 		InterDataCarrier carrier(data, size, fileName());
 		Error = carrier.Error;
@@ -15,24 +15,20 @@ namespace tables
 
 		for (size_t i = 0; i < carrier.GetRecordCount(); i++)
 		{
-			std::unique_ptr<Role_table> r(new Role_table);
+			std::unique_ptr<Config_table> r(new Config_table);
 			r->id = atoi(carrier.GetField(i, 0, "id").c_str());
-			r->name = carrier.GetField(i, 1, "name", true).c_str();
-			r->hp = atoi(carrier.GetField(i, 2, "hp").c_str());
-			r->attack = atoi(carrier.GetField(i, 3, "attack").c_str());
-			r->velocity = atof(carrier.GetField(i, 4, "velocity").c_str());
-			r->character_in = carrier.GetField(i, 5, "character_in", true).c_str();
+			r->data = carrier.GetField(i, 1, "data", true).c_str();
 
 			m_data[KEY] = std::move(r);
 		}
 	}
 
-	Role::~Role(void)
+	Config::~Config(void)
 	{
 
 	}
 
-	Role_table* Role::getRoleVo(int id)
+	Config_table* Config::getConfigVo(int id)
 	{
 		auto it = m_data.find(int2String(id));
 		if (it == m_data.end())
@@ -43,7 +39,7 @@ namespace tables
 		}
 	}
 
-	std::string Role::int2String(int num)
+	std::string Config::int2String(int num)
 	{
 		std::stringstream ss;
 		std::string str;
@@ -52,8 +48,8 @@ namespace tables
 		return str;
 	}
 
-	const char* Role::fileName()
+	const char* Config::fileName()
 	{
-		return "Role.csv";
+		return "Config.csv";
 	}
 }

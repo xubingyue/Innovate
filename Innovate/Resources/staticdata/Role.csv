@@ -1,6 +1,3 @@
-id,name,hp,
-1,asdf,32,
-2,dfs,432,
-3,hgfgs,54,
-4,ewrw,5645,
+id,name,hp,attack,velocity,character_in,
+1,asdf,100,20,7,res/player/player.png,
 

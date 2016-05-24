@@ -1,10 +1,10 @@
-#include "Role.h"
+#include "Object.h"
 
 #define KEY int2String(r->id)
 
 namespace tables
 {
-	Role::Role(unsigned const char* data, size_t size)
+	Object::Object(unsigned const char* data, size_t size)
 	{
 		InterDataCarrier carrier(data, size, fileName());
 		Error = carrier.Error;
@@ -15,24 +15,21 @@ namespace tables
 
 		for (size_t i = 0; i < carrier.GetRecordCount(); i++)
 		{
-			std::unique_ptr<Role_table> r(new Role_table);
+			std::unique_ptr<Object_table> r(new Object_table);
 			r->id = atoi(carrier.GetField(i, 0, "id").c_str());
 			r->name = carrier.GetField(i, 1, "name", true).c_str();
 			r->hp = atoi(carrier.GetField(i, 2, "hp").c_str());
-			r->attack = atoi(carrier.GetField(i, 3, "attack").c_str());
-			r->velocity = atof(carrier.GetField(i, 4, "velocity").c_str());
-			r->character_in = carrier.GetField(i, 5, "character_in", true).c_str();
 
 			m_data[KEY] = std::move(r);
 		}
 	}
 
-	Role::~Role(void)
+	Object::~Object(void)
 	{
 
 	}
 
-	Role_table* Role::getRoleVo(int id)
+	Object_table* Object::getObjectVo(int id)
 	{
 		auto it = m_data.find(int2String(id));
 		if (it == m_data.end())
@@ -43,7 +40,7 @@ namespace tables
 		}
 	}
 
-	std::string Role::int2String(int num)
+	std::string Object::int2String(int num)
 	{
 		std::stringstream ss;
 		std::string str;
@@ -52,8 +49,8 @@ namespace tables
 		return str;
 	}
 
-	const char* Role::fileName()
+	const char* Object::fileName()
 	{
-		return "Role.csv";
+		return "Object.csv";
 	}
 }

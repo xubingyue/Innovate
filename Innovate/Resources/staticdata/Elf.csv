@@ -1,0 +1,4 @@
+id,name,hp,attack,velocity,character_in,
+1,asdf,60,8,6.5,res/elf/elf_cat.png,
+2,dfs,50,10,5,res/elf/elf_stone.png,
+

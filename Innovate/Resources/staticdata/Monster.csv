@@ -1,0 +1,4 @@
+id,name,hp,attack,velocity,character_in,
+1,asdf,300,20,6.5,res/monster/monster.png,
+2,dfs,400,20,6.5,res/monster/monster.png,
+

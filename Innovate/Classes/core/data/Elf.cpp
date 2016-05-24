@@ -1,10 +1,10 @@
-#include "Role.h"
+#include "Elf.h"
 
 #define KEY int2String(r->id)
 
 namespace tables
 {
-	Role::Role(unsigned const char* data, size_t size)
+	Elf::Elf(unsigned const char* data, size_t size)
 	{
 		InterDataCarrier carrier(data, size, fileName());
 		Error = carrier.Error;
@@ -15,7 +15,7 @@ namespace tables
 
 		for (size_t i = 0; i < carrier.GetRecordCount(); i++)
 		{
-			std::unique_ptr<Role_table> r(new Role_table);
+			std::unique_ptr<Elf_table> r(new Elf_table);
 			r->id = atoi(carrier.GetField(i, 0, "id").c_str());
 			r->name = carrier.GetField(i, 1, "name", true).c_str();
 			r->hp = atoi(carrier.GetField(i, 2, "hp").c_str());
@@ -27,12 +27,12 @@ namespace tables
 		}
 	}
 
-	Role::~Role(void)
+	Elf::~Elf(void)
 	{
 
 	}
 
-	Role_table* Role::getRoleVo(int id)
+	Elf_table* Elf::getElfVo(int id)
 	{
 		auto it = m_data.find(int2String(id));
 		if (it == m_data.end())
@@ -43,7 +43,7 @@ namespace tables
 		}
 	}
 
-	std::string Role::int2String(int num)
+	std::string Elf::int2String(int num)
 	{
 		std::stringstream ss;
 		std::string str;
@@ -52,8 +52,8 @@ namespace tables
 		return str;
 	}
 
-	const char* Role::fileName()
+	const char* Elf::fileName()
 	{
-		return "Role.csv";
+		return "Elf.csv";
 	}
 }
