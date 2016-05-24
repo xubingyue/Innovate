@@ -8,10 +8,10 @@
 
 #include "BattleObjBase.h"
 
-BattleObjBase* BattleObjBase::create(int hp, int att, float vel, float velProcess)
+BattleObjBase* BattleObjBase::create(int hp, int att, float vel, std::string cha,float velProcess)
 {
     BattleObjBase * ret = new (std::nothrow) BattleObjBase(hp, att, vel, velProcess);
-    if (ret && ret->init())
+    if (ret && ret->init(cha))
     {
         ret->autorelease();
     }
@@ -31,9 +31,11 @@ BattleObjBase::BattleObjBase(int hp, int att, float vel, float velProcess)
     
 }
 
-BattleObjBase::~BattleObjBase()
+bool BattleObjBase::init(std::string cha)
 {
-    
+    auto sp = Sprite::create(cha);
+    this->addChild(sp);
+    return true;
 }
 
 void BattleObjBase::update(float dt, const BattleObjCallback& callback)
@@ -42,7 +44,7 @@ void BattleObjBase::update(float dt, const BattleObjCallback& callback)
     if (p_velcity_process >= p_VELOCITY)
     {
         p_velcity_process = 0.0f;
-        callback(1, AttackType::HURT, 20);
+        callback(ObjType::ELF, AttackType::HURT, 20);
     }
 }
 
@@ -73,8 +75,19 @@ void BattleObjBase::setVelocity(float vel)
 
 float BattleObjBase::getVelocity()
 {
-    return getVelocity();
+    return p_VELOCITY;
 }
+
+void BattleObjBase::setVelPro(float vel)
+{
+    p_velcity_process = vel;
+}
+
+float BattleObjBase::getVelPro()
+{
+    return p_velcity_process;
+}
+
 
 
 

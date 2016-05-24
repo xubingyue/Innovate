@@ -10,7 +10,7 @@
 #include "cocostudio/CocoStudio.h"
 #include "editor-support/cocostudio/CCComExtensionData.h"
 #include "../UICommon.h"
-
+#include "BattleController.h"
 
 
 USING_NS_CC;
@@ -28,6 +28,16 @@ BattleView* BattleView::create(string mapId, Vec2 point)
         CC_SAFE_DELETE(ret);
     }
     return ret;
+}
+
+BattleView::BattleView()
+{
+    
+}
+
+BattleView::~BattleView()
+{
+    
 }
 
 bool BattleView::init(string mapId, Vec2 point)
@@ -50,24 +60,60 @@ bool BattleView::init(string mapId, Vec2 point)
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
     
     //加载ui
-    Node* node = CSLoader::createNodeWithVisibleSize("res/ui/BattleView/BattleView.csb");
-    addChild(node);
+    p_root = CSLoader::createNodeWithVisibleSize("res/ui/BattleView/BattleView.csb");
+    addChild(p_root);
     
-    Button *escapeBtn = static_cast<Button*>(Helper::seekWidgetByName(static_cast<Layout*>(node), "escape_btn"));
+    Button *escapeBtn = static_cast<Button*>(Helper::seekWidgetByName(static_cast<Layout*>(p_root), "escape_btn"));
     escapeBtn->addTouchEventListener(CC_CALLBACK_2(BattleView::touchEventCallback, this));
 
+    p_monsterNode = p_root->getChildByName("monster_node");
+    p_playerNode = p_root->getChildByName("player_node");
+    
     return true;
 }
 
 void BattleView::touchEventCallback(Ref *sender, Widget::TouchEventType controlEvent)
 {
     if (controlEvent == Widget::TouchEventType::ENDED) {
-//        _editBoxImpl->openKeyboard();
         CCLOG("------->>>>退出战斗！");
         this->removeFromParentAndCleanup(true);
     }
 }
 
+void BattleView::addPlayer(BattleObjBase *obj)
+{
+    p_playerNode->addChild(obj);
+}
+
+void BattleView::addElfs(Vector<BattleElf*> *elfs)
+{
+    int i = 1;
+    for (BattleObjBase *elf : *elfs)
+    {
+        char buffer[100];
+        sprintf(buffer,"elf_node_%d",i);
+        string temp(buffer);
+        auto node = p_root->getChildByName(temp);
+        if (node != nullptr)
+        {
+            node->addChild(elf);
+            i++;
+            continue;
+        }
+        break;
+    }
+}
+
+void BattleView::addMonster(BattleObjBase *monster)
+{
+    p_monsterNode->addChild(monster);
+}
+
+void BattleView::updateTimer(float dt)
+{
+    //战斗时间轴
+    BattleController::getInstance()->updateTimer(dt);
+}
 
 bool BattleView::onTouchBegan(Touch *touch, Event *unused_event)
 {

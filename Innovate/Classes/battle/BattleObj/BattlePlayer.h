@@ -14,7 +14,15 @@
 
 class BattlePlayer : public BattleObjBase
 {
+public:
+    static BattlePlayer* create(int hp, int att, float vel, std::string cha,float velProcess = 0.0f);
     
+    BattlePlayer();
+    BattlePlayer(int hp, int att, float vel, float velProcess = 0.0f);
+    ~BattlePlayer();
+
+    void update(float dt, const BattleObjCallback& callback) override;
 };
+
 
 #endif /* BattlePlayer_hpp */

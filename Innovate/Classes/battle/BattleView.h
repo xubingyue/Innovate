@@ -11,20 +11,33 @@
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
+#include "BattleObjBase.h"
+#include "BattleElf.h"
 
 using namespace std;
 USING_NS_CC;
+
 
 class BattleView : public cocos2d::Layer
 {
 public:
     static BattleView* create(string mapId, Vec2 point);
     
+    BattleView();
+    ~BattleView();
+    
     bool init(string mapId, Vec2 point);
     
     virtual void onEnter() override;
     virtual void onExit() override;
-
+    // 添加主角
+    void addPlayer(BattleObjBase *player);
+    // 添加小精灵
+    void addElfs(Vector<BattleElf*> *elfs);
+    // 添加怪物
+    void addMonster(BattleObjBase *monster);
+    //战斗时间轴
+    void updateTimer(float dt);
 private:
     //touch
     bool onTouchBegan(Touch *touch, Event *unused_event) override;
@@ -32,6 +45,15 @@ private:
     void onTouchEnded(Touch *touch, Event *unused_event) override;
     
     void touchEventCallback(Ref *sender, cocos2d::ui::Widget::TouchEventType controlEvent);
+    
+
+private:
+    //ui跟节点
+    Node *p_root;
+    //主角站位点
+    Node *p_playerNode;
+    //怪物站位点
+    Node *p_monsterNode;
 };
 
 #endif /* BattleView_hpp */

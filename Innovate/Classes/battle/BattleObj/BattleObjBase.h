@@ -14,11 +14,17 @@
 USING_NS_CC;
 
 enum AttackType {
-    HURT = 0,
-    RECOVER = 1
+    HURT,
+    RECOVER
 };
 
-typedef std::function<void(int, AttackType, int)> BattleObjCallback;
+enum ObjType {
+    PLAYER,
+    ELF,
+    MONSTER
+};
+
+typedef std::function<void(ObjType, AttackType, int)> BattleObjCallback;
 
 /**
  * 战斗对象的基类
@@ -27,10 +33,12 @@ class BattleObjBase : public Node
 {
 public:
     
-    static BattleObjBase* create(int hp, int att, float vel, float velProcess = 0.0f);
-    
+    BattleObjBase() = default;
     BattleObjBase(int hp, int att, float vel, float velProcess = 0.0f);
-    ~BattleObjBase();
+    virtual ~BattleObjBase() = default;
+    
+    static BattleObjBase* create(int hp, int att, float vel, std::string cha, float velProcess = 0.0f);
+    
     
     void setHP(int hp);
     int getHP();
@@ -41,7 +49,13 @@ public:
     void setVelocity(float vel);
     float getVelocity();
     
-    void update(float dt, const BattleObjCallback& callback);
+    void setVelPro(float vel);
+    float getVelPro();
+
+    
+    virtual void update(float dt, const BattleObjCallback& callback);
+
+    bool init(std::string cha);
     
 private:
     int p_HP;

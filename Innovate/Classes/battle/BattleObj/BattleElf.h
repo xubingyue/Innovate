@@ -14,7 +14,14 @@
 
 class BattleElf : public BattleObjBase
 {
+public:
+    static BattleElf* create(int hp, int att, float vel, std::string cha,float velProcess = 0.0f);
     
+    BattleElf();
+    BattleElf(int hp, int att, float vel, float velProcess = 0.0f);
+    ~BattleElf();
+ 
+    void update(float dt, const BattleObjCallback& callback) override;
 };
 
 #endif /* BattleElf_hpp */
