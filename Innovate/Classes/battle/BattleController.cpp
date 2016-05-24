@@ -88,10 +88,20 @@ void BattleController::updateCallback(ObjType ot, AttackType at, int value, int 
         p_battleMonster->showEffect();
     } else if (ot == ObjType::ELF)
     {
-//        CCLOG("E［%d］小精灵进行了攻击 攻击类型为［ %d ］输出伤害值为［ %d ］== %d", ot, at, value, index);
+        CCLOG("E［%d］小精灵进行了攻击 攻击类型为［ %d ］输出伤害值为［ %d ］== %d", ot, at, value, index);
+        //        BattleElf *elf = p_elfs[index];
+        for (BattleElf *elf : p_elfs)
+        {
+            if (elf->index == index)
+            {
+                elf->showEffect();
+                break;
+            }
+        }
     } else if (ot == ObjType::PLAYER)
     {
-//        CCLOG("P［%d］主角进行了攻击 攻击类型为［ %d ］输出伤害值为［ %d ］== %d", ot, at, value, index);
+        CCLOG("P［%d］主角进行了攻击 攻击类型为［ %d ］输出伤害值为［ %d ］== %d", ot, at, value, index);
+        p_battlePlayer->showEffect();
     }
 }
 
@@ -99,16 +109,13 @@ void BattleController::updateCallback(ObjType ot, AttackType at, int value, int 
 void BattleController::updateTimer(float dt)
 {
     p_battleMonster->update(dt, CC_CALLBACK_4(BattleController::updateCallback, this));
-    
     if (isInAttack) return;
+    
     p_battlePlayer->update(dt, CC_CALLBACK_4(BattleController::updateCallback, this));
-    
-    if (isInAttack) return;
     
     for (auto elf : p_elfs)
     {
         elf->update(dt, CC_CALLBACK_4(BattleController::updateCallback, this));
-        if (isInAttack) return;
     }
 }
 
@@ -130,6 +137,43 @@ void BattleController::monsterAttack()
     sp->runAction(Sequence::create(action, callFun, NULL));
 }
 
+void BattleController::elfAttack()
+{
+    auto animation = Animation::create();
+    animation->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("shouji2_01.png"));
+    animation->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("shouji2_02.png"));
+    animation->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("shouji2_03.png"));
+    animation->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("shouji2_04.png"));
+    
+    animation->setDelayPerUnit(2.8f / 14.0f);
+    animation->setRestoreOriginalFrame(true);
+    auto action = Animate::create(animation);
+    
+    auto callFun = CallFunc::create( CC_CALLBACK_0(BattleController::elfAtkOver,this));
+    auto sp = Sprite::create("res/default.png");
+    p_battleView->effectNode_1->addChild(sp);
+    sp->runAction(Sequence::create(action, callFun, NULL));
+}
+
+void BattleController::playerAttack()
+{
+    auto animation = Animation::create();
+    animation->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("shouji2_01.png"));
+    animation->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("shouji2_02.png"));
+    animation->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("shouji2_03.png"));
+    animation->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("shouji2_04.png"));
+    
+    animation->setDelayPerUnit(2.8f / 14.0f);
+    animation->setRestoreOriginalFrame(true);
+    auto action = Animate::create(animation);
+    
+    auto callFun = CallFunc::create( CC_CALLBACK_0(BattleController::elfAtkOver,this));
+    auto sp = Sprite::create("res/default.png");
+    p_battleView->effectNode_1->addChild(sp);
+    sp->runAction(Sequence::create(action, callFun, NULL));
+}
+
+
 void BattleController::monsterAtkOver()
 {
     p_battleView->effectNode_2->removeAllChildren();
@@ -137,6 +181,16 @@ void BattleController::monsterAtkOver()
     isInAttack = false;
 }
 
+void BattleController::elfAtkOver()
+{
+    p_battleView->effectNode_1->removeAllChildren();
+}
+
+
+void BattleController::playerAtkOver()
+{
+    p_battleView->effectNode_1->removeAllChildren();
+}
 
 
 

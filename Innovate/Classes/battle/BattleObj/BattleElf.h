@@ -24,6 +24,11 @@ public:
     void update(float dt, const BattleObjCallback& callback) override;
     
     bool operator==(const BattleElf &elf);
+    
+    void showEffect();
+private:
+    void showEffectOver();
+
 public:
     int index;
 };

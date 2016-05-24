@@ -32,6 +32,8 @@ public:
     void updateTimer(float dt);
     //怪物闪影攻击
     void monsterAttack();
+    void elfAttack();
+    void playerAttack();
     
 public:
     //是否在战斗状态
@@ -46,6 +48,10 @@ private:
     void updateCallback(ObjType ot, AttackType at, int value, int index = 0);
     //怪物攻击结束
     void monsterAtkOver();
+    //精灵攻击结束
+    void elfAtkOver();
+    //玩家攻击结束
+    void playerAtkOver();
     
 private:
     //战斗场景

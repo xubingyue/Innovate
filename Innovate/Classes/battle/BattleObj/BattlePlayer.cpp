@@ -7,7 +7,7 @@
 //
 
 #include "BattlePlayer.h"
-
+#include "../BattleController.h"
 
 BattlePlayer* BattlePlayer::create(int hp, int att, float vel, std::string cha, float velProcess)
 {
@@ -47,6 +47,25 @@ void BattlePlayer::update(float dt, const BattleObjCallback& callback)
     }
 }
 
+void BattlePlayer::showEffect()
+{
+    auto animation = Animation::create();
+    animation->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("gongji01.png"));
+    animation->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("gongji02.png"));
+    
+    animation->setDelayPerUnit(2.8f / 14.0f);
+    animation->setRestoreOriginalFrame(true);
+    auto action = Animate::create(animation);
+    
+    auto callFun = CallFunc::create( CC_CALLBACK_0(BattlePlayer::showEffectOver,this));
+    
+    selfSp->runAction(Sequence::create(action, callFun, NULL));
+}
+
+void BattlePlayer::showEffectOver()
+{
+    BattleController::getInstance()->playerAttack();
+}
 
 BattlePlayer::~BattlePlayer()
 {
