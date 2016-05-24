@@ -99,13 +99,16 @@ void HelloWorld::touch2Move(Ref *obj)
     p_isFinding = true;
     
     Vector<FiniteTimeAction*> actions;
-    for (auto v : *path)
+    for (int i = 1; i < path->size(); i++)
     {
+        auto v = (*path)[i];
         auto moveTo = MoveTo::create(0.3f, p_map->positionForTileCoord(v));
         actions.pushBack(moveTo);
         auto callFun = CallFunc::create( CC_CALLBACK_0(HelloWorld::moveCallBack,this));
         actions.pushBack(callFun);
+
     }
+    
     auto callFun = CallFunc::create( CC_CALLBACK_0(HelloWorld::movesCallBack,this));
     actions.pushBack(callFun);
 
