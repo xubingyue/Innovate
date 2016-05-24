@@ -46,7 +46,11 @@ private:
     
     void touchEventCallback(Ref *sender, cocos2d::ui::Widget::TouchEventType controlEvent);
     
-
+public:
+    //特效位置
+    Node *effectNode_1;
+    Node *effectNode_2;
+    
 private:
     //ui跟节点
     Node *p_root;

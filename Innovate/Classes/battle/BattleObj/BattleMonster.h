@@ -22,6 +22,10 @@ public:
     ~BattleMonster();
     
     void update(float dt, const BattleObjCallback& callback) override;
+    
+    void showEffect();
+private:
+    void showEffectOver();
 };
 
 #endif /* BattleMonster_hpp */

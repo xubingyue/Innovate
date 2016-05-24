@@ -24,7 +24,7 @@ enum ObjType {
     MONSTER
 };
 
-typedef std::function<void(ObjType, AttackType, int)> BattleObjCallback;
+typedef std::function<void(ObjType, AttackType, int, int)> BattleObjCallback;
 
 /**
  * 战斗对象的基类
@@ -35,7 +35,7 @@ public:
     
     BattleObjBase() = default;
     BattleObjBase(int hp, int att, float vel, float velProcess = 0.0f);
-    virtual ~BattleObjBase() = default;
+    ~BattleObjBase();
     
     static BattleObjBase* create(int hp, int att, float vel, std::string cha, float velProcess = 0.0f);
     
@@ -56,6 +56,10 @@ public:
     virtual void update(float dt, const BattleObjCallback& callback);
 
     bool init(std::string cha);
+    
+public:
+    
+    Sprite *selfSp;
     
 private:
     int p_HP;

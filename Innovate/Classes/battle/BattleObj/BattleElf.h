@@ -22,6 +22,10 @@ public:
     ~BattleElf();
  
     void update(float dt, const BattleObjCallback& callback) override;
+    
+    bool operator==(const BattleElf &elf);
+public:
+    int index;
 };
 
 #endif /* BattleElf_hpp */

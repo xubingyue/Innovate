@@ -8,6 +8,7 @@
 
 #include "BattlePlayer.h"
 
+
 BattlePlayer* BattlePlayer::create(int hp, int att, float vel, std::string cha, float velProcess)
 {
     BattlePlayer * ret = new (std::nothrow) BattlePlayer(hp, att, vel, velProcess);
@@ -42,7 +43,7 @@ void BattlePlayer::update(float dt, const BattleObjCallback& callback)
     if (getVelPro() >= getVelocity())
     {
         setVelPro(0.0f);
-        callback(ObjType::PLAYER, AttackType::HURT, getAttack());
+        callback(ObjType::PLAYER, AttackType::HURT, getAttack(), 0);
     }
 }
 

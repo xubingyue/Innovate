@@ -42,8 +42,13 @@ void BattleElf::update(float dt, const BattleObjCallback& callback)
     if (getVelPro() >= getVelocity())
     {
         setVelPro(0.0f);
-        callback(ObjType::ELF, AttackType::HURT, getAttack());
+        callback(ObjType::ELF, AttackType::HURT, getAttack(), index);
     }
+}
+
+bool BattleElf::operator==(const BattleElf &elf)
+{
+    return index == elf.index;
 }
 
 BattleElf::~BattleElf()

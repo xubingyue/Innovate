@@ -69,6 +69,9 @@ bool BattleView::init(string mapId, Vec2 point)
     p_monsterNode = p_root->getChildByName("monster_node");
     p_playerNode = p_root->getChildByName("player_node");
     
+    effectNode_1 = p_root->getChildByName("effect_node_1");
+    effectNode_2 = p_root->getChildByName("effect_node_2");
+    
     return true;
 }
 

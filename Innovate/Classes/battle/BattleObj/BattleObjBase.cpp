@@ -33,8 +33,8 @@ BattleObjBase::BattleObjBase(int hp, int att, float vel, float velProcess)
 
 bool BattleObjBase::init(std::string cha)
 {
-    auto sp = Sprite::create(cha);
-    this->addChild(sp);
+    selfSp = Sprite::create(cha);
+    this->addChild(selfSp);
     return true;
 }
 
@@ -44,7 +44,7 @@ void BattleObjBase::update(float dt, const BattleObjCallback& callback)
     if (p_velcity_process >= p_VELOCITY)
     {
         p_velcity_process = 0.0f;
-        callback(ObjType::ELF, AttackType::HURT, 20);
+        callback(ObjType::ELF, AttackType::HURT, 20, 0);
     }
 }
 
@@ -89,5 +89,8 @@ float BattleObjBase::getVelPro()
 }
 
 
-
+BattleObjBase::~BattleObjBase()
+{
+    
+}
 
