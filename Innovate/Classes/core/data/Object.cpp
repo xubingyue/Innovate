@@ -18,7 +18,8 @@ namespace tables
 			std::unique_ptr<Object_table> r(new Object_table);
 			r->id = atoi(carrier.GetField(i, 0, "id").c_str());
 			r->name = carrier.GetField(i, 1, "name", true).c_str();
-			r->hp = atoi(carrier.GetField(i, 2, "hp").c_str());
+			r->type = atoi(carrier.GetField(i, 2, "type").c_str());
+			r->res = carrier.GetField(i, 3, "res", true).c_str();
 
 			m_data[KEY] = std::move(r);
 		}

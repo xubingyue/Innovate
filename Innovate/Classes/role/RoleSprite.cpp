@@ -21,3 +21,10 @@ RoleSprite* RoleSprite::create(std::string map)
     }
     return ret;
 }
+
+void RoleSprite::resetZorder(Point p)
+{
+    this->setLocalZOrder(p.y * 1000 + p.x * 100 + 1);
+}
+
+

@@ -15,12 +15,15 @@ namespace tables
 		//名字
 		std::string name;
 		//血量
-		int hp;
+		int type;
+		//资源
+		std::string res;
 		Object_table()
 		{
 			memset(&id, 0, sizeof(id));
 			memset(&name, 0, sizeof(name));
-			memset(&hp, 0, sizeof(hp));
+			memset(&type, 0, sizeof(type));
+			memset(&res, 0, sizeof(res));
 		}
 	};
 

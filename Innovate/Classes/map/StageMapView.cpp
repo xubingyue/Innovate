@@ -26,7 +26,7 @@ StageMapView* StageMapView::create(std::string map)
 bool StageMapView::init(std::string str)
 {
     p_tmxMap = TMXTiledMap::create(str);
-    this->addChild(p_tmxMap);
+    this->addChild(p_tmxMap, 0);
     
     auto listener = EventListenerTouchOneByOne::create();
     listener->onTouchBegan = CC_CALLBACK_2(StageMapView::onTouchBegan, this);
@@ -60,6 +60,11 @@ Vec2 StageMapView::positionForTileCoord(const Vec2& tileCoord)
     int x = tileCoord.x * tileSize.width + tileSize.width/2;
     int y = (mapSize.height-tileCoord.y)*tileSize.height - tileSize.height/2;
     return Vec2(x, y);
+}
+
+void StageMapView::addToMap(Node *child, Point p)
+{
+    this->addChild(child, p.y * 1000 + p.x * 100);
 }
 
 bool StageMapView::onTouchBegan(Touch *touch, Event *unused_event)

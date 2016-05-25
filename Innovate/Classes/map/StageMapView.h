@@ -15,6 +15,14 @@
 //using namespace cocos2d::experimental;
 using namespace cocos2d;
 
+#define PLAYER_TAG 99
+
+//对象层对象类型枚举
+enum ObjectType {
+    OT_PLAYER = 1,     //玩家
+    OT_BUILDING = 2,   //建筑
+    OT_DISPLAY = 3     //非功能性显示（有遮挡关系的）
+};
 
 //class StageMapView : public experimental::TMXTiledMap
 class StageMapView : public Node
@@ -30,6 +38,8 @@ public:
     Vec2 positionForTileCoord(const Vec2& tileCoord);
     
     TMXTiledMap* getMap();
+    //将对象add在地图上， p为在地图上的坐标
+    void addToMap(Node *child, Point p);
     
 private:
     //touch

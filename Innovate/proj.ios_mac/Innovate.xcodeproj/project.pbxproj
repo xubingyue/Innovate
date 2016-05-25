@@ -71,6 +71,8 @@
 		9D70F8131CF472EB007461DF /* Language.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D70F80B1CF472EB007461DF /* Language.cpp */; };
 		9D70F8141CF472EB007461DF /* Monster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D70F80D1CF472EB007461DF /* Monster.cpp */; };
 		9D70F8151CF472EB007461DF /* Object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D70F80F1CF472EB007461DF /* Object.cpp */; };
+		9D70F8181CF5A329007461DF /* MapObjBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D70F8161CF5A329007461DF /* MapObjBase.cpp */; };
+		9D70F81E1CF5A731007461DF /* MapObjDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D70F81C1CF5A731007461DF /* MapObjDisplay.cpp */; };
 		9DC0BA811CDEFD93003E5BAD /* libcsv.c in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA781CDEFD93003E5BAD /* libcsv.c */; };
 		9DC0BA821CDEFD93003E5BAD /* TableHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA791CDEFD93003E5BAD /* TableHelper.cpp */; };
 		9DC0BA831CDEFD93003E5BAD /* DataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA7B1CDEFD93003E5BAD /* DataManager.cpp */; };
@@ -205,6 +207,10 @@
 		9D70F80E1CF472EB007461DF /* Monster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Monster.h; sourceTree = "<group>"; };
 		9D70F80F1CF472EB007461DF /* Object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Object.cpp; sourceTree = "<group>"; };
 		9D70F8101CF472EB007461DF /* Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Object.h; sourceTree = "<group>"; };
+		9D70F8161CF5A329007461DF /* MapObjBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MapObjBase.cpp; sourceTree = "<group>"; };
+		9D70F8171CF5A329007461DF /* MapObjBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapObjBase.h; sourceTree = "<group>"; };
+		9D70F81C1CF5A731007461DF /* MapObjDisplay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MapObjDisplay.cpp; sourceTree = "<group>"; };
+		9D70F81D1CF5A731007461DF /* MapObjDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapObjDisplay.h; sourceTree = "<group>"; };
 		9DC0BA771CDEFD93003E5BAD /* csv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = csv.h; sourceTree = "<group>"; };
 		9DC0BA781CDEFD93003E5BAD /* libcsv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = libcsv.c; sourceTree = "<group>"; };
 		9DC0BA791CDEFD93003E5BAD /* TableHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TableHelper.cpp; sourceTree = "<group>"; };
@@ -453,6 +459,10 @@
 			children = (
 				9D675BA71CE6C1B000E9A98A /* StageMapView.cpp */,
 				9D675BA81CE6C1B000E9A98A /* StageMapView.h */,
+				9D70F8161CF5A329007461DF /* MapObjBase.cpp */,
+				9D70F8171CF5A329007461DF /* MapObjBase.h */,
+				9D70F81C1CF5A731007461DF /* MapObjDisplay.cpp */,
+				9D70F81D1CF5A731007461DF /* MapObjDisplay.h */,
 			);
 			path = map;
 			sourceTree = "<group>";
@@ -690,6 +700,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9DC0BA841CDEFD93003E5BAD /* Role.cpp in Sources */,
+				9D70F8181CF5A329007461DF /* MapObjBase.cpp in Sources */,
 				9D70F7FF1CF29E7E007461DF /* BattlePlayer.cpp in Sources */,
 				9D70F7F11CED5FA7007461DF /* BattleController.cpp in Sources */,
 				9DC0BA821CDEFD93003E5BAD /* TableHelper.cpp in Sources */,
@@ -697,6 +708,7 @@
 				9D675B991CE56A2A00E9A98A /* MemManager.cpp in Sources */,
 				9D675BA91CE6C1B000E9A98A /* StageMapView.cpp in Sources */,
 				9D70F7FC1CF29DB3007461DF /* BattleMonster.cpp in Sources */,
+				9D70F81E1CF5A731007461DF /* MapObjDisplay.cpp in Sources */,
 				9D70F7F91CEF1FEC007461DF /* BattleObjBase.cpp in Sources */,
 				9D70F8021CF29ED5007461DF /* BattleElf.cpp in Sources */,
 				9D70F8131CF472EB007461DF /* Language.cpp in Sources */,

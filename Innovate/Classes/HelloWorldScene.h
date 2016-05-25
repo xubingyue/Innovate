@@ -27,6 +27,8 @@ private:
     void initPosition();
     //更新地图移动
     void updateMapByPlayer(float dt);
+    //人物层级排序
+    void updatePlayerZorder(float dt);
     //移动一步结束后的回调
     void moveCallBack();
     //移动一步结束后的回调

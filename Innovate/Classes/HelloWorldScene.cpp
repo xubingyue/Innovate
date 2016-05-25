@@ -5,6 +5,8 @@
 #include "NotificationType.h"
 #include "LocalDataUtil.h"
 #include "BattleController.h"
+#include "MapObjDisplay.h"
+
 
 USING_NS_CC;
 using namespace std;
@@ -43,11 +45,7 @@ bool HelloWorld::init()
     //初始化世界地图
     initWorldMap(mapId);
     initPosition();
-
-//    auto role = ROLE_TABLE->getRoleVo(1);
-//    
-//    CCLOG("====>%s", role->name.c_str());
-//    
+    
 //    int temp = 99;
 //    
 //    m_int sto = MemManager::getInstance()->encode(temp);
@@ -114,6 +112,7 @@ void HelloWorld::touch2Move(Ref *obj)
 
     Sequence *seq = Sequence::create(actions);
     this->schedule(CC_SCHEDULE_SELECTOR(HelloWorld::updateMapByPlayer), 0.01, CC_REPEAT_FOREVER, 0);
+    this->schedule(CC_SCHEDULE_SELECTOR(HelloWorld::updatePlayerZorder), 0.2, CC_REPEAT_FOREVER, 0);
     m_player->runAction(seq);
     delete path;
 }
@@ -130,20 +129,38 @@ void HelloWorld::initWorldMap(string id)
     auto& objs = groups->getObjects();
     for (auto& o : objs) {
         ValueMap& dict = o.asValueMap();
-        string name = dict["name"].asString();
-        if (name == "player")
+        int id = dict["id"].asInt();
+        if (id == 1)//1:固定是玩家
         {
+            auto obj = OBJECT_TABLE->getObjectVo(1);
             auto ve = p_map->tileCoordForPosition(Point(dict["x"].asFloat(), dict["y"].asFloat()));
             auto pos = p_map->positionForTileCoord(ve);
-            m_player = RoleSprite::create("res/grossinis.png");
+            m_player = RoleSprite::create(obj->res);
             m_player->setAnchorPoint(Vec2(0.5, 0));
-            p_map->addChild(m_player);
+            p_map->addToMap(m_player, ve);
+            m_player->setTag(PLAYER_TAG);
             m_player->setPosition(pos);
-            
+        } else {
+            auto obj = OBJECT_TABLE->getObjectVo(id);
+            if (obj->type == ObjectType::OT_DISPLAY)
+            {
+                auto ve = p_map->tileCoordForPosition(Point(dict["x"].asFloat(), dict["y"].asFloat()));
+                auto pos = p_map->positionForTileCoord(ve);
+                auto display = MapObjDisplay::create(obj->res);
+                display->setAnchorPoint(Point(0.5, 0));
+                p_map->addToMap(display, ve);
+                display->setPosition(pos);
+            }
+            else if (obj->type == ObjectType::OT_BUILDING)
+            {
+                
+            }
         }
-    }    auto land = p_map->getMap()->getLayer("Road");
+    }
+    auto land = p_map->getMap()->getLayer("Road");
     
     p_aStar = new AStarFindPath(land, p_map->getMap()->getMapSize().width, p_map->getMap()->getMapSize().height);
+    
 }
 
 void HelloWorld::initPosition()
@@ -165,6 +182,13 @@ void HelloWorld::updateMapByPlayer(float dt)
     p_prePoint = m_player->getPosition();
 }
 
+void HelloWorld::updatePlayerZorder(float dt)
+{
+    Point pp = m_player->getPosition();
+    Point v = p_map->tileCoordForPosition(pp);
+    m_player->resetZorder(v);
+}
+
 void HelloWorld::moveCallBack()
 {
     CCLOG("one step over======");
@@ -172,6 +196,7 @@ void HelloWorld::moveCallBack()
     if (isBattle) {
         CCLOG("===Enter the battle!!!");
         this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updateMapByPlayer));
+        this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updatePlayerZorder));
         m_player->stopAllActions();
         p_isNull = true;
         p_isFinding = false;
@@ -185,6 +210,7 @@ void HelloWorld::moveCallBack()
         p_isNull = true;
         m_player->stopAllActions();
         this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updateMapByPlayer));
+        this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updatePlayerZorder));
         touch2Move(nullptr);
     }
 }
@@ -192,6 +218,7 @@ void HelloWorld::moveCallBack()
 void HelloWorld::movesCallBack()
 {
     this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updateMapByPlayer));
+    this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updatePlayerZorder));
     CCLOG("all steps are over======");
     //寻路结束，设置状态为非寻路状态。
     p_isFinding = false;
