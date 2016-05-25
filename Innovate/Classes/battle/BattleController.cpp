@@ -45,7 +45,7 @@ bool BattleController::isEnterBattle()
     if (x >= atoi(vo->data.c_str())) {
         return false;
     }
-    return true;
+    return false;
 }
 
 void BattleController::showBattle(string mapId, Vec2 point)

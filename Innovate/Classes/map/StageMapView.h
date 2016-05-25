@@ -15,7 +15,13 @@
 //using namespace cocos2d::experimental;
 using namespace cocos2d;
 
+//主角tag
 #define PLAYER_TAG 99
+
+//各个层级名称定义
+#define ROAD_LAYER "Road"
+#define BG_LAYER "BG"
+#define OBJ_LAYER "Key"
 
 //对象层对象类型枚举
 enum ObjectType {

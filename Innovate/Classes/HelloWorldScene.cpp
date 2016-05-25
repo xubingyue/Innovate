@@ -6,7 +6,7 @@
 #include "LocalDataUtil.h"
 #include "BattleController.h"
 #include "MapObjDisplay.h"
-
+#include "MapObjBuilding.h"
 
 USING_NS_CC;
 using namespace std;
@@ -125,7 +125,7 @@ void HelloWorld::initWorldMap(string id)
     mapLayer->addChild(p_map);
 
     //初始化对象
-    auto groups = p_map->getMap()->getObjectGroup("Key");
+    auto groups = p_map->getMap()->getObjectGroup(OBJ_LAYER);
     auto& objs = groups->getObjects();
     for (auto& o : objs) {
         ValueMap& dict = o.asValueMap();
@@ -153,11 +153,16 @@ void HelloWorld::initWorldMap(string id)
             }
             else if (obj->type == ObjectType::OT_BUILDING)
             {
-                
+                auto ve = p_map->tileCoordForPosition(Point(dict["x"].asFloat(), dict["y"].asFloat()));
+                auto pos = p_map->positionForTileCoord(ve);
+                auto display = MapObjBuilding::create(obj->res);
+                display->setAnchorPoint(Point(0, 0));
+                p_map->addToMap(display, ve);
+                display->setPosition(pos - Point(32, 32));
             }
         }
     }
-    auto land = p_map->getMap()->getLayer("Road");
+    auto land = p_map->getMap()->getLayer(ROAD_LAYER);
     
     p_aStar = new AStarFindPath(land, p_map->getMap()->getMapSize().width, p_map->getMap()->getMapSize().height);
     
@@ -191,10 +196,8 @@ void HelloWorld::updatePlayerZorder(float dt)
 
 void HelloWorld::moveCallBack()
 {
-    CCLOG("one step over======");
     bool isBattle = BattleController::getInstance()->isEnterBattle();
     if (isBattle) {
-        CCLOG("===Enter the battle!!!");
         this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updateMapByPlayer));
         this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updatePlayerZorder));
         m_player->stopAllActions();
@@ -205,7 +208,6 @@ void HelloWorld::moveCallBack()
         return;
     }
     if (!p_isNull) {
-        CCLOG("开始新的寻路");
         p_isFinding = false;
         p_isNull = true;
         m_player->stopAllActions();
@@ -219,13 +221,11 @@ void HelloWorld::movesCallBack()
 {
     this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updateMapByPlayer));
     this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updatePlayerZorder));
-    CCLOG("all steps are over======");
     //寻路结束，设置状态为非寻路状态。
     p_isFinding = false;
     p_sp->setColor(p_color);
     bool isBattle = BattleController::getInstance()->isEnterBattle();
     if (isBattle) {
-        CCLOG("===Enter the battle!!!");
         BattleController::getInstance()->showBattle("", Point(0, 0));
     }
 }
