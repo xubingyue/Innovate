@@ -5,9 +5,12 @@
 //  Created by YUEBINBIN on 16/5/19.
 //
 //
-
+#include <cstdlib>
 #include "BattleController.h"
 #include "../LayerManager.h"
+#include "DataManager.h"
+
+
 USING_NS_CC;
 using namespace std;
 
@@ -38,7 +41,8 @@ bool BattleController::isEnterBattle()
     srand((int)time(0));
     int x = rand() % 10;
     CCLOG("随机概率是：%d", x);
-    if (x >= 2) {
+    auto vo = CONFIG_TABLE->getConfigVo(1);
+    if (x >= atoi(vo->data.c_str())) {
         return false;
     }
     return true;
@@ -54,9 +58,11 @@ void BattleController::showBattle(string mapId, Vec2 point)
 
 void BattleController::initPosition(string mapId, Vec2 point)
 {
-    p_battleMonster = BattleMonster::create(50, 10, 3, "res/monster/monster.png");
+    p_monsterHp = 250;
+    p_battleMonster = BattleMonster::create(250, 10, 3, "res/monster/monster.png");
     p_battleView->addMonster(p_battleMonster);
     
+    p_userHp = 100;
     p_battlePlayer = BattlePlayer::create(100, 15, 4, "res/player/player.png");
     p_battleView->addPlayer(p_battlePlayer);
     
@@ -65,6 +71,7 @@ void BattleController::initPosition(string mapId, Vec2 point)
     for (int i = 0; i < 5; i++)
     {
         BattleElf *elf = BattleElf::create(40, 5, attk, "res/elf/elf_cat.png");
+        p_userHp += 40;
         elf->index = i;
         p_elfs.pushBack(elf);
         attk--;
@@ -84,12 +91,13 @@ void BattleController::updateCallback(ObjType ot, AttackType at, int value, int 
     {
         isInAttack = true;
         p_battleView->unschedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer));
-        CCLOG("M［%d］怪物进行了攻击 攻击类型为［ %d ］输出伤害值为［ %d ］== %d", ot, at, value, index);
+        CCLOG("M［%d］怪物进行了攻击 攻击类型为［ %d ］输出伤害值为［ %d ］== %d 玩家血量剩余 ［%d］", ot, at, value, index, p_userHp);
+        p_userHp -= value;
         p_battleMonster->showEffect();
     } else if (ot == ObjType::ELF)
     {
-        CCLOG("E［%d］小精灵进行了攻击 攻击类型为［ %d ］输出伤害值为［ %d ］== %d", ot, at, value, index);
-        //        BattleElf *elf = p_elfs[index];
+        CCLOG("E［%d］小精灵进行了攻击 攻击类型为［ %d ］输出伤害值为［ %d ］== %d 怪物血量剩余 ［%d］", ot, at, value, index, p_monsterHp);
+        p_monsterHp -= value;
         for (BattleElf *elf : p_elfs)
         {
             if (elf->index == index)
@@ -100,8 +108,23 @@ void BattleController::updateCallback(ObjType ot, AttackType at, int value, int 
         }
     } else if (ot == ObjType::PLAYER)
     {
-        CCLOG("P［%d］主角进行了攻击 攻击类型为［ %d ］输出伤害值为［ %d ］== %d", ot, at, value, index);
+        CCLOG("P［%d］主角进行了攻击 攻击类型为［ %d ］输出伤害值为［ %d ］== %d 怪物血量剩余 ［%d］", ot, at, value, index, p_monsterHp);
+        p_monsterHp -= value;
         p_battlePlayer->showEffect();
+    }
+    
+    //判断结果
+    if (p_userHp <= 0)
+    {
+        CCLOG("你被怪物打败了，赶紧回家休息吧。");
+        p_battleView->unschedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer));
+        CCLOG("------->>>>退出战斗！");
+        p_battleView->removeFromParentAndCleanup(true);
+    } else if (p_monsterHp <= 0) {
+        CCLOG("恭喜你战胜了怪物！");
+        p_battleView->unschedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer));
+        CCLOG("------->>>>退出战斗！");
+        p_battleView->removeFromParentAndCleanup(true);
     }
 }
 
@@ -145,7 +168,7 @@ void BattleController::elfAttack()
     animation->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("shouji2_03.png"));
     animation->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("shouji2_04.png"));
     
-    animation->setDelayPerUnit(2.8f / 14.0f);
+    animation->setDelayPerUnit(2.0f / 14.0f);
     animation->setRestoreOriginalFrame(true);
     auto action = Animate::create(animation);
     
@@ -163,7 +186,7 @@ void BattleController::playerAttack()
     animation->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("shouji2_03.png"));
     animation->addSpriteFrame(SpriteFrameCache::getInstance()->getSpriteFrameByName("shouji2_04.png"));
     
-    animation->setDelayPerUnit(2.8f / 14.0f);
+    animation->setDelayPerUnit(2.0f / 14.0f);
     animation->setRestoreOriginalFrame(true);
     auto action = Animate::create(animation);
     

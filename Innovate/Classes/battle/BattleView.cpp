@@ -78,6 +78,7 @@ bool BattleView::init(string mapId, Vec2 point)
 void BattleView::touchEventCallback(Ref *sender, Widget::TouchEventType controlEvent)
 {
     if (controlEvent == Widget::TouchEventType::ENDED) {
+        this->unschedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer));
         CCLOG("------->>>>退出战斗！");
         this->removeFromParentAndCleanup(true);
     }

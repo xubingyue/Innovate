@@ -62,6 +62,9 @@ private:
     BattlePlayer *p_battlePlayer;
     //精灵数组
     Vector<BattleElf*> p_elfs;
+    
+    int p_userHp;
+    int p_monsterHp;
 };
 
 #endif /* BattleController_hpp */
