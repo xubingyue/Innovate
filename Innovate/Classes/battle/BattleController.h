@@ -14,6 +14,8 @@
 #include "BattleMonster.h"
 #include "BattlePlayer.h"
 #include "BattleElf.h"
+#include "DataManager.h"
+#include "MonsterModel.h"
 
 class BattleController : public Ref
 {
@@ -52,6 +54,8 @@ private:
     void elfAtkOver();
     //玩家攻击结束
     void playerAtkOver();
+    //根据场景位置获取怪物
+    MonsterModel getMonsterByIdx(string mapId, Point p);
     
 private:
     //战斗场景

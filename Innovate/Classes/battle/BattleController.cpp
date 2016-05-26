@@ -8,7 +8,7 @@
 #include <cstdlib>
 #include "BattleController.h"
 #include "../LayerManager.h"
-#include "DataManager.h"
+
 
 
 USING_NS_CC;
@@ -45,7 +45,7 @@ bool BattleController::isEnterBattle()
     if (x >= atoi(vo->data.c_str())) {
         return false;
     }
-    return false;
+    return true;
 }
 
 void BattleController::showBattle(string mapId, Vec2 point)
@@ -58,8 +58,9 @@ void BattleController::showBattle(string mapId, Vec2 point)
 
 void BattleController::initPosition(string mapId, Vec2 point)
 {
-    p_monsterHp = 250;
-    p_battleMonster = BattleMonster::create(250, 10, 3, "res/monster/monster.png");
+    auto monster = getMonsterByIdx(mapId, point);
+    p_monsterHp = monster.getHp();
+    p_battleMonster = BattleMonster::create(p_monsterHp, monster.getAttack(), monster.getVelocity(), monster.res);
     p_battleView->addMonster(p_battleMonster);
     
     p_userHp = 100;
@@ -224,5 +225,18 @@ void BattleController::playerAtkOver()
     p_battleView->effectNode_1->removeAllChildren();
 }
 
-
+MonsterModel BattleController::getMonsterByIdx(string mapId, Point p)
+{
+    MonsterModel monster;
+    
+    auto vo = MONSTER_TABLE->getMonsterVo(1);
+    
+    monster.setHp(vo->hp);
+    monster.setName(vo->name);
+    monster.setAttack(vo->attack);
+    monster.setVelocity(vo->velocity);
+    monster.res = vo->character_in;
+    
+    return monster;
+}
 
