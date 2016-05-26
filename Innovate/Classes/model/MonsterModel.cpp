@@ -56,6 +56,7 @@ void MonsterModel::setVelocity(float velocity)
 
 float MonsterModel::getVelocity()
 {
+    //公式： 10*速度^-1
     return 10 * pow(velocity + velo_buff, -1);
 }
 

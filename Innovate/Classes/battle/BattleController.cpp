@@ -40,12 +40,11 @@ bool BattleController::isEnterBattle()
 {
     srand((int)time(0));
     int x = rand() % 10;
-    CCLOG("随机概率是：%d", x);
     auto vo = CONFIG_TABLE->getConfigVo(1);
     if (x >= atoi(vo->data.c_str())) {
         return false;
     }
-    return true;
+    return false;
 }
 
 void BattleController::showBattle(string mapId, Vec2 point)

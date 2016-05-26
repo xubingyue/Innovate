@@ -11,10 +11,13 @@
 
 #include "cocos2d.h"
 #include "2d/CCFastTMXTiledMap.h"
+#include "MapObjBase.h"
 
 //using namespace cocos2d::experimental;
 using namespace cocos2d;
 
+//地图块尺寸大小
+#define TILED_SIZE 64
 //主角tag
 #define PLAYER_TAG 99
 
@@ -46,6 +49,8 @@ public:
     TMXTiledMap* getMap();
     //将对象add在地图上， p为在地图上的坐标
     void addToMap(Node *child, Point p);
+    //将需要碰撞的对象add进集合
+    void addObjToVec(Node *child);
     
 private:
     //touch
@@ -55,7 +60,7 @@ private:
     
 private:
     TMXTiledMap* p_tmxMap;
-
+    Vector<Node*> *p_mapObjVec;
 };
 
 #endif /* StageMapView_hpp */

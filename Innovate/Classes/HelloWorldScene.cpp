@@ -123,6 +123,7 @@ void HelloWorld::initWorldMap(string id)
     p_map = StageMapView::create("res/map/world_" + id + ".tmx");
     auto mapLayer = LayerManager::getInstance()->getLayerByTag(LayerType::MAP_LAYER);
     mapLayer->addChild(p_map);
+    auto land = p_map->getMap()->getLayer(ROAD_LAYER);
 
     //初始化对象
     auto groups = p_map->getMap()->getObjectGroup(OBJ_LAYER);
@@ -158,11 +159,13 @@ void HelloWorld::initWorldMap(string id)
                 auto display = MapObjBuilding::create(obj->res);
                 display->setAnchorPoint(Point(0, 0));
                 p_map->addToMap(display, ve);
+                p_map->addObjToVec(display);    //将需要碰撞的建筑放到碰撞集合中
                 display->setPosition(pos - Point(32, 32));
+                display->initData(ve, land);
             }
         }
     }
-    auto land = p_map->getMap()->getLayer(ROAD_LAYER);
+    
     
     p_aStar = new AStarFindPath(land, p_map->getMap()->getMapSize().width, p_map->getMap()->getMapSize().height);
     

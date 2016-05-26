@@ -8,6 +8,7 @@
 
 #include "StageMapView.h"
 #include "../NotificationType.h"
+#include "MapObjBuilding.h"
 
 StageMapView* StageMapView::create(std::string map)
 {
@@ -27,6 +28,8 @@ bool StageMapView::init(std::string str)
 {
     p_tmxMap = TMXTiledMap::create(str);
     this->addChild(p_tmxMap, 0);
+    
+    p_mapObjVec = new Vector<Node*>();
     
     auto listener = EventListenerTouchOneByOne::create();
     listener->onTouchBegan = CC_CALLBACK_2(StageMapView::onTouchBegan, this);
@@ -67,6 +70,11 @@ void StageMapView::addToMap(Node *child, Point p)
     this->addChild(child, p.y * 1000 + p.x * 100);
 }
 
+void  StageMapView::addObjToVec(Node *child)
+{
+    this->p_mapObjVec->pushBack(child);
+}
+
 bool StageMapView::onTouchBegan(Touch *touch, Event *unused_event)
 {
     
@@ -82,11 +90,23 @@ void StageMapView::onTouchEnded(Touch *touch, Event *unused_event)
     
     Point p = touch->getLocation();
     auto currPoint = this->convertToNodeSpace(p);
-//    Vec2 v = tileCoordForPosition(currPoint);
-//    auto layer = getMap()->getLayer("Road");
-//    auto sp = layer->getTileAt(v);
-//    if (sp)
-//    {
-    __NotificationCenter::getInstance()->postNotification(TOUCH_MAP_TO_MOVE, touch);
-//    }
+    Vec2 v = tileCoordForPosition(currPoint);
+    auto layer = getMap()->getLayer("Road");
+    auto sp = layer->getTileAt(v);
+    if (sp)
+    {
+        __NotificationCenter::getInstance()->postNotification(TOUCH_MAP_TO_MOVE, touch);
+    } else {
+        for (auto obj : *p_mapObjVec)
+        {
+            MapObjBuilding *o = static_cast<MapObjBuilding*>(obj);
+            if (o->isInBuilding(v))
+            {
+                auto player = this->getChildByTag(PLAYER_TAG);
+                auto tp = this->tileCoordForPosition(player->getPosition());
+                auto end = o->getPathPoint(tp);
+                break;
+            }
+        }
+    }
 }

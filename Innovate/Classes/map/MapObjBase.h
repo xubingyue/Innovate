@@ -10,6 +10,7 @@
 #define MapObjBase_hpp
 
 #include "cocos2d.h"
+#include "StageMapView.h"
 
 USING_NS_CC;
 
@@ -21,6 +22,8 @@ public:
 public:
     //当前所在地图上的坐标
     Point corrd;
+    //当前对象id
+    int buildId;
     
 };
 
