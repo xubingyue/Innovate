@@ -8,6 +8,8 @@
 
 #include "UIComponent.h"
 #include "cocostudio/CocoStudio.h"
+#include "PlayerView.h"
+
 
 USING_NS_CC;
 using namespace cocos2d::ui;
@@ -71,6 +73,8 @@ void UIComponent::touchEventCallback(Ref *sender, cocos2d::ui::Widget::TouchEven
         } else if (btn->getName() == "player_btn")
         {
             CCLOG("player_btn");
+            auto pv = PlayerView::create();
+            this->addChild(pv);
         } else if (btn->getName() == "elf_btn")
         {
             CCLOG("elf_btn");
