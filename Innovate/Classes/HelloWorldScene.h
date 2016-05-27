@@ -54,6 +54,9 @@ private:
     //保存色值
     Color3B p_color;
     Sprite *p_sp;
+    //当前目标建筑id
+    int p_buildId;
+    
 };
 
 #endif // __HELLOWORLD_SCENE_H__

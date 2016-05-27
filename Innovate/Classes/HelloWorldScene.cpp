@@ -66,28 +66,35 @@ void HelloWorld::touch2Move(Ref *obj)
     if (p_isFinding)
     {
         CCLOG("正在寻路，保存队列");
-        p_targetPoint = ((Touch*)obj)->getLocation();
+        p_targetPoint = ((Touch2MoveData*)obj)->end;
+        p_buildId = ((Touch2MoveData*)obj)->buildId;
         p_isNull = false;
         return;
     }
     //保存人物当前坐标
     p_prePoint = m_player->getPosition();
     
-    Point worldPoint;
+    Point toVec;
     if (obj == nullptr)//队列中缓存的目标点
     {
-        worldPoint = p_targetPoint;
+        toVec = p_targetPoint;
     } else {
-        worldPoint = ((Touch*)obj)->getLocation();
+        toVec = ((Touch2MoveData*)obj)->end;
+        p_buildId = ((Touch2MoveData*)obj)->buildId;
     }
-    auto currPoint = p_map->convertToNodeSpace(worldPoint);
     Vec2 playerVec = p_map->tileCoordForPosition(m_player->getPosition());
-    Vec2 toVec = p_map->tileCoordForPosition(currPoint);
     
     vector<Vec2> *path = new vector<Vec2>();
     path = p_aStar->findPath(playerVec, toVec, path);
     
-    if (path == nullptr) return;
+    if (path == nullptr) {
+        if (p_buildId != -1)
+        {
+            CCLOG("打开建筑id：%d", p_buildId);
+        }
+        return;
+    }
+    
     if (p_sp) p_sp->setColor(p_color);
     auto land = p_map->getMap()->getLayer("Road");
     p_sp = land->getTileAt(toVec);
@@ -104,7 +111,6 @@ void HelloWorld::touch2Move(Ref *obj)
         actions.pushBack(moveTo);
         auto callFun = CallFunc::create( CC_CALLBACK_0(HelloWorld::moveCallBack,this));
         actions.pushBack(callFun);
-
     }
     
     auto callFun = CallFunc::create( CC_CALLBACK_0(HelloWorld::movesCallBack,this));
@@ -114,7 +120,10 @@ void HelloWorld::touch2Move(Ref *obj)
     this->schedule(CC_SCHEDULE_SELECTOR(HelloWorld::updateMapByPlayer), 0.01, CC_REPEAT_FOREVER, 0);
     this->schedule(CC_SCHEDULE_SELECTOR(HelloWorld::updatePlayerZorder), 0.2, CC_REPEAT_FOREVER, 0);
     m_player->runAction(seq);
+    
+    //清除
     delete path;
+    delete obj;
 }
 
 void HelloWorld::initWorldMap(string id)
@@ -162,13 +171,12 @@ void HelloWorld::initWorldMap(string id)
                 p_map->addObjToVec(display);    //将需要碰撞的建筑放到碰撞集合中
                 display->setPosition(pos - Point(32, 32));
                 display->initData(ve, land);
+                display->buildId = id;
             }
         }
     }
     
-    
     p_aStar = new AStarFindPath(land, p_map->getMap()->getMapSize().width, p_map->getMap()->getMapSize().height);
-    
 }
 
 void HelloWorld::initPosition()
@@ -227,6 +235,11 @@ void HelloWorld::movesCallBack()
     //寻路结束，设置状态为非寻路状态。
     p_isFinding = false;
     p_sp->setColor(p_color);
+    if (p_buildId != -1)
+    {
+        CCLOG("打开建筑id：%d", p_buildId);
+        return;
+    }
     bool isBattle = BattleController::getInstance()->isEnterBattle();
     if (isBattle) {
         BattleController::getInstance()->showBattle("", Point(0, 0));

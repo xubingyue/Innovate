@@ -95,7 +95,9 @@ void StageMapView::onTouchEnded(Touch *touch, Event *unused_event)
     auto sp = layer->getTileAt(v);
     if (sp)
     {
-        __NotificationCenter::getInstance()->postNotification(TOUCH_MAP_TO_MOVE, touch);
+        Touch2MoveData *tmd = new Touch2MoveData();
+        tmd->end = v;
+        __NotificationCenter::getInstance()->postNotification(TOUCH_MAP_TO_MOVE, tmd);
     } else {
         for (auto obj : *p_mapObjVec)
         {
@@ -105,6 +107,10 @@ void StageMapView::onTouchEnded(Touch *touch, Event *unused_event)
                 auto player = this->getChildByTag(PLAYER_TAG);
                 auto tp = this->tileCoordForPosition(player->getPosition());
                 auto end = o->getPathPoint(tp);
+                Touch2MoveData *tmd = new Touch2MoveData();
+                tmd->end = end;
+                tmd->buildId = o->buildId;
+                __NotificationCenter::getInstance()->postNotification(TOUCH_MAP_TO_MOVE, tmd);
                 break;
             }
         }
