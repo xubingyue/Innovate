@@ -18,6 +18,8 @@ public:
     static UIComponent* getInstance(Node *layer = nullptr);
   
     bool init(Node *layer);
+    //设置ui是否显示
+    void showVisiable(bool flag);
     
 private:
     //触摸事件

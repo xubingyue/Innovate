@@ -58,6 +58,8 @@ private:
     Node *p_playerNode;
     //怪物站位点
     Node *p_monsterNode;
+    //是否退出了战斗
+    bool p_isExit;
 };
 
 #endif /* BattleView_hpp */

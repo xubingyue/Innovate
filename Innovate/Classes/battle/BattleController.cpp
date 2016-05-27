@@ -44,7 +44,7 @@ bool BattleController::isEnterBattle()
     if (x >= atoi(vo->data.c_str())) {
         return false;
     }
-    return false;
+    return true;
 }
 
 void BattleController::showBattle(string mapId, Vec2 point)
@@ -131,7 +131,7 @@ void BattleController::updateCallback(ObjType ot, AttackType at, int value, int 
 
 void BattleController::updateTimer(float dt)
 {
-    if (p_battleMonster != nullptr && p_battleMonster->getParent() != NULL)
+    if (p_battleMonster != nullptr && p_battleMonster->getParent() != nullptr)
     {
         p_battleMonster->update(dt, CC_CALLBACK_4(BattleController::updateCallback, this));
     }

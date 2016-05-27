@@ -52,6 +52,6 @@ bool BigCrystalView::init()
 void BigCrystalView::touchEventCallback(Ref *sender, Widget::TouchEventType controlEvent)
 {
     if (controlEvent == Widget::TouchEventType::ENDED) {
-        this->removeFromParent();
+        this->removeFromParentAndCleanup(true);
     }
 }

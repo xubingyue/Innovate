@@ -14,7 +14,7 @@
   </data>
  </layer>
  <objectgroup name="Key">
-  <object id="1" name="player" type="1" x="204.05" y="3023.95" width="35.6548" height="36.7796">
+  <object id="1" name="player" type="1" x="781.05" y="2832.95" width="35.6548" height="36.7796">
    <properties>
     <property name="id" value="1"/>
    </properties>

@@ -11,6 +11,7 @@
 //#include "editor-support/cocostudio/CCComExtensionData.h"
 #include "../UICommon.h"
 #include "BattleController.h"
+#include "../ui/UIComponent.h"
 
 
 USING_NS_CC;
@@ -31,6 +32,7 @@ BattleView* BattleView::create(string mapId, Vec2 point)
 }
 
 BattleView::BattleView()
+:p_isExit(false)
 {
     
 }
@@ -46,7 +48,8 @@ bool BattleView::init(string mapId, Vec2 point)
     {
         return false;
     }
-    
+    //隐藏主ui
+    UIComponent::getInstance()->showVisiable(false);
     auto winSize = Director::getInstance()->getWinSize();
     
     auto bg = Sprite::create("res/battleBg/map_1_1.pvr.ccz");
@@ -79,6 +82,7 @@ void BattleView::touchEventCallback(Ref *sender, Widget::TouchEventType controlE
 {
     if (controlEvent == Widget::TouchEventType::ENDED) {
         this->unschedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer));
+        p_isExit = true;
         CCLOG("------->>>>退出战斗！");
         this->removeFromParentAndCleanup(true);
     }
@@ -115,6 +119,7 @@ void BattleView::addMonster(BattleObjBase *monster)
 
 void BattleView::updateTimer(float dt)
 {
+    if (p_isExit) return;
     //战斗时间轴
     BattleController::getInstance()->updateTimer(dt);
 }
@@ -143,6 +148,7 @@ void BattleView::onEnter()
 void BattleView::onExit()
 {
     Layer::onExit();
-    
+    UIComponent::getInstance()->showVisiable(true);
+    this->unschedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer));
 }
 

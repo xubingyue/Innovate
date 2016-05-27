@@ -85,6 +85,10 @@ void UIComponent::touchEventCallback(Ref *sender, cocos2d::ui::Widget::TouchEven
     }
 }
 
+void UIComponent::showVisiable(bool flag)
+{
+    this->p_root->setVisible(flag);
+}
 
 
 
