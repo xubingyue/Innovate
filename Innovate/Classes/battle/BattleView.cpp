@@ -8,7 +8,7 @@
 
 #include "BattleView.h"
 #include "cocostudio/CocoStudio.h"
-#include "editor-support/cocostudio/CCComExtensionData.h"
+//#include "editor-support/cocostudio/CCComExtensionData.h"
 #include "../UICommon.h"
 #include "BattleController.h"
 

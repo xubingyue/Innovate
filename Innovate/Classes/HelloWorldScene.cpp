@@ -7,6 +7,7 @@
 #include "BattleController.h"
 #include "MapObjDisplay.h"
 #include "MapObjBuilding.h"
+#include "UIComponent.h"
 
 USING_NS_CC;
 using namespace std;
@@ -40,6 +41,8 @@ bool HelloWorld::init()
     p_isNull = true;
     //初始化层级
     LayerManager::getInstance()->initLayer(this);
+    
+    UIComponent::getInstance(LayerManager::getInstance()->getLayerByTag(LayerType::UI_LAYER));
 
     string mapId = LocalDataUtil::getInstance()->getStringForKey("map", "1");
     //初始化世界地图
@@ -94,9 +97,9 @@ void HelloWorld::touch2Move(Ref *obj)
         }
         return;
     }
-    
+    //设置目标点颜色
     if (p_sp) p_sp->setColor(p_color);
-    auto land = p_map->getMap()->getLayer("Road");
+    auto land = p_map->getMap()->getLayer(ROAD_LAYER);
     p_sp = land->getTileAt(toVec);
     p_color = p_sp->getColor();
     p_sp->setColor(Color3B::GREEN);
