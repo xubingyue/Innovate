@@ -8,6 +8,8 @@
 #include "MapObjDisplay.h"
 #include "MapObjBuilding.h"
 #include "UIComponent.h"
+#include "ui/BigCrystalView.h"
+
 
 USING_NS_CC;
 using namespace std;
@@ -93,7 +95,7 @@ void HelloWorld::touch2Move(Ref *obj)
     if (path == nullptr) {
         if (p_buildId != -1)
         {
-            CCLOG("打开建筑id：%d", p_buildId);
+            openByBuildId(p_buildId);
         }
         return;
     }
@@ -240,13 +242,21 @@ void HelloWorld::movesCallBack()
     p_sp->setColor(p_color);
     if (p_buildId != -1)
     {
-        CCLOG("打开建筑id：%d", p_buildId);
+        openByBuildId(p_buildId);
+        //BigCrystalView
         return;
     }
     bool isBattle = BattleController::getInstance()->isEnterBattle();
     if (isBattle) {
         BattleController::getInstance()->showBattle("", Point(0, 0));
     }
+}
+
+void HelloWorld::openByBuildId(int buildId)
+{
+    auto bcv = BigCrystalView::create();
+    auto layer = LayerManager::getInstance()->getLayerByTag(LayerType::UI_LAYER);
+    layer->addChild(bcv);
 }
 
 

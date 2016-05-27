@@ -13,11 +13,7 @@ public:
     static cocos2d::Scene* createScene();
 
     virtual bool init();
-    
-    // a selector callback
-//    void menuCloseCallback(cocos2d::Ref* pSender);
-    
-    // implement the "static create()" method manually
+
     CREATE_FUNC(HelloWorld);
     
 private:
@@ -33,8 +29,10 @@ private:
     void moveCallBack();
     //移动一步结束后的回调
     void movesCallBack();
-    
+    //点击地图移动
     void touch2Move(Ref *obj);
+    //根据建筑id触发事件
+    void openByBuildId(int buildId);
     
 private:
     //角色
