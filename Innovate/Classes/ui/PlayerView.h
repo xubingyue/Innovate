@@ -29,6 +29,7 @@ private:
 private:
     //ui跟节点
     Node *p_root;
+    Node *p_playerNode;
 };
 
 #endif /* PlayerView_hpp */

@@ -22,7 +22,7 @@ public:
      * 等级 血量 攻击 速度 暗攻 暗抗 火攻 火抗 风攻 风抗 土攻 土抗 恢复 吸血
      */
     void init(int lv, int hp, int atk, float velo,
-              int da, int dr, int fa, int fr, int wa,
+              int da, int dr, int fa, int fr, int wa, int skill,
               int wr, int sa, int sr, int recover, int absorb);
     
     PlayerModel();

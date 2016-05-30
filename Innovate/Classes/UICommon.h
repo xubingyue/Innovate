@@ -9,6 +9,4 @@
 #ifndef UICommon_h
 #define UICommon_h
 
-
-
 #endif /* UICommon_h */
