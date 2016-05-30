@@ -3,7 +3,7 @@
 #include "MemManager.h"
 #include "LayerManager.h"
 #include "NotificationType.h"
-#include "LocalDataUtil.h"
+#include "LocalDataManager.h"
 #include "BattleController.h"
 #include "MapObjDisplay.h"
 #include "MapObjBuilding.h"
@@ -46,7 +46,7 @@ bool HelloWorld::init()
     
     UIComponent::getInstance(LayerManager::getInstance()->getLayerByTag(LayerType::UI_LAYER));
 
-    string mapId = LocalDataUtil::getInstance()->getStringForKey("map", "1");
+//    string mapId = LocalDataUtil::getInstance()->getStringForKey("map", "1");
     //初始化世界地图
     initWorldMap("2");
     initPosition();
@@ -148,12 +148,17 @@ void HelloWorld::initWorldMap(string id)
         int id = dict["id"].asInt();
         if (id == 1)//1:固定是玩家
         {
-            auto obj = OBJECT_TABLE->getObjectVo(1);
             auto ve = p_map->tileCoordForPosition(Point(dict["x"].asFloat(), dict["y"].asFloat()));
-            auto pos = p_map->positionForTileCoord(ve);
+            Point pos = LocalDataManager::getInstance()->getPlayerPoint();
+            if (pos == Point(-1, -1))
+            {
+                pos = p_map->positionForTileCoord(ve);
+            } else {
+                pos = p_map->positionForTileCoord(pos);
+            }
+            auto obj = OBJECT_TABLE->getObjectVo(1);
             m_player = RoleSprite::create(obj->res);
             m_player->setAnchorPoint(Vec2(0.5, 0));
-//            m_player->setScale(0.75);
             p_map->addToMap(m_player, ve);
             m_player->setTag(PLAYER_TAG);
             m_player->setPosition(pos);
@@ -247,6 +252,11 @@ void HelloWorld::moveCallBack()
 
 void HelloWorld::movesCallBack()
 {
+    //保存数据
+    auto tmpPos = p_map->tileCoordForPosition(m_player->getPosition());
+    LocalDataManager::getInstance()->setPlayerPoint(tmpPos);
+    LocalDataManager::getInstance()->setLimitCount(GlobalModel::getInstance()->MoveSteps);
+    
     this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updateMapByPlayer));
     this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updatePlayerZorder));
     

@@ -8,6 +8,7 @@
 
 #include "LocalDataManager.h"
 #include "LocalDataUtil.h"
+#include "StringUtil.h"
 
 
 static LocalDataManager* _instance = nullptr;
@@ -49,5 +50,35 @@ void LocalDataManager::setPlayerLv(int lv)
     LocalDataUtil::getInstance()->setIntegerForKey(key.c_str(), lv);
 }
 
+Point LocalDataManager::getPlayerPoint()
+{
+    string key = KEY + "getPlayerPoint";
+    string pos = LocalDataUtil::getInstance()->getStringForKey(key.c_str());
+    if (pos == "")
+    {
+        return Point(-1, -1);
+    }
+    vector<std::string> ret;
+    string str = ",";
+    StringUtil::split(pos, str, &ret);
+    return Point(StringUtil::stringToInt(ret[0]), StringUtil::stringToInt(ret[1]));
+}
+void LocalDataManager::setPlayerPoint(Point p)
+{
+    string key = KEY + "getPlayerPoint";
+    string v = StringUtil::intToString(p.x) + "," + StringUtil::intToString(p.y);
+    LocalDataUtil::getInstance()->setStringForKey(key.c_str(), v);
+}
+
+int LocalDataManager::getLimitCount()
+{
+    string key = KEY + "getLimitCount";
+    return LocalDataUtil::getInstance()->getIntegerForKey(key.c_str());
+}
+void LocalDataManager::setLimitCount(int count)
+{
+    string key = KEY + "getLimitCount";
+    LocalDataUtil::getInstance()->setIntegerForKey(key.c_str(), count);
+}
 
 

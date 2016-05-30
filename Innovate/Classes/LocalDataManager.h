@@ -10,6 +10,9 @@
 #define LocalDataManager_hpp
 
 #include <string>
+#include "cocos2d.h"
+
+USING_NS_CC;
 using namespace std;
 
 class LocalDataManager
@@ -30,7 +33,13 @@ public:
     int getPlayerLv();
     void setPlayerLv(int lv);
     
+    //玩家地图位置
+    Point getPlayerPoint();
+    void setPlayerPoint(Point p);
     
+    //能量步数
+    int getLimitCount();
+    void setLimitCount(int count);
 };
 
 #endif /* LocalDataManager_hpp */
