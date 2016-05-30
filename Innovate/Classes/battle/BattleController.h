@@ -37,6 +37,11 @@ public:
     void elfAttack();
     void playerAttack();
     
+    //开始战斗
+    void startBattle();
+    //退出战斗
+    void exitBattle();
+    
 public:
     //是否在战斗状态
     bool isInAttack;
@@ -44,8 +49,6 @@ public:
 private:
     //初始化战斗角色
     void initPosition(std::string mapId, Vec2 point);
-    //开始战斗
-    void startBattle();
     //时间轴回调
     void updateCallback(ObjType ot, AttackType at, int value, int index = 0);
     //怪物攻击结束

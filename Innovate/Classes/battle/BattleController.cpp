@@ -85,6 +85,12 @@ void BattleController::startBattle()
     p_battleView->schedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer), 0.05, CC_REPEAT_FOREVER, 0);
 }
 
+void BattleController::exitBattle()
+{
+    p_battleView->unschedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer));
+    p_battleView->removeFromParentAndCleanup(true);
+}
+
 void BattleController::updateCallback(ObjType ot, AttackType at, int value, int index)
 {
     if (ot == ObjType::MONSTER)
@@ -119,12 +125,12 @@ void BattleController::updateCallback(ObjType ot, AttackType at, int value, int 
         CCLOG("你被怪物打败了，赶紧回家休息吧。");
         p_battleView->unschedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer));
         CCLOG("------->>>>退出战斗！");
-        p_battleView->removeFromParentAndCleanup(true);
+        exitBattle();
     } else if (p_monsterHp <= 0) {
         CCLOG("恭喜你战胜了怪物！");
         p_battleView->unschedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer));
         CCLOG("------->>>>退出战斗！");
-        p_battleView->removeFromParentAndCleanup(true);
+        exitBattle();
     }
 }
 

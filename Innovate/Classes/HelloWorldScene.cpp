@@ -48,7 +48,7 @@ bool HelloWorld::init()
 
     string mapId = LocalDataUtil::getInstance()->getStringForKey("map", "1");
     //初始化世界地图
-    initWorldMap(mapId);
+    initWorldMap("2");
     initPosition();
     
 //    int temp = 99;
@@ -135,6 +135,7 @@ void HelloWorld::initWorldMap(string id)
 {
     //初始化地图
     p_map = StageMapView::create("res/map/world_" + id + ".tmx");
+    p_map->setScale(1.5);
     auto mapLayer = LayerManager::getInstance()->getLayerByTag(LayerType::MAP_LAYER);
     mapLayer->addChild(p_map);
     auto land = p_map->getMap()->getLayer(ROAD_LAYER);
@@ -152,6 +153,7 @@ void HelloWorld::initWorldMap(string id)
             auto pos = p_map->positionForTileCoord(ve);
             m_player = RoleSprite::create(obj->res);
             m_player->setAnchorPoint(Vec2(0.5, 0));
+//            m_player->setScale(0.75);
             p_map->addToMap(m_player, ve);
             m_player->setTag(PLAYER_TAG);
             m_player->setPosition(pos);
