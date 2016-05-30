@@ -308,7 +308,12 @@ Sprite* TMXLayer::reusedTileWithRect(Rect rect)
 // TMXLayer - obtaining tiles/gids
 Sprite * TMXLayer::getTileAt(const Vec2& pos)
 {
-    CCASSERT(pos.x < _layerSize.width && pos.y < _layerSize.height && pos.x >=0 && pos.y >=0, "TMXLayer: invalid position");
+//    CCASSERT(pos.x < _layerSize.width && pos.y < _layerSize.height && pos.x >=0 && pos.y >=0, "TMXLayer: invalid position");
+    if (!(pos.x < _layerSize.width && pos.y < _layerSize.height && pos.x >=0 && pos.y >=0))
+    {
+        CCLOG("TMXLayer: invalid position");
+        return nullptr;
+    }
     CCASSERT(_tiles && _atlasIndexArray, "TMXLayer: the tiles map has been released");
 
     Sprite *tile = nullptr;
