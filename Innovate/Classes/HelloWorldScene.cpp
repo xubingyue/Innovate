@@ -143,7 +143,7 @@ void HelloWorld::initWorldMap(string id)
     //初始化对象
     auto groups = p_map->getMap()->getObjectGroup(OBJ_LAYER);
     auto& objs = groups->getObjects();
-    for (auto& o : objs) {
+    for (auto& o : objs) { 
         ValueMap& dict = o.asValueMap();
         int id = dict["id"].asInt();
         if (id == 1)//1:固定是玩家
