@@ -135,7 +135,7 @@ void HelloWorld::initWorldMap(string id)
 {
     //初始化地图
     p_map = StageMapView::create("res/map/world_" + id + ".tmx");
-    p_map->setScale(1.5);
+//    p_map->setScale(1.5);
     auto mapLayer = LayerManager::getInstance()->getLayerByTag(LayerType::MAP_LAYER);
     mapLayer->addChild(p_map);
     auto land = p_map->getMap()->getLayer(ROAD_LAYER);
@@ -143,7 +143,7 @@ void HelloWorld::initWorldMap(string id)
     //初始化对象
     auto groups = p_map->getMap()->getObjectGroup(OBJ_LAYER);
     auto& objs = groups->getObjects();
-    for (auto& o : objs) { 
+    for (auto& o : objs) {
         ValueMap& dict = o.asValueMap();
         int id = dict["id"].asInt();
         if (id == 1)//1:固定是玩家

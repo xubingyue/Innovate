@@ -92,6 +92,11 @@ void LocalDataUtil::setStringForKey(const char* key, const std::string & value)
 {
     UserDefault::getInstance()->setStringForKey(key, value);
 }
+void LocalDataUtil::setBoolForKey(const char* key, bool value)
+{
+    UserDefault::getInstance()->setBoolForKey(key, value);
+}
+
 void LocalDataUtil::flush()
 {
     UserDefault::getInstance()->flush();

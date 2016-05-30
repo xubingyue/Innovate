@@ -39,6 +39,7 @@ public:
     void setFloatForKey(const char* key, float value);
     void setDoubleForKey(const char* key, double value);
     void setStringForKey(const char* key, const std::string & value);
+    void setBoolForKey(const char* key, bool value);
     void flush();
     
     void deleteValueForKey(const char* key);

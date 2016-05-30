@@ -9,6 +9,8 @@
 #include "LoadingScene.h"
 #include "DataManager.h"
 #include "HelloWorldScene.h"
+#include "model/PlayerModel.h"
+#include "LocalDataManager.h"
 
 USING_NS_CC;
 
@@ -48,9 +50,26 @@ bool LoadingScene::init()
     
     // add the label as a child to this layer
     this->addChild(label, 1);
-    
+    //load数据
     DataManager::getInstance()->loadTable(nullptr, "staticdata");
     
+    //初始化人物数据
+    LocalDataManager::getInstance()->init("AA");
+    auto player = ROLE_TABLE->getRoleVo(1);
+    if(LocalDataManager::getInstance()->getFirstOpen())
+    {
+        PlayerModel::getInstance()->init(1, player->hp, player->attack, player->velocity,
+                                         player->darkAttack, player->darkResist, player->fireAttack,
+                                         player->fireResist, player->windAttack, player->windResist,
+                                         player->soilAttack, player->soilResist, player->recover, player->absorb);
+        LocalDataManager::getInstance()->setPlayerLv(1);
+    } else {
+        int level = LocalDataManager::getInstance()->getPlayerLv();
+        PlayerModel::getInstance()->init(level, player->hp, player->attack, player->velocity,
+                                         player->darkAttack, player->darkResist, player->fireAttack,
+                                         player->fireResist, player->windAttack, player->windResist,
+                                         player->soilAttack, player->soilResist, player->recover, player->absorb);
+    }
     this->schedule(schedule_selector(LoadingScene::runOnce), 1, 1, 0);
     return true;
 }
