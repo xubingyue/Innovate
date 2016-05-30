@@ -8,6 +8,7 @@
 #include <cstdlib>
 #include "BattleController.h"
 #include "../LayerManager.h"
+#include "../model/PlayerModel.h"
 
 
 
@@ -62,8 +63,9 @@ void BattleController::initPosition(string mapId, Vec2 point)
     p_battleMonster = BattleMonster::create(p_monsterHp, monster.getAttack(), monster.getVelocity(), monster.res);
     p_battleView->addMonster(p_battleMonster);
     
-    p_userHp = 100;
-    p_battlePlayer = BattlePlayer::create(100, 15, 4, "res/player/player.png");
+    auto playerModel = PlayerModel::getInstance();
+    p_userHp = playerModel->hp;
+    p_battlePlayer = BattlePlayer::create(playerModel->hp, playerModel->attack, playerModel->velocity, "res/player/player.png");
     p_battleView->addPlayer(p_battlePlayer);
     
     p_elfs.clear();
