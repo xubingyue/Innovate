@@ -60,14 +60,14 @@ bool LoadingScene::init()
     {
         PlayerModel::getInstance()->init(1, player->hp, player->attack, player->velocity,
                                          player->darkAttack, player->darkResist, player->fireAttack,
-                                         player->fireResist, player->windAttack, player->windResist,
+                                         player->fireResist, player->windAttack, player->windResist, player->ski1,
                                          player->soilAttack, player->soilResist, player->recover, player->absorb);
         LocalDataManager::getInstance()->setPlayerLv(1);
     } else {
         int level = LocalDataManager::getInstance()->getPlayerLv();
         PlayerModel::getInstance()->init(level, player->hp, player->attack, player->velocity,
                                          player->darkAttack, player->darkResist, player->fireAttack,
-                                         player->fireResist, player->windAttack, player->windResist,
+                                         player->fireResist, player->windAttack, player->windResist, player->ski1,
                                          player->soilAttack, player->soilResist, player->recover, player->absorb);
     }
     this->schedule(schedule_selector(LoadingScene::runOnce), 1, 1, 0);

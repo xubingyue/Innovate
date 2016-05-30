@@ -9,7 +9,7 @@
 #include "MapObjBuilding.h"
 #include "UIComponent.h"
 #include "ui/BigCrystalView.h"
-
+#include "GlobalModel.h"
 
 USING_NS_CC;
 using namespace std;
@@ -214,6 +214,16 @@ void HelloWorld::updatePlayerZorder(float dt)
 
 void HelloWorld::moveCallBack()
 {
+    GlobalModel::getInstance()->MoveSteps--;
+    UIComponent::getInstance()->updateLimit(GlobalModel::getInstance()->MoveSteps);
+    if (GlobalModel::getInstance()->MoveSteps <= 0)
+    {
+        CCLOG("你死了");
+        this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updateMapByPlayer));
+        this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updatePlayerZorder));
+        m_player->stopAllActions();
+        return;
+    }
     bool isBattle = BattleController::getInstance()->isEnterBattle();
     if (isBattle) {
         this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updateMapByPlayer));
@@ -239,6 +249,7 @@ void HelloWorld::movesCallBack()
 {
     this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updateMapByPlayer));
     this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updatePlayerZorder));
+    
     //寻路结束，设置状态为非寻路状态。
     p_isFinding = false;
     p_sp->setColor(p_color);

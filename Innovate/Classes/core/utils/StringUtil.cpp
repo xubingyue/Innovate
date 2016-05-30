@@ -16,3 +16,12 @@ std::string StringUtil::intToString(int num)
     ss>>str;
     return str;
 }
+
+int StringUtil::stringToInt(std::string s)
+{
+    std::stringstream ss;
+    ss<<s;
+    int i;
+    ss>>i;
+    return i;
+}

@@ -8,6 +8,11 @@
 
 #include "BigCrystalView.h"
 #include "cocostudio/CocoStudio.h"
+#include "UIComponent.h"
+#include "GlobalModel.h"
+#include "DataManager.h"
+#include "StringUtil.h"
+
 
 USING_NS_CC;
 using namespace cocos2d::ui;
@@ -39,6 +44,9 @@ BigCrystalView::~BigCrystalView()
 
 bool BigCrystalView::init()
 {
+    auto vo = CONFIG_TABLE->getConfigVo(2);
+    GlobalModel::getInstance()->MoveSteps = StringUtil::stringToInt(vo->data);
+    UIComponent::getInstance()->updateLimit(GlobalModel::getInstance()->MoveSteps);
     
     p_root = CSLoader::createNodeWithVisibleSize("res/ui/BigCrystalView/BigCrystalView.csb");
     addChild(p_root);

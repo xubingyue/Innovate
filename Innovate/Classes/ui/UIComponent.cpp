@@ -7,13 +7,10 @@
 //
 
 #include "UIComponent.h"
-#include "cocostudio/CocoStudio.h"
 #include "PlayerView.h"
-
-
-USING_NS_CC;
-using namespace cocos2d::ui;
-
+#include "../core/data/DataManager.h"
+#include "GlobalModel.h"
+#include "StringUtil.h"
 
 static UIComponent* _instance;
 
@@ -60,6 +57,10 @@ bool UIComponent::init(Node *layer)
     Button *crystalBtn = static_cast<Button*>(Helper::seekWidgetByName(static_cast<Layout*>(bottomNode), "crystal_btn"));
     crystalBtn->addTouchEventListener(CC_CALLBACK_2(UIComponent::touchEventCallback, this));
     
+    auto vo = CONFIG_TABLE->getConfigVo(2);
+    p_limitValue = static_cast<Text*>(Helper::seekWidgetByName(static_cast<Layout*>(p_root), "limit_txt"));
+    p_limitValue->setString("当前能量：" + vo->data);
+    GlobalModel::getInstance()->MoveSteps = StringUtil::stringToInt(vo->data);
     return  true;
 }
 
@@ -90,6 +91,10 @@ void UIComponent::showVisiable(bool flag)
     this->p_root->setVisible(flag);
 }
 
+void UIComponent::updateLimit(int num)
+{
+    p_limitValue->setString("当前能量：" + StringUtil::intToString(GlobalModel::getInstance()->MoveSteps));
+}
 
 
 

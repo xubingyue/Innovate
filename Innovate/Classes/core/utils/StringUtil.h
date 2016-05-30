@@ -14,6 +14,8 @@ class StringUtil
 {
 public:
     static std::string intToString(int num);
+    
+    static int stringToInt(std::string str);
 };
 
 #endif /* StringUtil_hpp */
