@@ -33,6 +33,9 @@ private:
     void touch2Move(Ref *obj);
     //根据建筑id触发事件
     void openByBuildId(int buildId);
+    //重置角色位置
+    void resetPlayerPos();
+    
     
 private:
     //角色
@@ -54,6 +57,8 @@ private:
     Sprite *p_sp;
     //当前目标建筑id
     int p_buildId;
+    //角色初始位置
+    Point p_initPos;
     
 };
 

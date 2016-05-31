@@ -10,6 +10,7 @@
 #include "UIComponent.h"
 #include "ui/BigCrystalView.h"
 #include "GlobalModel.h"
+#include "StringUtil.h"
 
 USING_NS_CC;
 using namespace std;
@@ -162,6 +163,7 @@ void HelloWorld::initWorldMap(string id)
             p_map->addToMap(m_player, ve);
             m_player->setTag(PLAYER_TAG);
             m_player->setPosition(pos);
+            p_initPos = ve;
         } else {
             auto obj = OBJECT_TABLE->getObjectVo(id);
             if (obj->type == ObjectType::OT_DISPLAY)
@@ -194,6 +196,7 @@ void HelloWorld::initWorldMap(string id)
 void HelloWorld::initPosition()
 {
     auto mapLayer = LayerManager::getInstance()->getLayerByTag(LayerType::MAP_LAYER);
+    mapLayer->setPosition(Point(0, 0));
     Size winSize = Director::getInstance()->getWinSize();
     
     Point center = Point(winSize.width/2, winSize.height/2);
@@ -223,7 +226,7 @@ void HelloWorld::moveCallBack()
     UIComponent::getInstance()->updateLimit(GlobalModel::getInstance()->MoveSteps);
     if (GlobalModel::getInstance()->MoveSteps <= 0)
     {
-        CCLOG("你死了");
+        resetPlayerPos();
         this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updateMapByPlayer));
         this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updatePlayerZorder));
         m_player->stopAllActions();
@@ -282,6 +285,22 @@ void HelloWorld::openByBuildId(int buildId)
     layer->addChild(bcv);
 }
 
+void HelloWorld::resetPlayerPos()
+{
+    p_isFinding = false;
+    p_sp->setColor(p_color);
+    LocalDataManager::getInstance()->setPlayerPoint(p_initPos);
+    auto vo = CONFIG_TABLE->getConfigVo(2);
+    int limit = StringUtil::stringToInt(vo->data);
+    GlobalModel::getInstance()->MoveSteps = limit;
+    LocalDataManager::getInstance()->setLimitCount(GlobalModel::getInstance()->MoveSteps);
+    UIComponent::getInstance()->updateLimit(GlobalModel::getInstance()->MoveSteps);
+    
+    Point pos = p_map->positionForTileCoord(p_initPos);
+    m_player->setPosition(pos);
+    
+    initPosition();
+}
 
 
 //void HelloWorld::menuCloseCallback(Ref* pSender)
