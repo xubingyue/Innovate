@@ -45,6 +45,10 @@ void LayerManager::initLayer(Node *root)
     auto uiLayer = Node::create();
     p_root->addChild(uiLayer, LayerType::UI_LAYER);
     uiLayer->setTag(LayerType::UI_LAYER);
+    
+    auto topLayer = Node::create();
+    p_root->addChild(topLayer, LayerType::TOP_LAYER);
+    topLayer->setTag(LayerType::TOP_LAYER);
 }
 
 Node* LayerManager::getLayerByTag(LayerType lt)

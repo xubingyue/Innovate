@@ -35,7 +35,8 @@ private:
     void openByBuildId(int buildId);
     //重置角色位置
     void resetPlayerPos();
-    
+    //死亡黑屏
+    void dieEffect();
     
 private:
     //角色

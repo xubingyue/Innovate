@@ -16,7 +16,8 @@ USING_NS_CC;
 enum LayerType {
     MAP_LAYER = 10,
     BATTLE_LAYER = 30,
-    UI_LAYER = 50
+    UI_LAYER = 50,
+    TOP_LAYER = 999
 };
 
 //层级管理器

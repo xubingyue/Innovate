@@ -226,10 +226,11 @@ void HelloWorld::moveCallBack()
     UIComponent::getInstance()->updateLimit(GlobalModel::getInstance()->MoveSteps);
     if (GlobalModel::getInstance()->MoveSteps <= 0)
     {
-        resetPlayerPos();
         this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updateMapByPlayer));
         this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updatePlayerZorder));
         m_player->stopAllActions();
+//        resetPlayerPos();
+        dieEffect();
         return;
     }
     bool isBattle = BattleController::getInstance()->isEnterBattle();
@@ -298,10 +299,28 @@ void HelloWorld::resetPlayerPos()
     
     Point pos = p_map->positionForTileCoord(p_initPos);
     m_player->setPosition(pos);
-    
     initPosition();
 }
 
+void HelloWorld::dieEffect()
+{
+    auto winSize = Director::getInstance()->getWinSize();
+    auto la = LayerColor::create(Color4B::BLACK, winSize.width, winSize.height);
+    auto topLayer = LayerManager::getInstance()->getLayerByTag(LayerType::TOP_LAYER);
+    topLayer->addChild(la);
+    Vector<FiniteTimeAction*> actions;
+    auto in = FadeIn::create(0.5);
+    auto out = FadeOut::create(1);
+    auto callFun = CallFunc::create( CC_CALLBACK_0(HelloWorld::resetPlayerPos,this));
+    
+    actions.pushBack(in);
+    actions.pushBack(callFun);
+    actions.pushBack(out);
+    
+    auto seq = Sequence::create(actions);
+    
+    la->runAction(seq);
+}
 
 //void HelloWorld::menuCloseCallback(Ref* pSender)
 //{
