@@ -31,7 +31,7 @@ public:
     //打开战斗界面
     void showBattle(std::string mapId, cocos2d::Vec2 point);
     //战斗时间轴
-    void updateTimer(float dt);
+    void ctrolUpdateTimer(float dt);
     //怪物闪影攻击
     void monsterAttack();
     void elfAttack();
@@ -41,6 +41,7 @@ public:
     void startBattle();
     //退出战斗
     void exitBattle();
+    void exitBattleFi();
     
 public:
     //是否在战斗状态

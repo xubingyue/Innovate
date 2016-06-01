@@ -38,6 +38,8 @@ public:
     void addMonster(BattleObjBase *monster);
     //战斗时间轴
     void updateTimer(float dt);
+    //开始战斗
+    void startBattle();
 private:
     //touch
     bool onTouchBegan(Touch *touch, Event *unused_event) override;
@@ -50,6 +52,8 @@ public:
     //特效位置
     Node *effectNode_1;
     Node *effectNode_2;
+    //是否退出了战斗
+    bool isExitBattle;
     
 private:
     //ui跟节点
@@ -58,8 +62,7 @@ private:
     Node *p_playerNode;
     //怪物站位点
     Node *p_monsterNode;
-    //是否退出了战斗
-    bool p_isExit;
+    
 };
 
 #endif /* BattleView_hpp */

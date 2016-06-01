@@ -88,6 +88,10 @@ float BattleObjBase::getVelPro()
     return p_velcity_process;
 }
 
+void BattleObjBase::onExit()
+{
+    Node::onExit();
+}
 
 BattleObjBase::~BattleObjBase()
 {

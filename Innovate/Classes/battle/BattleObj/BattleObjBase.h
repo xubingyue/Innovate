@@ -37,6 +37,8 @@ public:
     BattleObjBase(int hp, int att, float vel, float velProcess = 0.0f);
     ~BattleObjBase();
     
+    void onExit();
+    
     static BattleObjBase* create(int hp, int att, float vel, std::string cha, float velProcess = 0.0f);
     
     

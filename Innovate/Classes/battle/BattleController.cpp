@@ -45,7 +45,7 @@ bool BattleController::isEnterBattle()
     if (x >= atoi(vo->data.c_str())) {
         return false;
     }
-    return false;
+    return true;
 }
 
 void BattleController::showBattle(string mapId, Vec2 point)
@@ -84,13 +84,36 @@ void BattleController::initPosition(string mapId, Vec2 point)
 
 void BattleController::startBattle()
 {
-    p_battleView->schedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer), 0.05, CC_REPEAT_FOREVER, 0);
+    p_battleView->startBattle();
 }
 
 void BattleController::exitBattle()
 {
-    p_battleView->unschedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer));
-    p_battleView->removeFromParentAndCleanup(true);
+    p_elfs.clear();    
+    auto winSize = Director::getInstance()->getWinSize();
+    auto la = LayerColor::create(Color4B::BLACK, winSize.width, winSize.height);
+    auto topLayer = LayerManager::getInstance()->getLayerByTag(LayerType::TOP_LAYER);
+    topLayer->addChild(la);
+    Vector<FiniteTimeAction*> actions;
+    auto in = FadeIn::create(0.5);
+    auto out = FadeOut::create(1);
+    auto callFun = CallFunc::create(CC_CALLBACK_0(BattleController::exitBattleFi,this));
+    
+    actions.pushBack(in);
+    actions.pushBack(callFun);
+    actions.pushBack(out);
+    
+    auto seq = Sequence::create(actions);
+    
+    la->runAction(seq);
+    
+}
+
+void BattleController::exitBattleFi()
+{
+    auto battleLayer = LayerManager::getInstance()->getLayerByTag(LayerType::BATTLE_LAYER);
+//    battleLayer->addChild(p_battleView);
+    battleLayer->removeAllChildren();
 }
 
 void BattleController::updateCallback(ObjType ot, AttackType at, int value, int index)
@@ -98,7 +121,7 @@ void BattleController::updateCallback(ObjType ot, AttackType at, int value, int 
     if (ot == ObjType::MONSTER)
     {
         isInAttack = true;
-        p_battleView->unschedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer));
+//        p_battleView->unschedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer));
         CCLOG("M［%d］怪物进行了攻击 攻击类型为［ %d ］输出伤害值为［ %d ］== %d 玩家血量剩余 ［%d］", ot, at, value, index, p_userHp);
         p_userHp -= value;
         p_battleMonster->showEffect();
@@ -125,20 +148,23 @@ void BattleController::updateCallback(ObjType ot, AttackType at, int value, int 
     if (p_userHp <= 0)
     {
         CCLOG("你被怪物打败了，赶紧回家休息吧。");
-        p_battleView->unschedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer));
+//        p_battleView->unschedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer));
         CCLOG("------->>>>退出战斗！");
+        p_battleView->isExitBattle = true;
         exitBattle();
     } else if (p_monsterHp <= 0) {
         CCLOG("恭喜你战胜了怪物！");
-        p_battleView->unschedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer));
+//        p_battleView->unschedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer));
         CCLOG("------->>>>退出战斗！");
+        p_battleView->isExitBattle = true;
         exitBattle();
     }
 }
 
 
-void BattleController::updateTimer(float dt)
+void BattleController::ctrolUpdateTimer(float dt)
 {
+    if(p_battleView == nullptr || p_battleView->isExitBattle) return;
     if (p_battleMonster != nullptr && p_battleMonster->getParent() != nullptr)
     {
         p_battleMonster->update(dt, CC_CALLBACK_4(BattleController::updateCallback, this));
@@ -217,7 +243,7 @@ void BattleController::playerAttack()
 void BattleController::monsterAtkOver()
 {
     p_battleView->effectNode_2->removeAllChildren();
-    p_battleView->schedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer), 0.05, CC_REPEAT_FOREVER, 0);
+//    p_battleView->schedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer), 0.05, CC_REPEAT_FOREVER, 0);
     isInAttack = false;
 }
 

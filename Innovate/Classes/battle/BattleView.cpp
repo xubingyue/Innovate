@@ -32,7 +32,7 @@ BattleView* BattleView::create(string mapId, Vec2 point)
 }
 
 BattleView::BattleView()
-:p_isExit(false)
+:isExitBattle(false)
 {
     
 }
@@ -82,7 +82,7 @@ void BattleView::touchEventCallback(Ref *sender, Widget::TouchEventType controlE
 {
     if (controlEvent == Widget::TouchEventType::ENDED) {
         this->unschedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer));
-        p_isExit = true;
+        isExitBattle = true;
         CCLOG("------->>>>退出战斗！");
         BattleController::getInstance()->exitBattle();
     }
@@ -117,11 +117,16 @@ void BattleView::addMonster(BattleObjBase *monster)
     p_monsterNode->addChild(monster);
 }
 
+void BattleView::startBattle()
+{
+    this->schedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer), 0.05, CC_REPEAT_FOREVER, 0);
+}
+
 void BattleView::updateTimer(float dt)
 {
-    if (p_isExit) return;
+    if (isExitBattle) return;
     //战斗时间轴
-    BattleController::getInstance()->updateTimer(dt);
+    BattleController::getInstance()->ctrolUpdateTimer(dt);
 }
 
 bool BattleView::onTouchBegan(Touch *touch, Event *unused_event)
