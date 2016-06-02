@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="88" tileheight="88" nextobjectid="6">
+ <tileset firstgid="1" name="ditu_dongxue88" tilewidth="88" tileheight="88">
+  <image source="ditu_dongxue88.png" width="528" height="528"/>
+ </tileset>
+ <tileset firstgid="37" name="crystal" tilewidth="176" tileheight="176">
+  <image source="crystal.png" width="176" height="176"/>
+ </tileset>
+ <tileset firstgid="38" name="transfer" tilewidth="176" tileheight="176">
+  <image source="transfer.png" width="176" height="176"/>
+ </tileset>
+ <tileset firstgid="39" name="walk" tilewidth="88" tileheight="88">
+  <image source="walk.png" width="88" height="88"/>
+ </tileset>
+ <layer name="Road" width="50" height="50" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt1E0KgCAQgFFv4/1vGC6iCP/amBPvgTuD+ZApJQAAAACgyLcTQe6cSP7Q0WuI0vSccfd5W0YdUd6jGHU87+3a2tuD2ry1b2r3V2t1jPZ81LTSm3/U7vtRzLT8oePrHZ418xYROk7R5gUA4HIAKQoSvg==
+  </data>
+ </layer>
+ <layer name="BG" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt1sEKwzAIgGEPbQ5J3/95hxCZuHR4s6H/B8K6taCJphMBAAAAAAAAoE4XOzgS0cqyyzmTcVUlmKDrbHk2F6s6jqIcM6wOzX3IN+exiF6UY4Zfe5Hfmd5lP7TnfY6rOpq7Z3V++V6sOgsst7sc435Yz8XZkfl9dR1+1u/OK713zOfGvO7uuSZ1vbc6r2JdfUZca5t7remaUXUW2Hr+C1vjXd6Dscd2en8o3ZP4/8NfD/f56fwM+Jno4fdd2LwCAAC8yQeYYwQO
+  </data>
+ </layer>
+ <objectgroup name="Key">
+  <object id="2" type="4" gid="38" x="2464" y="2376"/>
+  <object id="3" type="2" gid="37" x="2464" y="2816"/>
+  <object id="4" name="player" type="1" x="3432" y="2640" width="88" height="88">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <layer name="temple" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20ON6AAAAAAAAAAAADg3wAnEAAB
+  </data>
+ </layer>
+ <layer name="decoration" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt1EsKgCAUBdCWUBMbtf9tRgNBwj5QmC/OGWk48Mb1DQMAAAAAEM389QVesGVYiv1UrMfGd3mizJBOzkXJNF0foVO1jp11soWjWRVthuV3nv9x2n2/q7c5EPm95w7VOh4p11GHtly99eUNf8wEAEB/VvyZAic=
+  </data>
+ </layer>
+</map>
