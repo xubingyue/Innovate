@@ -49,7 +49,7 @@ bool HelloWorld::init()
 
 //    string mapId = LocalDataUtil::getInstance()->getStringForKey("map", "1");
     //初始化世界地图
-    initWorldMap("2");
+    initWorldMap("1");
     initPosition();
     
 //    int temp = 99;
@@ -146,11 +146,12 @@ void HelloWorld::initWorldMap(string id)
     auto& objs = groups->getObjects();
     for (auto& o : objs) {
         ValueMap& dict = o.asValueMap();
-        int id = dict["id"].asInt();
+        int id = dict["type"].asInt();
         if (id == 1)//1:固定是玩家
         {
             auto ve = p_map->tileCoordForPosition(Point(dict["x"].asFloat(), dict["y"].asFloat()));
             Point pos = LocalDataManager::getInstance()->getPlayerPoint();
+//            pos = p_map->positionForTileCoord(ve);
             if (pos == Point(-1, -1))
             {
                 pos = p_map->positionForTileCoord(ve);
@@ -178,12 +179,14 @@ void HelloWorld::initWorldMap(string id)
             else if (obj->type == ObjectType::OT_BUILDING)
             {
                 auto ve = p_map->tileCoordForPosition(Point(dict["x"].asFloat(), dict["y"].asFloat()));
+                #pragma mark 特殊处理建筑坐标减1
+                ve = ve - Point(0, 1);
                 auto pos = p_map->positionForTileCoord(ve);
                 auto display = MapObjBuilding::create(obj->res);
                 display->setAnchorPoint(Point(0, 0));
                 p_map->addToMap(display, ve);
                 p_map->addObjToVec(display);    //将需要碰撞的建筑放到碰撞集合中
-                display->setPosition(pos - Point(32, 32));
+                display->setPosition(pos - Point(TILED_SIZE/2, TILED_SIZE/2));
                 display->initData(ve, land);
                 display->buildId = id;
             }

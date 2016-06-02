@@ -74,19 +74,19 @@ void MapObjBuilding::initData(Point p, TMXLayer *land)
             p_aroundPointVec->push_back(down);
         }
         
-//        Point left = Point(v.x - 1, v.y);
-//        if (find(p_buildVec->begin(), p_buildVec->end(), left) == p_buildVec->end()
-//            && land->getTileAt(left) != nullptr)
-//        {
-//            p_aroundPointVec->push_back(left);
-//        }
-//        
-//        Point right = Point(v.x + 1, v.y);
-//        if (find(p_buildVec->begin(), p_buildVec->end(), right) == p_buildVec->end()
-//            && land->getTileAt(right) != nullptr)
-//        {
-//            p_aroundPointVec->push_back(right);
-//        }
+        Point left = Point(v.x - 1, v.y);
+        if (find(p_buildVec->begin(), p_buildVec->end(), left) == p_buildVec->end()
+            && land->getTileAt(left) != nullptr)
+        {
+            p_aroundPointVec->push_back(left);
+        }
+        
+        Point right = Point(v.x + 1, v.y);
+        if (find(p_buildVec->begin(), p_buildVec->end(), right) == p_buildVec->end()
+            && land->getTileAt(right) != nullptr)
+        {
+            p_aroundPointVec->push_back(right);
+        }
     }
 }
 

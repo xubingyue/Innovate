@@ -17,9 +17,9 @@
 using namespace cocos2d;
 
 //地图块尺寸大小
-#define TILED_SIZE 64
+#define TILED_SIZE 88
 //主角tag
-#define PLAYER_TAG 99
+#define PLAYER_TAG 999
 
 //各个层级名称定义
 #define ROAD_LAYER "Road"
