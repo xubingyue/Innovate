@@ -9,7 +9,7 @@
 #include "BattleController.h"
 #include "../LayerManager.h"
 #include "../model/PlayerModel.h"
-
+#include "NotificationType.h"
 
 
 USING_NS_CC;
@@ -152,6 +152,7 @@ void BattleController::updateCallback(ObjType ot, AttackType at, int value, int 
         CCLOG("------->>>>退出战斗！");
         p_battleView->isExitBattle = true;
         exitBattle();
+        __NotificationCenter::getInstance()->postNotification(BATTLE_DIE_TO_CRYSTAL);
     } else if (p_monsterHp <= 0) {
         CCLOG("恭喜你战胜了怪物！");
 //        p_battleView->unschedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer));

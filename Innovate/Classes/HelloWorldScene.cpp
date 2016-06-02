@@ -64,6 +64,10 @@ bool HelloWorld::init()
     __NotificationCenter::getInstance()->addObserver(this, CC_CALLFUNCO_SELECTOR
                                                      (HelloWorld::touch2Move),
                                                      TOUCH_MAP_TO_MOVE, nullptr);
+    
+    __NotificationCenter::getInstance()->addObserver(this, CC_CALLFUNCO_SELECTOR
+                                                     (HelloWorld::dieResetPos),
+                                                     BATTLE_DIE_TO_CRYSTAL, nullptr);
     return true;
 }
 
@@ -288,6 +292,10 @@ void HelloWorld::openByBuildId(int buildId)
     auto layer = LayerManager::getInstance()->getLayerByTag(LayerType::UI_LAYER);
     layer->addChild(bcv);
 }
+void HelloWorld::dieResetPos(Ref *obj)
+{
+    resetPlayerPos();
+}
 
 void HelloWorld::resetPlayerPos()
 {
@@ -314,7 +322,7 @@ void HelloWorld::dieEffect()
     Vector<FiniteTimeAction*> actions;
     auto in = FadeIn::create(0.5);
     auto out = FadeOut::create(1);
-    auto callFun = CallFunc::create( CC_CALLBACK_0(HelloWorld::resetPlayerPos,this));
+    auto callFun = CallFunc::create(CC_CALLBACK_0(HelloWorld::resetPlayerPos,this));
     
     actions.pushBack(in);
     actions.pushBack(callFun);
