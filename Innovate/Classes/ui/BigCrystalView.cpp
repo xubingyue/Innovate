@@ -12,7 +12,7 @@
 #include "GlobalModel.h"
 #include "DataManager.h"
 #include "StringUtil.h"
-
+#include "BagView.h"
 
 USING_NS_CC;
 using namespace cocos2d::ui;
@@ -53,6 +53,12 @@ bool BigCrystalView::init()
     
     Button *backBtn = static_cast<Button*>(Helper::seekWidgetByName(static_cast<Layout*>(p_root), "back_btn"));
     backBtn->addTouchEventListener(CC_CALLBACK_2(BigCrystalView::touchEventCallback, this));
+    
+    Layout *bagBg = static_cast<Layout*>(Helper::seekWidgetByName(static_cast<Layout*>(p_root), "bag_bg"));
+    
+    BagView *bv = BagView::create();
+    bv->setContentSize(bagBg->getContentSize());
+    bagBg->addChild(bv);
     
     return true;
 }

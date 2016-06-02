@@ -36,6 +36,9 @@ void DataManager::loadTable(const loadCallback& callback, std::string localConfi
 	int count = 0;
 	Data data;
 		LOAD_TABLE(m_Config, tables::Config, localConfig + "/" + tables::Config::fileName(), callback, count);
+	LOAD_TABLE(m_Drop, tables::Drop, localConfig + "/" + tables::Drop::fileName(), callback, count);
+	LOAD_TABLE(m_Drop_item, tables::Drop_item, localConfig + "/" + tables::Drop_item::fileName(), callback, count);
+	LOAD_TABLE(m_Element, tables::Element, localConfig + "/" + tables::Element::fileName(), callback, count);
 	LOAD_TABLE(m_Elf, tables::Elf, localConfig + "/" + tables::Elf::fileName(), callback, count);
 	LOAD_TABLE(m_Language, tables::Language, localConfig + "/" + tables::Language::fileName(), callback, count);
 	LOAD_TABLE(m_Monster, tables::Monster, localConfig + "/" + tables::Monster::fileName(), callback, count);

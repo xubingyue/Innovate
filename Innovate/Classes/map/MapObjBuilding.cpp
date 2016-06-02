@@ -31,7 +31,8 @@ MapObjBuilding::MapObjBuilding()
 
 MapObjBuilding::~MapObjBuilding()
 {
-    
+    delete p_buildVec;
+    delete p_aroundPointVec;
 }
 
 void MapObjBuilding::initData(Point p, TMXLayer *land)

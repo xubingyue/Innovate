@@ -1,0 +1,6 @@
+id,num,dropID0,weight0,dropID1,weight1,dropID2,weight2,dropID3,weight3,
+1,1,1,0.1,null,null,null,null,null,null,
+2,2,1,0.5,2,0.5,null,null,null,null,
+3,3,1,0.1,2,0.2,3,0.3,null,null,
+4,4,1,0.3,2,0.3,3,0.3,4,0.3,
+
