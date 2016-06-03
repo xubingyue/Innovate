@@ -11,6 +11,7 @@
 #include "BattleController.h"
 #include "DataManager.h"
 #include "StringUtil.h"
+#include "../utils/IconUtil.h"
 
 USING_NS_CC;
 using namespace cocos2d::ui;
@@ -69,7 +70,16 @@ bool BattleResultView::init(int flag, int monsterId)
         vector<DropItem> *dropList = new vector<DropItem>();
         getDorpList(monsterId, *dropList);
 
-        
+        Layout *layout = static_cast<Layout*>(Helper::seekWidgetByName(static_cast<Layout*>(p_root), "result_panel"));
+        auto dropNode = layout->getChildByName("drop_node");
+        int posX = 0;
+        for (DropItem di : *dropList)
+        {
+            auto icon = IconUtil::getInstance()->getIconById(IconType::IconType_ELEMENT, di.dropId, di.count);
+            dropNode->addChild(icon);
+            icon->setPositionX(posX);
+            posX += 74;
+        }
         
         //销毁
         dropList->clear();

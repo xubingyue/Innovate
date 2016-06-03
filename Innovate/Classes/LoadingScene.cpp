@@ -11,6 +11,7 @@
 #include "HelloWorldScene.h"
 #include "model/PlayerModel.h"
 #include "LocalDataManager.h"
+#include "BagModel.h"
 
 USING_NS_CC;
 
@@ -70,6 +71,10 @@ bool LoadingScene::init()
                                          player->fireResist, player->windAttack, player->windResist, player->ski1,
                                          player->soilAttack, player->soilResist, player->recover, player->absorb);
     }
+    
+    //加载常驻内存资源
+    SpriteFrameCache::getInstance()->addSpriteFramesWithFile("res/common/common_icon.plist", "res/common/common_icon.pvr.ccz");
+    
     this->schedule(schedule_selector(LoadingScene::runOnce), 1, 1, 0);
     return true;
 }

@@ -96,6 +96,7 @@
 		9DD38CA91D0073BB00B84915 /* Drop_item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38CA51D0073BB00B84915 /* Drop_item.cpp */; };
 		9DD38CAA1D0073BB00B84915 /* Drop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38CA71D0073BB00B84915 /* Drop.cpp */; };
 		9DD38CAD1D0129A400B84915 /* BattleResultView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38CAB1D0129A400B84915 /* BattleResultView.cpp */; };
+		9DD38CB11D0175D200B84915 /* IconUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38CAF1D0175D100B84915 /* IconUtil.cpp */; };
 		9DD5F3ED1CE55FC100F34658 /* staticdata in Resources */ = {isa = PBXBuildFile; fileRef = 9DD5F3EC1CE55FC100F34658 /* staticdata */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -274,6 +275,8 @@
 		9DD38CA81D0073BB00B84915 /* Drop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drop.h; sourceTree = "<group>"; };
 		9DD38CAB1D0129A400B84915 /* BattleResultView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleResultView.cpp; sourceTree = "<group>"; };
 		9DD38CAC1D0129A400B84915 /* BattleResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleResultView.h; sourceTree = "<group>"; };
+		9DD38CAF1D0175D100B84915 /* IconUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IconUtil.cpp; sourceTree = "<group>"; };
+		9DD38CB01D0175D100B84915 /* IconUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconUtil.h; sourceTree = "<group>"; };
 		9DD5F3EC1CE55FC100F34658 /* staticdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = staticdata; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -422,6 +425,7 @@
 				9D675BA51CE6C16400E9A98A /* map */,
 				9D70F7EE1CED5EDC007461DF /* battle */,
 				9D70F82C1CF7FBBF007461DF /* ui */,
+				9DD38CAE1D0175A500B84915 /* utils */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				46880B8619C43A87006E1F66 /* HelloWorldScene.cpp */,
@@ -654,6 +658,15 @@
 			path = algorithm;
 			sourceTree = "<group>";
 		};
+		9DD38CAE1D0175A500B84915 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				9DD38CAF1D0175D100B84915 /* IconUtil.cpp */,
+				9DD38CB01D0175D100B84915 /* IconUtil.h */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -831,6 +844,7 @@
 				9DC0BA811CDEFD93003E5BAD /* libcsv.c in Sources */,
 				9D70F7E91CECA9B1007461DF /* LocalDataUtil.cpp in Sources */,
 				9D70F8281CF5E853007461DF /* MonsterModel.cpp in Sources */,
+				9DD38CB11D0175D200B84915 /* IconUtil.cpp in Sources */,
 				9DC407F51CE7570D000E248B /* LayerManager.cpp in Sources */,
 				9D70F7F41CED8CD7007461DF /* BattleView.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
