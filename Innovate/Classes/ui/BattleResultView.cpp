@@ -12,6 +12,7 @@
 #include "DataManager.h"
 #include "StringUtil.h"
 #include "../utils/IconUtil.h"
+#include "BagModel.h"
 
 USING_NS_CC;
 using namespace cocos2d::ui;
@@ -79,8 +80,13 @@ bool BattleResultView::init(int flag, int monsterId)
             dropNode->addChild(icon);
             icon->setPositionX(posX);
             posX += 74;
+            
+            auto eleVo = ELEMENT_TABLE->getElementVo(di.dropId);
+            BagItem *item = new BagItem();
+            item->itemId = eleVo->id;
+            item->type = BagType::ELEMENT;
+            BagModel::getInstance()->addItem(item, di.count);
         }
-        
         //销毁
         dropList->clear();
         delete dropList;

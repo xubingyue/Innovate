@@ -11,6 +11,7 @@
 #include "UIComponent.h"
 #include "GlobalModel.h"
 #include "DataManager.h"
+#include "../model/BagModel.h"
 
 USING_NS_CC;
 using namespace cocos2d::ui;
@@ -42,15 +43,14 @@ BagView::~BagView()
 
 bool BagView::init()
 {
-//    auto vo = CONFIG_TABLE->getConfigVo(2);
-//    GlobalModel::getInstance()->MoveSteps = StringUtil::stringToInt(vo->data);
-//    UIComponent::getInstance()->updateLimit(GlobalModel::getInstance()->MoveSteps);
-    
     p_root = CSLoader::createNodeWithVisibleSize("res/ui/BagView/BagView.csb");
     addChild(p_root);
     
     p_scrollView = static_cast<ScrollView*>(Helper::seekWidgetByName(static_cast<Layout*>(p_root), "bag_scroll_view"));
-//    backBtn->addTouchEventListener(CC_CALLBACK_2(BigCrystalView::touchEventCallback, this));
+    
+    auto eleItemList = BagModel::getInstance()->eleItemList;
+    
+    
     
     p_btnNode = p_root->getChildByName("btn_node");
     
