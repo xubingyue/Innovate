@@ -26,6 +26,16 @@ int StringUtil::stringToInt(std::string s)
     return i;
 }
 
+int StringUtil::stringToFloat(std::string s)
+{
+    std::stringstream ss;
+    ss<<s;
+    float i;
+    ss>>i;
+    return i;
+}
+
+
 void StringUtil::split(std::string& s, std::string& delim,std::vector< std::string >* ret)
 {
     size_t last = 0;

@@ -17,8 +17,8 @@ namespace tables
 		{
 			std::unique_ptr<Drop_item_table> r(new Drop_item_table);
 			r->id = atoi(carrier.GetField(i, 0, "id").c_str());
-			r->item_id = atoi(carrier.GetField(i, 1, "item_id").c_str());
-			r->weight = atoi(carrier.GetField(i, 2, "weight").c_str());
+			r->item_id = carrier.GetField(i, 1, "item_id", true).c_str();
+			r->weight = carrier.GetField(i, 2, "weight", true).c_str();
 
 			m_data[KEY] = std::move(r);
 		}

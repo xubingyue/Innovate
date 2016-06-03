@@ -95,6 +95,7 @@
 		9DD38CA31D0027F500B84915 /* BagModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38CA11D0027F500B84915 /* BagModel.cpp */; };
 		9DD38CA91D0073BB00B84915 /* Drop_item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38CA51D0073BB00B84915 /* Drop_item.cpp */; };
 		9DD38CAA1D0073BB00B84915 /* Drop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38CA71D0073BB00B84915 /* Drop.cpp */; };
+		9DD38CAD1D0129A400B84915 /* BattleResultView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38CAB1D0129A400B84915 /* BattleResultView.cpp */; };
 		9DD5F3ED1CE55FC100F34658 /* staticdata in Resources */ = {isa = PBXBuildFile; fileRef = 9DD5F3EC1CE55FC100F34658 /* staticdata */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -271,6 +272,8 @@
 		9DD38CA61D0073BB00B84915 /* Drop_item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drop_item.h; sourceTree = "<group>"; };
 		9DD38CA71D0073BB00B84915 /* Drop.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Drop.cpp; sourceTree = "<group>"; };
 		9DD38CA81D0073BB00B84915 /* Drop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Drop.h; sourceTree = "<group>"; };
+		9DD38CAB1D0129A400B84915 /* BattleResultView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BattleResultView.cpp; sourceTree = "<group>"; };
+		9DD38CAC1D0129A400B84915 /* BattleResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleResultView.h; sourceTree = "<group>"; };
 		9DD5F3EC1CE55FC100F34658 /* staticdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = staticdata; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -575,6 +578,8 @@
 				9DD38C8D1CF832A200B84915 /* BigCrystalView.h */,
 				9DD38C9B1CFFD95100B84915 /* BagView.cpp */,
 				9DD38C9C1CFFD95100B84915 /* BagView.h */,
+				9DD38CAB1D0129A400B84915 /* BattleResultView.cpp */,
+				9DD38CAC1D0129A400B84915 /* BattleResultView.h */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -833,6 +838,7 @@
 				9D1E58781CE9EB03007D065F /* AStarFindPath.cpp in Sources */,
 				9D70F8141CF472EB007461DF /* Monster.cpp in Sources */,
 				9D70F82F1CF81755007461DF /* UIComponent.cpp in Sources */,
+				9DD38CAD1D0129A400B84915 /* BattleResultView.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				9D70F8121CF472EB007461DF /* Elf.cpp in Sources */,

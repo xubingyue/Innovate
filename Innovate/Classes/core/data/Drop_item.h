@@ -13,9 +13,9 @@ namespace tables
 		//物品库id
 		int id;
 		//物品
-		int item_id;
+		std::string item_id;
 		//权重
-		int weight;
+		std::string weight;
 		Drop_item_table()
 		{
 			memset(&id, 0, sizeof(id));

@@ -35,7 +35,9 @@ public:
     float getVeloBuff();
     
 public:
+    int monsterId;
     string res;
+    int dropId;
 private:
     string name;
     int hp;

@@ -10,7 +10,7 @@
 #include "../LayerManager.h"
 #include "../model/PlayerModel.h"
 #include "NotificationType.h"
-
+#include "BattleResultView.h"
 
 USING_NS_CC;
 using namespace std;
@@ -59,6 +59,7 @@ void BattleController::showBattle(string mapId, Vec2 point)
 void BattleController::initPosition(string mapId, Vec2 point)
 {
     auto monster = getMonsterByIdx(mapId, point);
+    p_monsterId = monster.monsterId;
     p_monsterHp = monster.getHp();
     p_battleMonster = BattleMonster::create(p_monsterHp, monster.getAttack(), monster.getVelocity(), monster.res);
     p_battleView->addMonster(p_battleMonster);
@@ -85,6 +86,13 @@ void BattleController::initPosition(string mapId, Vec2 point)
 void BattleController::startBattle()
 {
     p_battleView->startBattle();
+}
+
+void BattleController::showResultUI(int flag)
+{
+    auto uiLayer = LayerManager::getInstance()->getLayerByTag(LayerType::UI_LAYER);
+    auto resultUI = BattleResultView::create(flag, p_monsterId);
+    uiLayer->addChild(resultUI);
 }
 
 void BattleController::exitBattle()
@@ -151,14 +159,14 @@ void BattleController::updateCallback(ObjType ot, AttackType at, int value, int 
 //        p_battleView->unschedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer));
         CCLOG("------->>>>退出战斗！");
         p_battleView->isExitBattle = true;
-        exitBattle();
+        showResultUI(BattleResultType::FAIL);
         __NotificationCenter::getInstance()->postNotification(BATTLE_DIE_TO_CRYSTAL);
     } else if (p_monsterHp <= 0) {
         CCLOG("恭喜你战胜了怪物！");
 //        p_battleView->unschedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer));
         CCLOG("------->>>>退出战斗！");
         p_battleView->isExitBattle = true;
-        exitBattle();
+        showResultUI(BattleResultType::WIN);
     }
 }
 
@@ -264,7 +272,7 @@ MonsterModel BattleController::getMonsterByIdx(string mapId, Point p)
     MonsterModel monster;
     
     auto vo = MONSTER_TABLE->getMonsterVo(1);
-    
+    monster.monsterId = 1;
     monster.setHp(vo->hp);
     monster.setName(vo->name);
     monster.setAttack(vo->attack);

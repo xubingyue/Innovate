@@ -43,6 +43,9 @@ public:
     void exitBattle();
     void exitBattleFi();
     
+    //打开战斗结果界面
+    void showResultUI(int flag);
+    
 public:
     //是否在战斗状态
     bool isInAttack;
@@ -73,6 +76,9 @@ private:
     
     int p_userHp;
     int p_monsterHp;
+    
+    //当前怪物id
+    int p_monsterId;
 };
 
 #endif /* BattleController_hpp */

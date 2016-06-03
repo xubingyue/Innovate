@@ -12,6 +12,7 @@
 #include "../UICommon.h"
 #include "BattleController.h"
 #include "../ui/UIComponent.h"
+#include "BattleResultView.h"
 
 
 USING_NS_CC;
@@ -84,7 +85,7 @@ void BattleView::touchEventCallback(Ref *sender, Widget::TouchEventType controlE
         this->unschedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer));
         isExitBattle = true;
         CCLOG("------->>>>退出战斗！");
-        BattleController::getInstance()->exitBattle();
+        BattleController::getInstance()->showResultUI(BattleResultType::ESCAPE);
     }
 }
 

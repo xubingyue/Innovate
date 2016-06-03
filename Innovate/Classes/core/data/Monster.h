@@ -14,6 +14,8 @@ namespace tables
 		int id;
 		//名字
 		std::string name;
+		//掉落id
+		int diropId;
 		//血量
 		int hp;
 		//攻击力
@@ -26,6 +28,7 @@ namespace tables
 		{
 			memset(&id, 0, sizeof(id));
 			memset(&name, 0, sizeof(name));
+			memset(&diropId, 0, sizeof(diropId));
 			memset(&hp, 0, sizeof(hp));
 			memset(&attack, 0, sizeof(attack));
 			memset(&velocity, 0, sizeof(velocity));
