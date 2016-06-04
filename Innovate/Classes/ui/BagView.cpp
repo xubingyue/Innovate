@@ -12,6 +12,7 @@
 #include "GlobalModel.h"
 #include "DataManager.h"
 #include "../model/BagModel.h"
+#include "../utils/IconUtil.h"
 
 USING_NS_CC;
 using namespace cocos2d::ui;
@@ -48,10 +49,6 @@ bool BagView::init()
     
     p_scrollView = static_cast<ScrollView*>(Helper::seekWidgetByName(static_cast<Layout*>(p_root), "bag_scroll_view"));
     
-    auto eleItemList = BagModel::getInstance()->eleItemList;
-    
-    
-    
     p_btnNode = p_root->getChildByName("btn_node");
     
     return true;
@@ -63,6 +60,30 @@ void BagView::setContentSize(cocos2d::Size s)
     p_btnNode->setPositionY(p_btnNode->getPositionY() + tempH);
     p_scrollView->setContentSize(s);
     p_scrollView->setInnerContainerSize(s);
+}
+
+void BagView::open(int index)
+{
+    vector<BagItemWithCount*> *itemList;
+    if (index == 0) //元素背包
+    {
+        itemList = BagModel::getInstance()->eleItemList;
+    }
+    
+    int x = 10;
+    int y = p_scrollView->getContentSize().height - 74;
+    
+    for (int i = 0; i < itemList->size(); i++)
+    {
+        auto icon = IconUtil::getInstance()->getIconById(IconType::IconType_ELEMENT, (*itemList)[i]->item->itemId, (*itemList)[i]->count);
+        p_scrollView->addChild(icon);
+        icon->setPosition(x, y);
+        x += 74;
+        if (i !=0 && (i % 6) == 0)
+        {
+            y -= 74;
+        }
+    }
 }
 
 void BagView::touchEventCallback(Ref *sender, Widget::TouchEventType controlEvent)

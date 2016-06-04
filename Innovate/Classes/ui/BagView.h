@@ -23,6 +23,8 @@ public:
     bool init();
     //设置宽高
     void setContentSize(cocos2d::Size s);
+    //打开背包
+    void open(int index = 0);
 private:
     //触摸事件
     void touchEventCallback(Ref *sender, cocos2d::ui::Widget::TouchEventType controlEvent);

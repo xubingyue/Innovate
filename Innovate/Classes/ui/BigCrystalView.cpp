@@ -58,6 +58,7 @@ bool BigCrystalView::init()
     
     BagView *bv = BagView::create();
     bv->setContentSize(bagBg->getContentSize());
+    bv->open();
     bagBg->addChild(bv);
     
     return true;
