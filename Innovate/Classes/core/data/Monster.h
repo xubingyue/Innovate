@@ -24,6 +24,12 @@ namespace tables
 		float velocity;
 		//形象
 		std::string character_in;
+		//场景地图序号
+		int sceneID;
+		//副本序号
+		int raidID;
+		//副本怪点
+		int monsterPoint;
 		Monster_table()
 		{
 			memset(&id, 0, sizeof(id));
@@ -33,6 +39,9 @@ namespace tables
 			memset(&attack, 0, sizeof(attack));
 			memset(&velocity, 0, sizeof(velocity));
 			memset(&character_in, 0, sizeof(character_in));
+			memset(&sceneID, 0, sizeof(sceneID));
+			memset(&raidID, 0, sizeof(raidID));
+			memset(&monsterPoint, 0, sizeof(monsterPoint));
 		}
 	};
 

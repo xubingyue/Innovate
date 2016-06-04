@@ -29,9 +29,11 @@ using namespace cocos2d;
 
 //对象层对象类型枚举
 enum ObjectType {
-    OT_PLAYER = 1,     //玩家
-    OT_BUILDING = 2,   //建筑
-    OT_DISPLAY = 3     //非功能性显示（有遮挡关系的）
+    OT_PLAYER = 1,      //玩家
+    OT_BUILDING = 2,    //建筑
+    OT_DISPLAY = 3,     //非功能性显示（有遮挡关系的）
+    OT_TRANSFER = 4,    //传送点
+    OT_FUBEN = 5,       //副本
 };
 
 //点击地图移动时传递的对象（TOUCH_MAP_TO_MOVE）

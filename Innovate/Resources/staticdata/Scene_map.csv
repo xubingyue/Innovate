@@ -1,0 +1,6 @@
+id,map_name,minLevel,maxLevel,probability,probability_grow,attenuation,null,null,null,
+1,world_1,0,3,0.01,0.1,0.02,null,null,null,
+2,world_1,3,5,0.01,0.1,0.02,null,null,null,
+null,null,null,null,null,null,null,null,null,null,
+null,null,null,null,null,null,null,null,null,null,
+

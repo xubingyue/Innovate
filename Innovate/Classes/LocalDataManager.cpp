@@ -39,6 +39,17 @@ void LocalDataManager::setFirstOpen(bool flag)
     LocalDataUtil::getInstance()->setBoolForKey(key.c_str(), flag);
 }
 
+int LocalDataManager::getCurrMapId()
+{
+    string key = KEY + "getCurrMapId";
+    return LocalDataUtil::getInstance()->getIntegerForKey(key.c_str());
+}
+void LocalDataManager::setCurrMapId(int mapId)
+{
+    string key = KEY + "getCurrMapId";
+    LocalDataUtil::getInstance()->setIntegerForKey(key.c_str(), mapId);
+}
+
 int LocalDataManager::getPlayerLv()
 {
     string key = KEY + "getPlayerLv";

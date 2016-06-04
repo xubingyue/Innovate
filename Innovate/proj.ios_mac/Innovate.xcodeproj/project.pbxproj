@@ -97,6 +97,8 @@
 		9DD38CAA1D0073BB00B84915 /* Drop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38CA71D0073BB00B84915 /* Drop.cpp */; };
 		9DD38CAD1D0129A400B84915 /* BattleResultView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38CAB1D0129A400B84915 /* BattleResultView.cpp */; };
 		9DD38CB11D0175D200B84915 /* IconUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38CAF1D0175D100B84915 /* IconUtil.cpp */; };
+		9DD38CB91D02A64400B84915 /* Raid_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38CB51D02A64400B84915 /* Raid_map.cpp */; };
+		9DD38CBA1D02A64400B84915 /* Scene_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38CB71D02A64400B84915 /* Scene_map.cpp */; };
 		9DD5F3ED1CE55FC100F34658 /* staticdata in Resources */ = {isa = PBXBuildFile; fileRef = 9DD5F3EC1CE55FC100F34658 /* staticdata */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -277,6 +279,10 @@
 		9DD38CAC1D0129A400B84915 /* BattleResultView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleResultView.h; sourceTree = "<group>"; };
 		9DD38CAF1D0175D100B84915 /* IconUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IconUtil.cpp; sourceTree = "<group>"; };
 		9DD38CB01D0175D100B84915 /* IconUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconUtil.h; sourceTree = "<group>"; };
+		9DD38CB51D02A64400B84915 /* Raid_map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Raid_map.cpp; sourceTree = "<group>"; };
+		9DD38CB61D02A64400B84915 /* Raid_map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Raid_map.h; sourceTree = "<group>"; };
+		9DD38CB71D02A64400B84915 /* Scene_map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scene_map.cpp; sourceTree = "<group>"; };
+		9DD38CB81D02A64400B84915 /* Scene_map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene_map.h; sourceTree = "<group>"; };
 		9DD5F3EC1CE55FC100F34658 /* staticdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = staticdata; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -613,6 +619,10 @@
 				9DD38CA61D0073BB00B84915 /* Drop_item.h */,
 				9DD38CA71D0073BB00B84915 /* Drop.cpp */,
 				9DD38CA81D0073BB00B84915 /* Drop.h */,
+				9DD38CB51D02A64400B84915 /* Raid_map.cpp */,
+				9DD38CB61D02A64400B84915 /* Raid_map.h */,
+				9DD38CB71D02A64400B84915 /* Scene_map.cpp */,
+				9DD38CB81D02A64400B84915 /* Scene_map.h */,
 				9D70F8091CF472EB007461DF /* Elf.cpp */,
 				9D70F80A1CF472EB007461DF /* Elf.h */,
 				9D70F80B1CF472EB007461DF /* Language.cpp */,
@@ -823,6 +833,7 @@
 				9DD38C9A1CFC2F8200B84915 /* GlobalModel.cpp in Sources */,
 				9D70F7FC1CF29DB3007461DF /* BattleMonster.cpp in Sources */,
 				9DD38CA01D00276600B84915 /* Element.cpp in Sources */,
+				9DD38CB91D02A64400B84915 /* Raid_map.cpp in Sources */,
 				9D70F81E1CF5A731007461DF /* MapObjDisplay.cpp in Sources */,
 				9DD38C971CFC241A00B84915 /* StringUtil.cpp in Sources */,
 				9D70F8211CF5B5FA007461DF /* MapObjBuilding.cpp in Sources */,
@@ -832,6 +843,7 @@
 				9D70F8131CF472EB007461DF /* Language.cpp in Sources */,
 				9DD38C941CFC10E100B84915 /* PlayerModel.cpp in Sources */,
 				9DC0BA851CDEFD93003E5BAD /* Stage.cpp in Sources */,
+				9DD38CBA1D02A64400B84915 /* Scene_map.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				9DD38CA31D0027F500B84915 /* BagModel.cpp in Sources */,
 				9D70F8151CF472EB007461DF /* Object.cpp in Sources */,

@@ -29,6 +29,10 @@ public:
     bool getFirstOpen();
     void setFirstOpen(bool flag);
     
+    //当前地图
+    int getCurrMapId();
+    void setCurrMapId(int mapId);
+    
     //玩家等级
     int getPlayerLv();
     void setPlayerLv(int lv);

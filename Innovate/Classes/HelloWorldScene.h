@@ -18,7 +18,7 @@ public:
     
 private:
     //初始化地图
-    void initWorldMap(std::string id = "1");
+    void initWorldMap(std::string map = "world_1");
     //初始化人物在屏幕上的位置
     void initPosition();
     //更新地图移动
@@ -62,6 +62,8 @@ private:
     int p_buildId;
     //角色初始位置
     Point p_initPos;
+    //当前地图vo数据
+    int p_currMapId;
     
 };
 

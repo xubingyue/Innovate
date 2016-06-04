@@ -9,12 +9,14 @@
 #include "Language.h"
 #include "Monster.h"
 #include "Object.h"
+#include "Raid_map.h"
 #include "Role.h"
+#include "Scene_map.h"
 #include "Stage.h"
 
 USING_NS_CC;
 
-#define TABLESNUM 10
+#define TABLESNUM 12
 typedef std::function<void(int)> loadCallback;
 
 class DataManager
@@ -35,7 +37,9 @@ public:
 	tables::Language* m_Language;
 	tables::Monster* m_Monster;
 	tables::Object* m_Object;
+	tables::Raid_map* m_Raid_map;
 	tables::Role* m_Role;
+	tables::Scene_map* m_Scene_map;
 	tables::Stage* m_Stage;
 
 #define CONFIG_TABLE (DataManager::getInstance()->m_Config)
@@ -54,8 +58,12 @@ public:
 #define GET_MONSTER_DATA	(&(DataManager::getInstance()->m_Monster->m_data))
 #define OBJECT_TABLE (DataManager::getInstance()->m_Object)
 #define GET_OBJECT_DATA	(&(DataManager::getInstance()->m_Object->m_data))
+#define RAID_MAP_TABLE (DataManager::getInstance()->m_Raid_map)
+#define GET_RAID_MAP_DATA	(&(DataManager::getInstance()->m_Raid_map->m_data))
 #define ROLE_TABLE (DataManager::getInstance()->m_Role)
 #define GET_ROLE_DATA	(&(DataManager::getInstance()->m_Role->m_data))
+#define SCENE_MAP_TABLE (DataManager::getInstance()->m_Scene_map)
+#define GET_SCENE_MAP_DATA	(&(DataManager::getInstance()->m_Scene_map->m_data))
 #define STAGE_TABLE (DataManager::getInstance()->m_Stage)
 #define GET_STAGE_DATA	(&(DataManager::getInstance()->m_Stage->m_data))
 };

@@ -47,9 +47,15 @@ bool HelloWorld::init()
     
     UIComponent::getInstance(LayerManager::getInstance()->getLayerByTag(LayerType::UI_LAYER));
 
-//    string mapId = LocalDataUtil::getInstance()->getStringForKey("map", "1");
+    int mapId = LocalDataManager::getInstance()->getCurrMapId();
+    if (mapId == 0)
+    {
+        mapId = 1;
+    }
     //初始化世界地图
-    initWorldMap("1");
+    auto mapVo = SCENE_MAP_TABLE->getScene_mapVo(mapId);
+    p_currMapId = mapId;
+    initWorldMap(mapVo->map_name);
     initPosition();
     
 //    int temp = 99;
@@ -136,10 +142,10 @@ void HelloWorld::touch2Move(Ref *obj)
     delete obj;
 }
 
-void HelloWorld::initWorldMap(string id)
+void HelloWorld::initWorldMap(string map)
 {
     //初始化地图
-    p_map = StageMapView::create("res/map/world_" + id + ".tmx");
+    p_map = StageMapView::create("res/map/" + map + ".tmx");
 //    p_map->setScale(1.5);
     auto mapLayer = LayerManager::getInstance()->getLayerByTag(LayerType::MAP_LAYER);
     mapLayer->addChild(p_map);

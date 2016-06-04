@@ -43,7 +43,9 @@ void DataManager::loadTable(const loadCallback& callback, std::string localConfi
 	LOAD_TABLE(m_Language, tables::Language, localConfig + "/" + tables::Language::fileName(), callback, count);
 	LOAD_TABLE(m_Monster, tables::Monster, localConfig + "/" + tables::Monster::fileName(), callback, count);
 	LOAD_TABLE(m_Object, tables::Object, localConfig + "/" + tables::Object::fileName(), callback, count);
+	LOAD_TABLE(m_Raid_map, tables::Raid_map, localConfig + "/" + tables::Raid_map::fileName(), callback, count);
 	LOAD_TABLE(m_Role, tables::Role, localConfig + "/" + tables::Role::fileName(), callback, count);
+	LOAD_TABLE(m_Scene_map, tables::Scene_map, localConfig + "/" + tables::Scene_map::fileName(), callback, count);
 	LOAD_TABLE(m_Stage, tables::Stage, localConfig + "/" + tables::Stage::fileName(), callback, count);
 
 }
