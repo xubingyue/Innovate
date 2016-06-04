@@ -186,7 +186,7 @@ void HelloWorld::initWorldMap(string map)
                 p_map->addToMap(display, ve);
                 display->setPosition(pos);
             }
-            else if (obj->type == ObjectType::OT_CRYSTAL)
+            else if (obj->type == ObjectType::OT_CRYSTAL || obj->type == ObjectType::OT_TRANSFER || obj->type == ObjectType::OT_FUBEN)
             {
                 auto ve = p_map->tileCoordForPosition(Point(dict["x"].asFloat(), dict["y"].asFloat()));
                 #pragma mark 特殊处理建筑坐标减1
@@ -199,6 +199,17 @@ void HelloWorld::initWorldMap(string map)
                 display->setPosition(pos - Point(TILED_SIZE/2, TILED_SIZE/2));
                 display->initData(ve, land);
                 display->buildId = id;
+            }
+            else if (obj->type == ObjectType::OT_DISPLAY)
+            {
+                auto ve = p_map->tileCoordForPosition(Point(dict["x"].asFloat(), dict["y"].asFloat()));
+#pragma mark 特殊处理建筑坐标减1
+                ve = ve - Point(0, 1);
+                auto pos = p_map->positionForTileCoord(ve);
+                auto display = MapObjBuilding::create(obj->res);
+                display->setAnchorPoint(Point(0, 0));
+                p_map->addToMap(display, ve);
+                display->setPosition(pos - Point(TILED_SIZE/2, TILED_SIZE/2));
             }
         }
     }
@@ -294,10 +305,9 @@ void HelloWorld::movesCallBack()
 
 void HelloWorld::openByBuildId(int buildId)
 {
-    auto bcv = BigCrystalView::create();
-    auto layer = LayerManager::getInstance()->getLayerByTag(LayerType::UI_LAYER);
-    layer->addChild(bcv);
+    p_map->openBuildingById(buildId);
 }
+
 void HelloWorld::dieResetPos(Ref *obj)
 {
     resetPlayerPos();

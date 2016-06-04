@@ -9,6 +9,9 @@
 #include "StageMapView.h"
 #include "../NotificationType.h"
 #include "MapObjBuilding.h"
+#include "../core/data/DataManager.h"
+#include "BigCrystalView.h"
+#include "LayerManager.h"
 
 StageMapView* StageMapView::create(std::string map)
 {
@@ -75,9 +78,27 @@ void  StageMapView::addObjToVec(Node *child)
     this->p_mapObjVec->pushBack(child);
 }
 
+void StageMapView::openBuildingById(int buildId)
+{
+    auto vo = OBJECT_TABLE->getObjectVo(buildId);
+    if(vo->type == ObjectType::OT_CRYSTAL)
+    {
+        auto bcv = BigCrystalView::create();
+        auto layer = LayerManager::getInstance()->getLayerByTag(LayerType::UI_LAYER);
+        layer->addChild(bcv);
+    }
+    else if (vo->type == ObjectType::OT_FUBEN)
+    {
+        CCLOG("打开副本，副本id为：%d", vo->value);
+    }
+    else if (vo->type == ObjectType::OT_TRANSFER)
+    {
+        CCLOG("传送功能尚未开放！");
+    }
+}
+
 bool StageMapView::onTouchBegan(Touch *touch, Event *unused_event)
 {
-    
     return true;
 }
 

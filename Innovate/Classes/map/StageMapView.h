@@ -30,7 +30,7 @@ using namespace cocos2d;
 //对象层对象类型枚举
 enum ObjectType {
     OT_PLAYER = 1,      //玩家
-    OT_CRYSTAL = 2,    //建筑
+    OT_CRYSTAL = 2,    //水晶
     OT_DISPLAY = 3,     //非功能性显示（有遮挡关系的）
     OT_TRANSFER = 4,    //传送点
     OT_FUBEN = 5,       //副本
@@ -65,6 +65,8 @@ public:
     void addToMap(Node *child, Point p);
     //将需要碰撞的对象add进集合
     void addObjToVec(Node *child);
+    //打开地图上的建筑
+    void openBuildingById(int buildId);
     
 private:
     //touch
