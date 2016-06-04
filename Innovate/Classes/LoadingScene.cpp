@@ -75,6 +75,15 @@ bool LoadingScene::init()
     //加载常驻内存资源
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile("res/common/common_icon.plist", "res/common/common_icon.pvr.ccz");
     
+    //加载背包数据
+    auto eleItems = LocalDataManager::getInstance()->getEleBagItems();
+    if (eleItems != "")
+    {
+        BagModel::getInstance()->initData(eleItems);
+    }
+    
+    
+    //---------------------------------------------
     this->schedule(schedule_selector(LoadingScene::runOnce), 1, 1, 0);
     return true;
 }

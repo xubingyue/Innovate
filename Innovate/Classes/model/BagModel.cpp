@@ -7,6 +7,8 @@
 //
 
 #include "BagModel.h"
+#include "../core/utils/StringUtil.h"
+#include "LocalDataManager.h"
 
 #pragma mark ============BagItem==============
 
@@ -21,7 +23,6 @@ std::string BagItem::toString()
 //{
 //    return this->item->itemId == a.item->itemId;
 //}
-
 
 #pragma mark ============BagModel==============
 static BagModel* _instance = nullptr;
@@ -46,6 +47,32 @@ BagModel::~BagModel()
     
 }
 
+void BagModel::initData(string ele)
+{
+    string str = LocalDataManager::getInstance()->getEleBagItems();
+    string delim1 = ";";
+    vector<string> *items = new vector<string>();
+    StringUtil::split(str, delim1, items);
+    string delim2 = ",";
+    for (string itemStr : *items)
+    {
+        vector<string> *prop = new vector<string>();
+        StringUtil::split(itemStr, delim2, prop);
+        
+        BagItem *item = new BagItem();
+        item->itemId = StringUtil::stringToInt((*prop)[0]);
+        
+        BagItemWithCount *biwc = new BagItemWithCount();
+        biwc->item = item;
+        biwc->count = StringUtil::stringToInt((*prop)[1]);
+        
+        eleItemList->push_back(biwc);
+        
+        delete prop;
+    }
+    delete items;
+}
+
 //向背包中添加物品
 void BagModel::addItem(BagItem *item, int count)
 {
@@ -66,8 +93,9 @@ void BagModel::addItem(BagItem *item, int count)
             }
         }
     }
-    //TODO: 持久化数据
-    //。。。。。。。。。。。。
+    //持久化数据
+    string items = toEleString();
+    LocalDataManager::getInstance()->setEleBagItems(items);
 }
 
 //删除背包中的
@@ -86,6 +114,21 @@ int BagModel::isExist(BagItemWithCount *item, vector<BagItemWithCount*> *list)
         }
     }
     return -1;
+}
+
+string BagModel::toEleString()
+{
+    string str = "";
+    for (int i = 0; i < eleItemList->size(); i++)
+    {
+        auto ele = (*eleItemList)[i];
+        str = str + StringUtil::intToString(ele->item->itemId) + "," + StringUtil::intToString(ele->count);
+        if (i != eleItemList->size() - 1)
+        {
+            str += ";";
+        }
+    }
+    return str;
 }
 
 

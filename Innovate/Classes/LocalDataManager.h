@@ -40,6 +40,10 @@ public:
     //能量步数
     int getLimitCount();
     void setLimitCount(int count);
+    
+    //元素背包
+    string getEleBagItems();
+    void setEleBagItems(string items);
 };
 
 #endif /* LocalDataManager_hpp */

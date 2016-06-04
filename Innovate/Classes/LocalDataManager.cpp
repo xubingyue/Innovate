@@ -81,4 +81,13 @@ void LocalDataManager::setLimitCount(int count)
     LocalDataUtil::getInstance()->setIntegerForKey(key.c_str(), count);
 }
 
-
+string LocalDataManager::getEleBagItems()
+{
+    string key = KEY + "getEleBagItems";
+    return LocalDataUtil::getInstance()->getStringForKey(key.c_str());
+}
+void LocalDataManager::setEleBagItems(string items)
+{
+    string key = KEY + "getEleBagItems";
+    LocalDataUtil::getInstance()->setStringForKey(key.c_str(), items);
+}

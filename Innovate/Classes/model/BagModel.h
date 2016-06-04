@@ -38,6 +38,7 @@ public:
     {
         return (this->item->itemId == a.item->itemId);
     }
+    
 public:
     BagItem *item;
     int count;
@@ -50,7 +51,8 @@ public:
     
     BagModel();
     ~BagModel();
-    
+    //初始化背包数据
+    void initData(string ele);
     //向背包中添加物品
     void addItem(BagItem *item, int count = 1);
     //删除背包中的
@@ -58,7 +60,8 @@ public:
     
 private:
     int isExist(BagItemWithCount *item, vector<BagItemWithCount*> *list);
-    
+    //将元素背包字符串化
+    string toEleString();
 public:
     //元素分类
     vector<BagItemWithCount*> *eleItemList;
