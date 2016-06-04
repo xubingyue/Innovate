@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="25" height="19" tilewidth="88" tileheight="88" nextobjectid="17">
+ <tileset firstgid="1" name="ditu_dongxue88" tilewidth="88" tileheight="88">
+  <image source="ditu_dongxue88.png" width="264" height="440"/>
+ </tileset>
+ <tileset firstgid="16" name="transfer" tilewidth="176" tileheight="176">
+  <image source="transfer.png" width="176" height="176"/>
+ </tileset>
+ <tileset firstgid="17" name="walk" tilewidth="88" tileheight="88">
+  <image source="walk.png" width="88" height="88"/>
+ </tileset>
+ <layer name="Road" width="25" height="19">
+  <data encoding="base64" compression="zlib">
+   eJxjYBieQJBEtaSoR9eHjHGZiczHpp4UO0jFpPiFWD4uMWoDWtmBHhfk6sWnhlI78MUhpeZjswNX2qEkDqidTom1g9qA1uaPguEPAJdaBfs=
+  </data>
+ </layer>
+ <layer name="BG" width="25" height="19">
+  <data encoding="base64" compression="zlib">
+   eJztUwEKgCAMXK7t/0+OwNE6dA4lgujgqOl2V3ISfQubI65latwbeXgy1KXzbH3jyKPAe0+zwBoHHrujzUkl1lwpjuahgQf6SVAraGXOaRZ4vhK3h7NRjwz6Mvqt+Zb+yj/0sjarjx5M92wy7M3oew/Lp9VntpSufOukPtX5lbxkIXTdiSf0f7yLA2rbAUY=
+  </data>
+ </layer>
+ <objectgroup name="Key">
+  <object id="2" type="4" gid="16" x="176" y="352"/>
+  <object id="4" name="player" type="1" x="440" y="352" width="88" height="88">
+   <ellipse/>
+  </object>
+  <object id="9" name="1" type="5" x="792" y="352" width="88" height="88"/>
+  <object id="10" name="2" type="5" x="1232" y="440" width="88" height="88"/>
+  <object id="11" name="3" type="5" x="1584" y="616" width="88" height="88"/>
+  <object id="12" name="4" type="5" x="1672" y="264" width="88" height="88"/>
+  <object id="13" name="5" type="5" x="1320" y="704" width="88" height="88"/>
+  <object id="14" name="6" type="5" x="1144" y="968" width="88" height="88"/>
+  <object id="15" name="7" type="5" x="1408" y="176" width="88" height="88"/>
+  <object id="16" name="8" type="5" x="528" y="880" width="88" height="88"/>
+ </objectgroup>
+ <layer name="temple" width="25" height="19">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMApGAS0BAAdsAAE=
+  </data>
+ </layer>
+ <layer name="decoration" width="25" height="19">
+  <data encoding="base64" compression="zlib">
+   eJztktEKwCAIRXsrHPT/nzuEhIuYZSsGYwciRb2GmdK7XO30fC93ltqO1GufQF9iEYrRi5SPccwfQWBnp7eOZRVfQddij5V/iCB/wZCX2KnF26KAvjXXERXu3bOw9Lyd5PdHZ4R6ZNhP9kY4vSOMnsuOd/c4qf3zfW4t4wJ7
+  </data>
+ </layer>
+</map>
