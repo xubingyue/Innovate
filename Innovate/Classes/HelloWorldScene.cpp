@@ -186,7 +186,7 @@ void HelloWorld::initWorldMap(string map)
                 p_map->addToMap(display, ve);
                 display->setPosition(pos);
             }
-            else if (obj->type == ObjectType::OT_BUILDING)
+            else if (obj->type == ObjectType::OT_CRYSTAL)
             {
                 auto ve = p_map->tileCoordForPosition(Point(dict["x"].asFloat(), dict["y"].asFloat()));
                 #pragma mark 特殊处理建筑坐标减1

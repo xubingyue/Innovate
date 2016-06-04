@@ -14,8 +14,10 @@ namespace tables
 		int id;
 		//名字
 		std::string name;
-		//血量
+		//类型
 		int type;
+		//值
+		int value;
 		//资源
 		std::string res;
 		Object_table()
@@ -23,6 +25,7 @@ namespace tables
 			memset(&id, 0, sizeof(id));
 			memset(&name, 0, sizeof(name));
 			memset(&type, 0, sizeof(type));
+			memset(&value, 0, sizeof(value));
 			memset(&res, 0, sizeof(res));
 		}
 	};
