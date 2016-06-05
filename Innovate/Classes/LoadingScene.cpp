@@ -57,13 +57,15 @@ bool LoadingScene::init()
     //初始化人物数据
     LocalDataManager::getInstance()->init("AA");
     auto player = ROLE_TABLE->getRoleVo(1);
-    if(LocalDataManager::getInstance()->getFirstOpen())
+    if(!LocalDataManager::getInstance()->getFirstOpen())
     {
         PlayerModel::getInstance()->init(1, player->hp, player->attack, player->velocity,
                                          player->darkAttack, player->darkResist, player->fireAttack,
                                          player->fireResist, player->windAttack, player->windResist, player->ski1,
                                          player->soilAttack, player->soilResist, player->recover, player->absorb);
         LocalDataManager::getInstance()->setPlayerLv(1);
+        LocalDataManager::getInstance()->setFarthestMap(1);
+        LocalDataManager::getInstance()->setFirstOpen(true);
     } else {
         int level = LocalDataManager::getInstance()->getPlayerLv();
         PlayerModel::getInstance()->init(level, player->hp, player->attack, player->velocity,

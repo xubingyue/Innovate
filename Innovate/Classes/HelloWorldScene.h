@@ -62,8 +62,6 @@ private:
     int p_buildId;
     //角色初始位置
     Point p_initPos;
-    //当前地图vo数据
-    int p_currMapId;
     
 };
 

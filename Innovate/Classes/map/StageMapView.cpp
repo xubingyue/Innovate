@@ -12,6 +12,8 @@
 #include "../core/data/DataManager.h"
 #include "BigCrystalView.h"
 #include "LayerManager.h"
+#include "MapTransferView.h"
+#include "../model/GlobalModel.h"
 
 StageMapView* StageMapView::create(std::string map)
 {
@@ -93,7 +95,9 @@ void StageMapView::openBuildingById(int buildId)
     }
     else if (vo->type == ObjectType::OT_TRANSFER)
     {
-        CCLOG("传送功能尚未开放！");
+        auto mtv = MapTransferView::create(GlobalModel::getInstance()->currMapId);
+        auto layer = LayerManager::getInstance()->getLayerByTag(LayerType::UI_LAYER);
+        layer->addChild(mtv);
     }
 }
 

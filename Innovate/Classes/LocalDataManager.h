@@ -29,6 +29,10 @@ public:
     bool getFirstOpen();
     void setFirstOpen(bool flag);
     
+    //当前最远地图
+    int getFarthestMap();
+    void setFarthestMap(int mapId);
+    
     //当前地图
     int getCurrMapId();
     void setCurrMapId(int mapId);

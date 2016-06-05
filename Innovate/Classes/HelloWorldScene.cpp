@@ -54,7 +54,7 @@ bool HelloWorld::init()
     }
     //初始化世界地图
     auto mapVo = SCENE_MAP_TABLE->getScene_mapVo(mapId);
-    p_currMapId = mapId;
+    GlobalModel::getInstance()->currMapId = mapId;
     initWorldMap(mapVo->map_name);
     initPosition();
     

@@ -39,6 +39,18 @@ void LocalDataManager::setFirstOpen(bool flag)
     LocalDataUtil::getInstance()->setBoolForKey(key.c_str(), flag);
 }
 
+int LocalDataManager::getFarthestMap()
+{
+    string key = KEY + "getFarthestMap";
+    return LocalDataUtil::getInstance()->getIntegerForKey(key.c_str());
+}
+void LocalDataManager::setFarthestMap(int mapId)
+{
+    string key = KEY + "getFarthestMap";
+    LocalDataUtil::getInstance()->setIntegerForKey(key.c_str(), mapId);
+
+}
+
 int LocalDataManager::getCurrMapId()
 {
     string key = KEY + "getCurrMapId";

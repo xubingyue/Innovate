@@ -19,6 +19,8 @@ public:
 public:
     //当前能量：移动步数
     int MoveSteps;
+    //当前地图id数据
+    int currMapId;
 };
 
 #endif /* GlobalModel_hpp */

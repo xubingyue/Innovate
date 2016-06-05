@@ -70,18 +70,21 @@ void BagView::open(int index)
         itemList = BagModel::getInstance()->eleItemList;
     }
     
+    int jiange = 74;    //图标直接的固定间隔
     int x = 10;
-    int y = p_scrollView->getContentSize().height - 74;
+    int y = p_scrollView->getContentSize().height - jiange;
     
     for (int i = 0; i < itemList->size(); i++)
     {
         auto icon = IconUtil::getInstance()->getIconById(IconType::IconType_ELEMENT, (*itemList)[i]->item->itemId, (*itemList)[i]->count);
+//        icon->addTouchEventListener();
+//        >addTouchEventListener(CC_CALLBACK_2(BattleResultView::touchEventCallback, this));
         p_scrollView->addChild(icon);
         icon->setPosition(x, y);
-        x += 74;
+        x += jiange;
         if (i !=0 && (i % 6) == 0)
         {
-            y -= 74;
+            y -= jiange;
         }
     }
 }
