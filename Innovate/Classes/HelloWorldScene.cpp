@@ -56,7 +56,8 @@ bool HelloWorld::init()
     }
     //初始化世界地图
     auto mapVo = SCENE_MAP_TABLE->getScene_mapVo(mapId);
-    GlobalModel::getInstance()->currMapId = mapId;
+//    GlobalModel::getInstance()->currMapId = mapId;
+    GlobalModel::getInstance()->setCurrMapInfo(mapId);
     initWorldMap(mapVo->map_name);
     initPosition();
     
@@ -109,7 +110,7 @@ void HelloWorld::touch2Move(Ref *obj)
     
     vector<Vec2> *path = new vector<Vec2>();
     path = p_aStar->findPath(playerVec, toVec, path);
-    
+    GlobalModel::getInstance()->findPathMaxSteps = path->size() - 1;
     if (path == nullptr) {
         if (p_buildId != -1)
         {
@@ -264,6 +265,10 @@ void HelloWorld::moveCallBack()
         dieEffect();
         return;
     }
+    if (GlobalModel::getInstance()->stepCount == GlobalModel::getInstance()->findPathMaxSteps && p_buildId != -1)
+    {
+        return;//最后一步打开了建筑 就不要遇到怪物了
+    }
     bool isBattle = BattleController::getInstance()->isEnterBattle();
     if (isBattle) {
         this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updateMapByPlayer));
@@ -384,7 +389,8 @@ void HelloWorld::gotoSeleteMap(Ref *obj)
     LocalDataManager::getInstance()->setLimitCount(GlobalModel::getInstance()->MoveSteps);
     UIComponent::getInstance()->updateLimit(GlobalModel::getInstance()->MoveSteps);
     
-    GlobalModel::getInstance()->currMapId = mapObj->mapId;
+//    GlobalModel::getInstance()->currMapId = mapObj->mapId;
+    GlobalModel::getInstance()->setCurrMapInfo(mapObj->mapId);
     initWorldMap(mapVo->map_name);
     initPosition();
 }

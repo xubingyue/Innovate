@@ -122,6 +122,7 @@ void StageMapView::onTouchEnded(Touch *touch, Event *unused_event)
     {
         Touch2MoveData *tmd = new Touch2MoveData();
         tmd->end = v;
+        tmd->buildId = -1;
         __NotificationCenter::getInstance()->postNotification(TOUCH_MAP_TO_MOVE, tmd);
     } else {
         for (auto obj : *p_mapObjVec)

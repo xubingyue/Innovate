@@ -11,6 +11,8 @@
 #include "../model/PlayerModel.h"
 #include "NotificationType.h"
 #include "BattleResultView.h"
+#include "GlobalModel.h"
+
 
 USING_NS_CC;
 using namespace std;
@@ -39,12 +41,15 @@ BattleController::~BattleController()
 
 bool BattleController::isEnterBattle()
 {
+    GlobalModel::getInstance()->stepCount++;
     srand((int)time(0));
     int x = rand() % 10;
     auto vo = CONFIG_TABLE->getConfigVo(1);
     if (x >= atoi(vo->data.c_str())) {
         return false;
     }
+    //遇到怪物后，步数重置。
+    GlobalModel::getInstance()->stepCount = 0;
     return true;
 }
 
