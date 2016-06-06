@@ -309,10 +309,10 @@ void HelloWorld::movesCallBack()
         //BigCrystalView
         return;
     }
-    bool isBattle = BattleController::getInstance()->isEnterBattle();
-    if (isBattle) {
-        BattleController::getInstance()->showBattle("", Point(0, 0));
-    }
+//    bool isBattle = BattleController::getInstance()->isEnterBattle();
+//    if (isBattle) {
+//        BattleController::getInstance()->showBattle("", Point(0, 0));
+//    }
 }
 
 void HelloWorld::openByBuildId(int buildId)

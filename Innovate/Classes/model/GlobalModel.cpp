@@ -7,6 +7,7 @@
 //
 
 #include "GlobalModel.h"
+#include "PlayerModel.h"
 #include "../core/data/DataManager.h"
 
 static GlobalModel* _instance = nullptr;
@@ -40,7 +41,7 @@ void GlobalModel::setCurrMapInfo(int mapId)
 
 int GlobalModel::getCurrProbability()
 {
-    
+    return (probability + (stepCount - 1)*(probability_grow - (PlayerModel::getInstance()->level - mapMaxLevel)*attenuation))*100;
 }
 
 

@@ -5,7 +5,7 @@
 //  Created by YUEBINBIN on 16/5/19.
 //
 //
-#include <cstdlib>
+#include <cstdlib> //atoi
 #include "BattleController.h"
 #include "../LayerManager.h"
 #include "../model/PlayerModel.h"
@@ -22,6 +22,7 @@ static BattleController* _instance;
 BattleController* BattleController::getInstance()
 {
     if (_instance == nullptr) {
+        srand((int)time(0));
         _instance = new BattleController();
     }
     return _instance;
@@ -42,14 +43,13 @@ BattleController::~BattleController()
 bool BattleController::isEnterBattle()
 {
     GlobalModel::getInstance()->stepCount++;
-    srand((int)time(0));
-    int x = rand() % 10;
-    auto vo = CONFIG_TABLE->getConfigVo(1);
-    if (x >= atoi(vo->data.c_str())) {
+    int x = rand() % 100;
+    if (x >= GlobalModel::getInstance()->getCurrProbability()) {
         return false;
     }
     //遇到怪物后，步数重置。
     GlobalModel::getInstance()->stepCount = 0;
+    srand((int)time(0));
     return true;
 }
 
