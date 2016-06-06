@@ -26,6 +26,10 @@ namespace tables
 		std::string character_in;
 		//场景地图序号
 		int sceneID;
+		//玩家等级下限
+		int minLevel;
+		//玩家等级上限
+		int maxLevel;
 		//副本序号
 		int raidID;
 		//副本怪点
@@ -40,6 +44,8 @@ namespace tables
 			memset(&velocity, 0, sizeof(velocity));
 			memset(&character_in, 0, sizeof(character_in));
 			memset(&sceneID, 0, sizeof(sceneID));
+			memset(&minLevel, 0, sizeof(minLevel));
+			memset(&maxLevel, 0, sizeof(maxLevel));
 			memset(&raidID, 0, sizeof(raidID));
 			memset(&monsterPoint, 0, sizeof(monsterPoint));
 		}

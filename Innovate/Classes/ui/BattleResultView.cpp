@@ -66,7 +66,7 @@ bool BattleResultView::init(int flag, int monsterId)
             break;
     }
     
-    if (flag == BattleResultType::ESCAPE)
+    if (flag == BattleResultType::WIN)
     {
         vector<DropItem> *dropList = new vector<DropItem>();
         getDorpList(monsterId, *dropList);
@@ -91,7 +91,14 @@ bool BattleResultView::init(int flag, int monsterId)
         dropList->clear();
         delete dropList;
     }
-
+    else if (flag == BattleResultType::FAIL)
+    {
+        //战斗失败
+    }
+    else if (flag == BattleResultType::ESCAPE)
+    {
+        //逃跑惩罚
+    }
     return true;
 }
 

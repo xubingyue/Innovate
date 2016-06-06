@@ -178,17 +178,14 @@ void BattleController::updateCallback(ObjType ot, AttackType at, int value, int 
 
 void BattleController::ctrolUpdateTimer(float dt)
 {
-    if(p_battleView == nullptr || p_battleView->isExitBattle) return;
-    if (p_battleMonster != nullptr && p_battleMonster->getParent() != nullptr)
-    {
-        p_battleMonster->update(dt, CC_CALLBACK_4(BattleController::updateCallback, this));
-    }
-    if (isInAttack) return;
+//    if(p_battleView == nullptr || p_battleView->isExitBattle) return;
+//    if (p_battleMonster != nullptr && p_battleMonster->getParent() != nullptr)
+//    {
+    p_battleMonster->update(dt, CC_CALLBACK_4(BattleController::updateCallback, this));
+//    }
+//    if (isInAttack) return;
     
-    if (p_battlePlayer != nullptr && p_battlePlayer->getParent() != nullptr)
-    {
-        p_battlePlayer->update(dt, CC_CALLBACK_4(BattleController::updateCallback, this));
-    }
+    p_battlePlayer->update(dt, CC_CALLBACK_4(BattleController::updateCallback, this));
     
     for (auto elf : p_elfs)
     {

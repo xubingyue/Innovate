@@ -24,8 +24,10 @@ namespace tables
 			r->velocity = atof(carrier.GetField(i, 5, "velocity").c_str());
 			r->character_in = carrier.GetField(i, 6, "character_in", true).c_str();
 			r->sceneID = atoi(carrier.GetField(i, 7, "sceneID").c_str());
-			r->raidID = atoi(carrier.GetField(i, 8, "raidID").c_str());
-			r->monsterPoint = atoi(carrier.GetField(i, 9, "monsterPoint").c_str());
+			r->minLevel = atoi(carrier.GetField(i, 8, "minLevel").c_str());
+			r->maxLevel = atoi(carrier.GetField(i, 9, "maxLevel").c_str());
+			r->raidID = atoi(carrier.GetField(i, 10, "raidID").c_str());
+			r->monsterPoint = atoi(carrier.GetField(i, 11, "monsterPoint").c_str());
 
 			m_data[KEY] = std::move(r);
 		}
