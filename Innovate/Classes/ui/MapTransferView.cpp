@@ -11,9 +11,12 @@
 #include "DataManager.h"
 #include "StringUtil.h"
 #include "LocalDataManager.h"
+#include "NotificationType.h"
 
 USING_NS_CC;
 using namespace cocos2d::ui;
+
+
 
 MapTransferView* MapTransferView::create(int currMapId)
 {
@@ -51,7 +54,7 @@ bool MapTransferView::init(int currMapId)
 
     int farthest = LocalDataManager::getInstance()->getFarthestMap();
     //下一关卡是否开放
-    bool isOpenNew = false;
+    bool isOpenNew = true;
     
     
     for (int i = 1; i <= farthest + 1; i++)
@@ -93,7 +96,12 @@ void MapTransferView::touchEventCallback(Ref *sender, Widget::TouchEventType con
             //新地图未解锁
         } else {
             //goto new map
+            MapObj4Notify *obj = new MapObj4Notify();
+            obj->mapId = StringUtil::stringToInt(txt->getName());
+            obj->mapType = MapType::MapType_SCENE;
+            __NotificationCenter::getInstance()->postNotification(GO_TO_SELETE_MAP, obj);
         }
+        this->removeFromParentAndCleanup(true);
     }
 }
 

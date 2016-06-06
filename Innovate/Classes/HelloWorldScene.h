@@ -39,6 +39,8 @@ private:
     void dieResetPos(Ref *obj);
     //死亡黑屏
     void dieEffect();
+    //切换地图
+    void gotoSeleteMap(Ref *obj);
     
 private:
     //角色

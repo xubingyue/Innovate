@@ -12,6 +12,19 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
+enum class MapType
+{
+    MapType_SCENE,
+    MapType_FUBEN
+};
+
+class MapObj4Notify : public cocos2d::Ref
+{
+public:
+    int mapId;
+    MapType mapType;
+};
+
 class MapTransferView : public cocos2d::Layer
 {
 public:

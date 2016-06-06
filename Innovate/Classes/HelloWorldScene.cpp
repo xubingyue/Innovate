@@ -11,6 +11,7 @@
 #include "ui/BigCrystalView.h"
 #include "GlobalModel.h"
 #include "StringUtil.h"
+#include "MapTransferView.h"
 
 USING_NS_CC;
 using namespace std;
@@ -51,6 +52,7 @@ bool HelloWorld::init()
     if (mapId == 0)
     {
         mapId = 1;
+        LocalDataManager::getInstance()->setCurrMapId(1);
     }
     //初始化世界地图
     auto mapVo = SCENE_MAP_TABLE->getScene_mapVo(mapId);
@@ -67,13 +69,18 @@ bool HelloWorld::init()
 //    int result = MemManager::getInstance()->decode(sto);
 //    
 //    CCLOG("====>>>>>%d", result);
+    //人物寻路
     __NotificationCenter::getInstance()->addObserver(this, CC_CALLFUNCO_SELECTOR
                                                      (HelloWorld::touch2Move),
                                                      TOUCH_MAP_TO_MOVE, nullptr);
-    
+    //死亡重置
     __NotificationCenter::getInstance()->addObserver(this, CC_CALLFUNCO_SELECTOR
                                                      (HelloWorld::dieResetPos),
                                                      BATTLE_DIE_TO_CRYSTAL, nullptr);
+    //切换地图
+    __NotificationCenter::getInstance()->addObserver(this, CC_CALLFUNCO_SELECTOR
+                                                     (HelloWorld::gotoSeleteMap),
+                                                     GO_TO_SELETE_MAP, nullptr);
     return true;
 }
 
@@ -347,6 +354,39 @@ void HelloWorld::dieEffect()
     auto seq = Sequence::create(actions);
     
     la->runAction(seq);
+}
+
+void HelloWorld::gotoSeleteMap(Ref *obj)
+{
+    auto mapObj = static_cast<MapObj4Notify*>(obj);
+    auto mapVo = SCENE_MAP_TABLE->getScene_mapVo(mapObj->mapId);
+    
+    //清理上一张地图资源
+    m_player->removeFromParentAndCleanup(true);
+    p_map->removeFromParentAndCleanup(true);
+    
+    LocalDataManager::getInstance()->setPlayerPoint(Point(-1, -1));
+    p_isNull = true;
+    p_isFinding = false;
+    delete p_aStar;
+    
+    //初始化新地图
+    LocalDataManager::getInstance()->setCurrMapId(mapObj->mapId);
+    int farthest = LocalDataManager::getInstance()->getFarthestMap();
+    if (mapObj->mapId > farthest)
+    {
+        LocalDataManager::getInstance()->setFarthestMap(mapObj->mapId);
+    }
+    
+    auto vo = CONFIG_TABLE->getConfigVo(2);
+    int limit = StringUtil::stringToInt(vo->data);
+    GlobalModel::getInstance()->MoveSteps = limit;
+    LocalDataManager::getInstance()->setLimitCount(GlobalModel::getInstance()->MoveSteps);
+    UIComponent::getInstance()->updateLimit(GlobalModel::getInstance()->MoveSteps);
+    
+    GlobalModel::getInstance()->currMapId = mapObj->mapId;
+    initWorldMap(mapVo->map_name);
+    initPosition();
 }
 
 //void HelloWorld::menuCloseCallback(Ref* pSender)
