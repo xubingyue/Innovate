@@ -100,6 +100,7 @@
 		9DD38CB91D02A64400B84915 /* Raid_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38CB51D02A64400B84915 /* Raid_map.cpp */; };
 		9DD38CBA1D02A64400B84915 /* Scene_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38CB71D02A64400B84915 /* Scene_map.cpp */; };
 		9DD38CBD1D02EE1800B84915 /* MapTransferView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38CBB1D02EE1800B84915 /* MapTransferView.cpp */; };
+		9DD38CC01D0526AB00B84915 /* LanguageUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38CBE1D0526AA00B84915 /* LanguageUtil.cpp */; };
 		9DD5F3ED1CE55FC100F34658 /* staticdata in Resources */ = {isa = PBXBuildFile; fileRef = 9DD5F3EC1CE55FC100F34658 /* staticdata */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -286,6 +287,8 @@
 		9DD38CB81D02A64400B84915 /* Scene_map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scene_map.h; sourceTree = "<group>"; };
 		9DD38CBB1D02EE1800B84915 /* MapTransferView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MapTransferView.cpp; sourceTree = "<group>"; };
 		9DD38CBC1D02EE1800B84915 /* MapTransferView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapTransferView.h; sourceTree = "<group>"; };
+		9DD38CBE1D0526AA00B84915 /* LanguageUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LanguageUtil.cpp; sourceTree = "<group>"; };
+		9DD38CBF1D0526AA00B84915 /* LanguageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageUtil.h; sourceTree = "<group>"; };
 		9DD5F3EC1CE55FC100F34658 /* staticdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = staticdata; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -517,6 +520,8 @@
 				9D70F7E81CECA9B1007461DF /* LocalDataUtil.h */,
 				9DD38C951CFC241A00B84915 /* StringUtil.cpp */,
 				9DD38C961CFC241A00B84915 /* StringUtil.h */,
+				9DD38CBE1D0526AA00B84915 /* LanguageUtil.cpp */,
+				9DD38CBF1D0526AA00B84915 /* LanguageUtil.h */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -854,6 +859,7 @@
 				9D70F8151CF472EB007461DF /* Object.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				9D70F8111CF472EB007461DF /* Config.cpp in Sources */,
+				9DD38CC01D0526AB00B84915 /* LanguageUtil.cpp in Sources */,
 				9DD38CA91D0073BB00B84915 /* Drop_item.cpp in Sources */,
 				9DC407F91CE81A04000E248B /* RoleSprite.cpp in Sources */,
 				9DD38C911CF853F400B84915 /* LocalDataManager.cpp in Sources */,

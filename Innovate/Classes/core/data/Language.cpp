@@ -17,7 +17,8 @@ namespace tables
 		{
 			std::unique_ptr<Language_table> r(new Language_table);
 			r->id = atoi(carrier.GetField(i, 0, "id").c_str());
-			r->data = carrier.GetField(i, 1, "data", true).c_str();
+			r->zh_txt = carrier.GetField(i, 1, "zh_txt", true).c_str();
+			r->en_txt = carrier.GetField(i, 2, "en_txt", true).c_str();
 
 			m_data[KEY] = std::move(r);
 		}

@@ -12,12 +12,15 @@ namespace tables
 	public:
 		//id
 		int id;
-		//数据
-		std::string data;
+		//中文
+		std::string zh_txt;
+		//英文
+		std::string en_txt;
 		Language_table()
 		{
 			memset(&id, 0, sizeof(id));
-			memset(&data, 0, sizeof(data));
+			memset(&zh_txt, 0, sizeof(zh_txt));
+			memset(&en_txt, 0, sizeof(en_txt));
 		}
 	};
 

@@ -12,6 +12,8 @@
 #include "model/PlayerModel.h"
 #include "LocalDataManager.h"
 #include "BagModel.h"
+#include "LanguageUtil.h"
+
 
 USING_NS_CC;
 
@@ -84,7 +86,13 @@ bool LoadingScene::init()
         BagModel::getInstance()->initData(eleItems);
     }
     
+    //初始化语言
+    LanguageUtil::initLanguage(LanguageType::CHINESE);
     
+    //------test---------
+    
+    
+   
     //---------------------------------------------
     this->schedule(schedule_selector(LoadingScene::runOnce), 1, 1, 0);
     return true;
