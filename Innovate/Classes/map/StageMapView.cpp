@@ -15,6 +15,7 @@
 #include "LayerManager.h"
 #include "MapTransferView.h"
 #include "../model/GlobalModel.h"
+#include "../LocalDataManager.h"
 
 StageMapView* StageMapView::create(std::string map)
 {
@@ -108,6 +109,16 @@ void StageMapView::openBuildingById(int buildId)
         auto mtv = MapTransferView::create(GlobalModel::getInstance()->currMapId);
         auto layer = LayerManager::getInstance()->getLayerByTag(LayerType::UI_LAYER);
         layer->addChild(mtv);
+    }
+    else if (vo->type == ObjectType::OT_TRANSFER_FUBEN)
+    {
+        CCLOG("退出副本，当前地图id为：%d", LocalDataManager::getInstance()->getCurrMapId());
+        MapObj4Notify *obj = new MapObj4Notify();
+        obj->mapId = LocalDataManager::getInstance()->getCurrMapId();
+        obj->mapType = MapType::MapType_FUBEN;
+        GlobalModel::getInstance()->currFubenId = -1;
+        LocalDataManager::getInstance()->setCurrFubenId(-1);
+        __NotificationCenter::getInstance()->postNotification(GO_TO_SELETE_MAP, obj);
     }
 }
 

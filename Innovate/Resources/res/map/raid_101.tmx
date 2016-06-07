@@ -20,14 +20,14 @@
   </data>
  </layer>
  <objectgroup name="Key">
-  <object id="2" type="4" gid="16" x="176" y="352"/>
+  <object id="2" type="5" gid="16" x="176" y="352"/>
   <object id="4" name="player" type="1" x="440" y="352" width="88" height="88">
    <ellipse/>
   </object>
-  <object id="9" name="1" type="5" x="792" y="352" width="88" height="88"/>
-  <object id="10" name="2" type="5" x="1232" y="440" width="88" height="88"/>
-  <object id="11" name="3" type="5" x="1584" y="616" width="88" height="88"/>
-  <object id="12" name="4" type="5" x="1672" y="264" width="88" height="88"/>
+  <object id="9" name="1" type="7" x="792" y="352" width="88" height="88"/>
+  <object id="10" name="2" type="7" x="1232" y="440" width="88" height="88"/>
+  <object id="11" name="3" type="7" x="1584" y="616" width="88" height="88"/>
+  <object id="12" name="4" type="7" x="1672" y="264" width="88" height="88"/>
   <object id="13" name="5" type="6" x="1320" y="704" width="88" height="88"/>
   <object id="14" name="6" type="6" x="1144" y="968" width="88" height="88"/>
   <object id="15" name="7" type="6" x="1408" y="176" width="88" height="88"/>

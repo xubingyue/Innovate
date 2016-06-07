@@ -199,7 +199,7 @@ void HelloWorld::initWorldMap(string map)
                 p_map->addToMap(display, ve);
                 display->setPosition(pos);
             }
-            else if (obj->type == ObjectType::OT_CRYSTAL || obj->type == ObjectType::OT_TRANSFER || obj->type == ObjectType::OT_FUBEN)
+            else if (obj->type == ObjectType::OT_CRYSTAL || obj->type == ObjectType::OT_TRANSFER || obj->type == ObjectType::OT_FUBEN || obj->type == ObjectType::OT_TRANSFER_FUBEN)
             {
                 auto ve = p_map->tileCoordForPosition(Point(dict["x"].asFloat(), dict["y"].asFloat()));
                 #pragma mark 特殊处理建筑坐标减1
@@ -216,7 +216,7 @@ void HelloWorld::initWorldMap(string map)
             else if (obj->type == ObjectType::OT_DISPLAY)
             {
                 auto ve = p_map->tileCoordForPosition(Point(dict["x"].asFloat(), dict["y"].asFloat()));
-#pragma mark 特殊处理建筑坐标减1
+                #pragma mark 特殊处理建筑坐标减1
                 ve = ve - Point(0, 1);
                 auto pos = p_map->positionForTileCoord(ve);
                 auto display = MapObjBuilding::create(obj->res);
@@ -227,7 +227,7 @@ void HelloWorld::initWorldMap(string map)
             else if (obj->type == ObjectType::OT_MONSTER)
             {
                 auto ve = p_map->tileCoordForPosition(Point(dict["x"].asFloat(), dict["y"].asFloat()));
-#pragma mark 特殊处理建筑坐标减1
+                #pragma mark 特殊处理建筑坐标减1
                 ve = ve - Point(0, 1);
                 auto pos = p_map->positionForTileCoord(ve);
                 auto vo = MONSTER_TABLE->getMonsterVo(obj->value);
@@ -286,6 +286,8 @@ void HelloWorld::moveCallBack()
             this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updateMapByPlayer));
             this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updatePlayerZorder));
             m_player->stopAllActions();
+            p_isNull = true;
+            p_isFinding = false;
         }
         return;
     }
@@ -389,7 +391,6 @@ void HelloWorld::dieEffect()
     actions.pushBack(out);
     
     auto seq = Sequence::create(actions);
-    
     la->runAction(seq);
 }
 
@@ -406,7 +407,6 @@ void HelloWorld::gotoSeleteMap(Ref *obj)
     {
         LocalDataManager::getInstance()->setPlayerPoint(Point(-1, -1));
     }
-    
     p_isNull = true;
     p_isFinding = false;
     delete p_aStar;
@@ -418,11 +418,9 @@ void HelloWorld::gotoSeleteMap(Ref *obj)
     {
         LocalDataManager::getInstance()->setFarthestMap(mapObj->mapId);
     }
-    
     auto vo = CONFIG_TABLE->getConfigVo(2);
-    int limit = StringUtil::stringToInt(vo->data);
+    int limit = LocalDataManager::getInstance()->getLimitCount();
     GlobalModel::getInstance()->MoveSteps = limit;
-    LocalDataManager::getInstance()->setLimitCount(GlobalModel::getInstance()->MoveSteps);
     UIComponent::getInstance()->updateLimit(GlobalModel::getInstance()->MoveSteps);
     
     GlobalModel::getInstance()->setCurrMapInfo(mapObj->mapId);
