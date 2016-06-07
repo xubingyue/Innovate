@@ -28,10 +28,10 @@
   <object id="10" name="2" type="7" x="1232" y="440" width="88" height="88"/>
   <object id="11" name="3" type="7" x="1584" y="616" width="88" height="88"/>
   <object id="12" name="4" type="7" x="1672" y="264" width="88" height="88"/>
-  <object id="13" name="5" type="6" x="1320" y="704" width="88" height="88"/>
-  <object id="14" name="6" type="6" x="1144" y="968" width="88" height="88"/>
-  <object id="15" name="7" type="6" x="1408" y="176" width="88" height="88"/>
-  <object id="16" name="8" type="6" x="528" y="880" width="88" height="88"/>
+  <object id="13" name="5" type="8" x="1320" y="704" width="88" height="88"/>
+  <object id="14" name="6" type="8" x="1144" y="968" width="88" height="88"/>
+  <object id="15" name="7" type="8" x="1408" y="176" width="88" height="88"/>
+  <object id="16" name="8" type="8" x="528" y="880" width="88" height="88"/>
  </objectgroup>
  <layer name="temple" width="25" height="19">
   <data encoding="base64" compression="zlib">
