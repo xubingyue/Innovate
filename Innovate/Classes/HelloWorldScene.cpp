@@ -60,13 +60,9 @@ bool HelloWorld::init()
     }
     initPosition();
 //    int temp = 99;
-//    
 //    m_int sto = MemManager::getInstance()->encode(temp);
-//    
 //    CCLOG("%d ===== %s", sto.value, sto.md5.c_str());
-//    
 //    int result = MemManager::getInstance()->decode(sto);
-//    
 //    CCLOG("====>>>>>%d", result);
     //人物寻路
     __NotificationCenter::getInstance()->addObserver(this, CC_CALLFUNCO_SELECTOR
@@ -418,7 +414,6 @@ void HelloWorld::gotoSeleteMap(Ref *obj)
     {
         LocalDataManager::getInstance()->setFarthestMap(mapObj->mapId);
     }
-    auto vo = CONFIG_TABLE->getConfigVo(2);
     int limit = LocalDataManager::getInstance()->getLimitCount();
     GlobalModel::getInstance()->MoveSteps = limit;
     UIComponent::getInstance()->updateLimit(GlobalModel::getInstance()->MoveSteps);

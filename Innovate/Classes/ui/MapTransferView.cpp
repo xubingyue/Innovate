@@ -56,12 +56,12 @@ bool MapTransferView::init(int currMapId)
     //下一关卡是否开放
     bool isOpenNew = true;
     
-    
     for (int i = 1; i <= farthest + 1; i++)
     {
         if (i != currMapId)
         {
             auto vo = SCENE_MAP_TABLE->getScene_mapVo(i);
+            if (vo == nullptr) break;
             Text *txt = Text::create(StringUtil::intToString(i) + ":" + vo->map_name, "", 36);
             txt->setName(StringUtil::intToString(i));
             txt->setTouchEnabled(true);
