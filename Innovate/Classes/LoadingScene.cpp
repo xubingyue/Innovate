@@ -68,6 +68,7 @@ bool LoadingScene::init()
         LocalDataManager::getInstance()->setPlayerLv(1);
         LocalDataManager::getInstance()->setFarthestMap(1);
         LocalDataManager::getInstance()->setFirstOpen(true);
+        LocalDataManager::getInstance()->setCurrFubenId(-1);
     } else {
         int level = LocalDataManager::getInstance()->getPlayerLv();
         PlayerModel::getInstance()->init(level, player->hp, player->attack, player->velocity,

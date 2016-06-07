@@ -34,6 +34,7 @@ enum ObjectType {
     OT_DISPLAY = 3,     //非功能性显示（有遮挡关系的）
     OT_TRANSFER = 4,    //传送点
     OT_FUBEN = 5,       //副本
+    OT_MONSTER = 6      //副本内的明雷怪物
 };
 
 //点击地图移动时传递的对象（TOUCH_MAP_TO_MOVE）
@@ -65,8 +66,14 @@ public:
     void addToMap(Node *child, Point p);
     //将需要碰撞的对象add进集合
     void addObjToVec(Node *child);
+    //将明雷怪物添加到集合中
+    void addMonsterOjbToVec(Node *child);
     //打开地图上的建筑
     void openBuildingById(int buildId);
+    //判断是否遇到怪物并返回怪物id
+    int getMonsterByCoord(Point p);
+    
+    void onExit();
     
 private:
     //touch
@@ -76,7 +83,10 @@ private:
     
 private:
     TMXTiledMap* p_tmxMap;
+    //建筑碰撞集合
     Vector<Node*> *p_mapObjVec;
+    //明雷怪物碰撞集合
+    Vector<Node*> *p_monsterObjVec;
 };
 
 #endif /* StageMapView_hpp */

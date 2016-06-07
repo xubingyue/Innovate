@@ -9,6 +9,7 @@
 #include "StageMapView.h"
 #include "../NotificationType.h"
 #include "MapObjBuilding.h"
+#include "MapObjMonster.h"
 #include "../core/data/DataManager.h"
 #include "BigCrystalView.h"
 #include "LayerManager.h"
@@ -35,6 +36,7 @@ bool StageMapView::init(std::string str)
     this->addChild(p_tmxMap, 0);
     
     p_mapObjVec = new Vector<Node*>();
+    p_monsterObjVec = new Vector<Node*>();
     
     auto listener = EventListenerTouchOneByOne::create();
     listener->onTouchBegan = CC_CALLBACK_2(StageMapView::onTouchBegan, this);
@@ -80,6 +82,11 @@ void  StageMapView::addObjToVec(Node *child)
     this->p_mapObjVec->pushBack(child);
 }
 
+void StageMapView::addMonsterOjbToVec(Node *child)
+{
+    this->p_monsterObjVec->pushBack(child);
+}
+
 void StageMapView::openBuildingById(int buildId)
 {
     auto vo = OBJECT_TABLE->getObjectVo(buildId);
@@ -92,6 +99,9 @@ void StageMapView::openBuildingById(int buildId)
     else if (vo->type == ObjectType::OT_FUBEN)
     {
         CCLOG("打开副本，副本id为：%d", vo->value);
+        NotifiyRef *ref = new NotifiyRef();
+        ref->nid = vo->value;
+        __NotificationCenter::getInstance()->postNotification(OPEN_AND_INTO_FUBEN, ref);
     }
     else if (vo->type == ObjectType::OT_TRANSFER)
     {
@@ -99,6 +109,19 @@ void StageMapView::openBuildingById(int buildId)
         auto layer = LayerManager::getInstance()->getLayerByTag(LayerType::UI_LAYER);
         layer->addChild(mtv);
     }
+}
+
+int StageMapView::getMonsterByCoord(Point p)
+{
+    for (auto monster : *p_monsterObjVec)
+    {
+        auto m = static_cast<MapObjMonster*>(monster);
+        if (m->corrd == p)
+        {
+            return m->buildId;
+        }
+    }
+    return 0;
 }
 
 bool StageMapView::onTouchBegan(Touch *touch, Event *unused_event)
@@ -141,4 +164,13 @@ void StageMapView::onTouchEnded(Touch *touch, Event *unused_event)
             }
         }
     }
+}
+
+void StageMapView::onExit()
+{
+    Node::onExit();
+    p_mapObjVec->clear();
+    p_monsterObjVec->clear();
+    delete p_mapObjVec;
+    delete p_monsterObjVec;
 }

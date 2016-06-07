@@ -39,6 +39,8 @@ public:
     float attenuation;
     //当此寻路的总步数
     int findPathMaxSteps;
+    //当前是否在副本里
+    int currFubenId = -1;
 };
 
 #endif /* GlobalModel_hpp */

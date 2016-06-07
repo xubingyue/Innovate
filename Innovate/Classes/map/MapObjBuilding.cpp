@@ -61,12 +61,12 @@ void MapObjBuilding::initData(Point p, TMXLayer *land)
     p_aroundPointVec = new vector<Point>();
     for (Point v : *p_buildVec)
     {
-//        Point up = Point(v.x, v.y - 1);
-//        if (find(p_buildVec->begin(), p_buildVec->end(), up) == p_buildVec->end()
-//            && land->getTileAt(up) != nullptr)
-//        {
-//            p_aroundPointVec->push_back(up);
-//        }
+        Point up = Point(v.x, v.y - 1);
+        if (find(p_buildVec->begin(), p_buildVec->end(), up) == p_buildVec->end()
+            && land->getTileAt(up) != nullptr)
+        {
+            p_aroundPointVec->push_back(up);
+        }
         
         Point down = Point(v.x, v.y + 1);
         if (find(p_buildVec->begin(), p_buildVec->end(), down) == p_buildVec->end()

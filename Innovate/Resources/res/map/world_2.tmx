@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="30" tilewidth="88" tileheight="88" nextobjectid="12">
+ <tileset firstgid="1" name="ditu_dongxue88" tilewidth="88" tileheight="88">
+  <image source="ditu_dongxue88.png" width="264" height="440"/>
+ </tileset>
+ <tileset firstgid="16" name="transfer" tilewidth="176" tileheight="176">
+  <image source="transfer.png" width="176" height="176"/>
+ </tileset>
+ <tileset firstgid="17" name="walk" tilewidth="88" tileheight="88">
+  <image source="walk.png" width="88" height="88"/>
+ </tileset>
+ <tileset firstgid="18" name="crystal" tilewidth="106" tileheight="189">
+  <image source="crystal.png" width="106" height="189"/>
+ </tileset>
+ <tileset firstgid="19" name="fuben" tilewidth="119" tileheight="236">
+  <image source="fuben.png" width="119" height="236"/>
+ </tileset>
+ <layer name="Road" width="40" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzllGEKxTAIg3eF3v+y73+pJjHpYLxAYVtr/Ki65/mu1raq/S5mHb6nudCaxKX4HF7EnWBDORy+CWMX7/Ax/i6jWmfkkWA7ebNxqAYOn5LzLb7p3E75EvOhsu7nkf++p/JV+6fzjFB/qx5pvoqRrbvSO4qvyniL7zZj1xts3EQpPiZHgo85p+Z27jDNN+kBls3hW+R75109qx4Vnzp3SqzTQwk25IXk/ic6NsSn+qJcTK+69ez4JjmUvamceWL5XDF8N++I0aTOb7G5jP+iH3gMIiM=
+  </data>
+ </layer>
+ <layer name="BG" width="40" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzVV9mOwzAIJOs4///JfQnqdHY47HQfFgmp9YHHwGBi9j/lJ1A1X+3L1n8L25FgVhhQx63fwMi2p7CNZ6q5eWt1r118fu68x677HNcMG+dAtGYXI/rnuMccV3YO5oHahz59gg9tVHfvYM14NW1d2A/+G7GeQhUPInxDjK9gYxsqvtG+iBOMb9gzfHjGsDz/fD7K0zO5y4pg7uE5F2GJ8GFeDfgd+WCHz4zP7Uf8w1hN+6xJKv87vMqEMVT2FQdW7CP/OrzJ7qIwZbzZwVjZiviVcZM5/gRjFY/Iz8gNrHv81h7Wl2m/89rxjWBPVbdOtcneNXrFh9m5V2PNpLkRrM3GdvF1uKnmOvii2FTYqvxjLkXYq/9VbPg/3kvFTuHjM6JauhMXhYvrvBLmEIqqB0qr90y90f4+DrEfpaqPs6ERtqzH9XGVFyjYB1S5EsVUYaj6b3W3SDAf2Ca/kwep2ac/1Bruc1Z7aP5e4++Hy969Ceck99tZ37jT27twnKM3S/mF+9pOnu6I+u5VscrwVfn+VBRfuvoNH3WkU1P+In4uLwHDBlw=
+  </data>
+ </layer>
+ <objectgroup name="Key">
+  <object id="2" type="4" gid="16" x="2464" y="2024"/>
+  <object id="4" name="player" type="1" x="1320" y="1584" width="88" height="88">
+   <ellipse/>
+  </object>
+  <object id="6" type="2" gid="18" x="1265.33" y="1138.67"/>
+  <object id="8" name="201" type="3" gid="19" x="822.303" y="643.273"/>
+  <object id="9" name="202" type="3" gid="19" x="2930.3" y="1012.12"/>
+  <object id="10" name="203" type="3" gid="19" x="1609.09" y="2345.45"/>
+  <object id="11" name="204" type="3" gid="19" x="2051.52" y="493.939"/>
+ </objectgroup>
+ <layer name="temple" width="40" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20ND6AAAAAA4NcAEsAAAQ==
+  </data>
+ </layer>
+ <layer name="decoration" width="40" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzVl+sKwyAMhfvP0ULf/3GHsEAI52hiE7d9UFpsNLea2OPAXJMx9H4n92RMP++0Fek6J3OQL80xbwWkS6jQtwNrN8rB63NvZE42DTyLDaMcaLkKkN+V+jTZ+1B8ses2Mj4D1QwdL5tHK6vRMjbfJxn3gOY2JDjQH+HbdZ7Rfe4xtr5F7J3F7QlsT3lzsaMGjHRE836R9ar8iPYxkbf2ZPSBvuZKv0bfnyde1XvS48elLsuTejPT6eVWVxY9N6zniM4qmO9sHNkishV1j/keiUll/DLQ8RvF8Dxy6go7bzBYL4zsm+j/S9RPvf5t7sIothHZFdg3iM7zXlidzGC1v2ofbJ2sPBf9IuhMYM/9vxKTf/1Hr+INTnUFJw==
+  </data>
+ </layer>
+</map>

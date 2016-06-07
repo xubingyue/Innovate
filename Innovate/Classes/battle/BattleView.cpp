@@ -18,7 +18,7 @@
 USING_NS_CC;
 using namespace cocos2d::ui;
 
-BattleView* BattleView::create(string mapId, Vec2 point)
+BattleView* BattleView::create(int mapId, Vec2 point)
 {
     BattleView * ret = new (std::nothrow) BattleView();
     if (ret && ret->init(mapId, point))
@@ -43,7 +43,7 @@ BattleView::~BattleView()
     
 }
 
-bool BattleView::init(string mapId, Vec2 point)
+bool BattleView::init(int mapId, Vec2 point)
 {
     if (!Layer::init())
     {

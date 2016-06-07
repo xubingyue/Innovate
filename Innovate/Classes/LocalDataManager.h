@@ -33,6 +33,10 @@ public:
     int getFarthestMap();
     void setFarthestMap(int mapId);
     
+    //是否在副本内
+    int getCurrFubenId();
+    void setCurrFubenId(int fubenId);
+    
     //当前地图
     int getCurrMapId();
     void setCurrMapId(int mapId);
@@ -44,6 +48,10 @@ public:
     //玩家地图位置
     Point getPlayerPoint();
     void setPlayerPoint(Point p);
+    
+    //玩家副本内地图位置
+    Point getPlayerPoint4Fuben();
+    void setPlayerPoint4Fuben(Point p);
     
     //能量步数
     int getLimitCount();

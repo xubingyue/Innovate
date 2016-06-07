@@ -101,6 +101,7 @@
 		9DD38CBA1D02A64400B84915 /* Scene_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38CB71D02A64400B84915 /* Scene_map.cpp */; };
 		9DD38CBD1D02EE1800B84915 /* MapTransferView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38CBB1D02EE1800B84915 /* MapTransferView.cpp */; };
 		9DD38CC01D0526AB00B84915 /* LanguageUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38CBE1D0526AA00B84915 /* LanguageUtil.cpp */; };
+		9DD38CC31D06A42400B84915 /* MapObjMonster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38CC11D06A42300B84915 /* MapObjMonster.cpp */; };
 		9DD5F3ED1CE55FC100F34658 /* staticdata in Resources */ = {isa = PBXBuildFile; fileRef = 9DD5F3EC1CE55FC100F34658 /* staticdata */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -289,6 +290,8 @@
 		9DD38CBC1D02EE1800B84915 /* MapTransferView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapTransferView.h; sourceTree = "<group>"; };
 		9DD38CBE1D0526AA00B84915 /* LanguageUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LanguageUtil.cpp; sourceTree = "<group>"; };
 		9DD38CBF1D0526AA00B84915 /* LanguageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageUtil.h; sourceTree = "<group>"; };
+		9DD38CC11D06A42300B84915 /* MapObjMonster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MapObjMonster.cpp; sourceTree = "<group>"; };
+		9DD38CC21D06A42300B84915 /* MapObjMonster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapObjMonster.h; sourceTree = "<group>"; };
 		9DD5F3EC1CE55FC100F34658 /* staticdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = staticdata; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -537,6 +540,8 @@
 				9D70F81D1CF5A731007461DF /* MapObjDisplay.h */,
 				9D70F81F1CF5B5FA007461DF /* MapObjBuilding.cpp */,
 				9D70F8201CF5B5FA007461DF /* MapObjBuilding.h */,
+				9DD38CC11D06A42300B84915 /* MapObjMonster.cpp */,
+				9DD38CC21D06A42300B84915 /* MapObjMonster.h */,
 			);
 			path = map;
 			sourceTree = "<group>";
@@ -848,6 +853,7 @@
 				9DD38C971CFC241A00B84915 /* StringUtil.cpp in Sources */,
 				9D70F8211CF5B5FA007461DF /* MapObjBuilding.cpp in Sources */,
 				9D70F7F91CEF1FEC007461DF /* BattleObjBase.cpp in Sources */,
+				9DD38CC31D06A42400B84915 /* MapObjMonster.cpp in Sources */,
 				9D70F8021CF29ED5007461DF /* BattleElf.cpp in Sources */,
 				9DD38C8E1CF832A200B84915 /* BigCrystalView.cpp in Sources */,
 				9D70F8131CF472EB007461DF /* Language.cpp in Sources */,

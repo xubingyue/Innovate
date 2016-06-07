@@ -41,6 +41,8 @@ private:
     void dieEffect();
     //切换地图
     void gotoSeleteMap(Ref *obj);
+    //打开并且进入副本
+    void openAndGotoFuben(Ref *obj);
     
 private:
     //角色
@@ -64,6 +66,8 @@ private:
     int p_buildId;
     //角色初始位置
     Point p_initPos;
+    //副本内角色初始位置
+    Point p_initPosInFuben;
     
 };
 

@@ -21,12 +21,12 @@ USING_NS_CC;
 class BattleView : public cocos2d::Layer
 {
 public:
-    static BattleView* create(string mapId, Vec2 point);
+    static BattleView* create(int mapId, Vec2 point);
     
     BattleView();
     ~BattleView();
     
-    bool init(string mapId, Vec2 point);
+    bool init(int mapId, Vec2 point);
     
     virtual void onEnter() override;
     virtual void onExit() override;

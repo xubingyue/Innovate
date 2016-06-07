@@ -1,6 +1,8 @@
 id,name,type,value,res,
 1,asdf,1,0,res/grossinis.png,
 2,dfs,2,0,res/building/crystal.png,
-3,hgfgs,5,1,res/building/fuben.png,
+3,hgfgs,5,101,res/building/fuben.png,
 4,ewrw,4,0,res/building/transfer.png,
+5,hgfgs,6,1,res/building/fuben.png,
+6,hgfgs,6,2,res/building/fuben.png,
 

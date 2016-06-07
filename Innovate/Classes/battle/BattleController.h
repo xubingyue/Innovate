@@ -29,7 +29,7 @@ public:
     bool isEnterBattle();
     
     //打开战斗界面
-    void showBattle(std::string mapId, cocos2d::Vec2 point);
+    void showBattle(int mapId, cocos2d::Vec2 point, int monsterId = 0);
     //战斗时间轴
     void ctrolUpdateTimer(float dt);
     //怪物闪影攻击
@@ -52,7 +52,7 @@ public:
 
 private:
     //初始化战斗角色
-    void initPosition(std::string mapId, Vec2 point);
+    void initPosition(int mapId, Vec2 point, int monsterId);
     //时间轴回调
     void updateCallback(ObjType ot, AttackType at, int value, int index = 0);
     //怪物攻击结束
@@ -62,7 +62,9 @@ private:
     //玩家攻击结束
     void playerAtkOver();
     //根据场景位置获取怪物
-    MonsterModel getMonsterByIdx(string mapId, Point p);
+    MonsterModel getMonsterByIdx(int mapId, Point p);
+    //根据怪物id获取怪物信息
+    MonsterModel getMonsterByIdx(int mId);
     
 private:
     //战斗场景

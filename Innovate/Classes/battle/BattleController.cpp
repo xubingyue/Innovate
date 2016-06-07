@@ -53,17 +53,23 @@ bool BattleController::isEnterBattle()
     return true;
 }
 
-void BattleController::showBattle(string mapId, Vec2 point)
+void BattleController::showBattle(int mapId, Vec2 point, int monsterId)
 {
     p_battleView = BattleView::create(mapId, point);
     auto battleLayer = LayerManager::getInstance()->getLayerByTag(LayerType::BATTLE_LAYER);
     battleLayer->addChild(p_battleView);
-    initPosition(mapId, point);
+    initPosition(mapId, point, monsterId);
 }
 
-void BattleController::initPosition(string mapId, Vec2 point)
+void BattleController::initPosition(int mapId, Vec2 point, int monsterId)
 {
-    auto monster = getMonsterByIdx(mapId, point);
+    MonsterModel monster;
+    if (GlobalModel::getInstance()->currFubenId != -1)
+    {
+        monster = getMonsterByIdx(monsterId);
+    } else {
+         monster = getMonsterByIdx(mapId, point);
+    }
     p_monsterId = monster.monsterId;
     p_monsterHp = monster.getHp();
     p_battleMonster = BattleMonster::create(p_monsterHp, monster.getAttack(), monster.getVelocity(), monster.res);
@@ -269,7 +275,7 @@ void BattleController::playerAtkOver()
     p_battleView->effectNode_1->removeAllChildren();
 }
 
-MonsterModel BattleController::getMonsterByIdx(string mapId, Point p)
+MonsterModel BattleController::getMonsterByIdx(int mapId, Point p)
 {
     MonsterModel monster;
     
@@ -283,4 +289,18 @@ MonsterModel BattleController::getMonsterByIdx(string mapId, Point p)
     
     return monster;
 }
+
+MonsterModel BattleController::getMonsterByIdx(int mid)
+{
+    MonsterModel monster;
+    auto vo = MONSTER_TABLE->getMonsterVo(mid);
+    monster.monsterId = 1;
+    monster.setHp(vo->hp);
+    monster.setName(vo->name);
+    monster.setAttack(vo->attack);
+    monster.setVelocity(vo->velocity);
+    monster.res = vo->character_in;
+    return monster;
+}
+
 

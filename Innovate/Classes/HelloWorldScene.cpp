@@ -7,6 +7,7 @@
 #include "BattleController.h"
 #include "MapObjDisplay.h"
 #include "MapObjBuilding.h"
+#include "MapObjMonster.h"
 #include "UIComponent.h"
 #include "ui/BigCrystalView.h"
 #include "GlobalModel.h"
@@ -18,24 +19,14 @@ using namespace std;
 
 Scene* HelloWorld::createScene()
 {
-    // 'scene' is an autorelease object
     auto scene = Scene::create();
-    
-    // 'layer' is an autorelease object
     auto layer = HelloWorld::create();
-
-    // add layer as a child to scene
     scene->addChild(layer);
-
-    // return the scene
     return scene;
 }
 
-// on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
-    //////////////////////////////
-    // 1. super init first
     if ( !Layer::init() )
     {
         return false;
@@ -47,20 +38,27 @@ bool HelloWorld::init()
     LayerManager::getInstance()->initLayer(this);
     
     UIComponent::getInstance(LayerManager::getInstance()->getLayerByTag(LayerType::UI_LAYER));
-
-    int mapId = LocalDataManager::getInstance()->getCurrMapId();
-    if (mapId == 0)
-    {
-        mapId = 1;
-        LocalDataManager::getInstance()->setCurrMapId(1);
-    }
-    //初始化世界地图
-    auto mapVo = SCENE_MAP_TABLE->getScene_mapVo(mapId);
-//    GlobalModel::getInstance()->currMapId = mapId;
-    GlobalModel::getInstance()->setCurrMapInfo(mapId);
-    initWorldMap(mapVo->map_name);
-    initPosition();
     
+    int fubenId = LocalDataManager::getInstance()->getCurrFubenId();
+    
+    if (fubenId == -1)
+    {
+        int mapId = LocalDataManager::getInstance()->getCurrMapId();
+        if (mapId == 0)
+        {
+            mapId = 1;
+            LocalDataManager::getInstance()->setCurrMapId(1);
+        }
+        //初始化世界地图
+        auto mapVo = SCENE_MAP_TABLE->getScene_mapVo(mapId);
+        GlobalModel::getInstance()->setCurrMapInfo(mapId);
+        initWorldMap(mapVo->map_name);
+    } else {
+        auto raidVo = RAID_MAP_TABLE->getRaid_mapVo(fubenId);
+        GlobalModel::getInstance()->currFubenId = fubenId;
+        initWorldMap(raidVo->map_name);
+    }
+    initPosition();
 //    int temp = 99;
 //    
 //    m_int sto = MemManager::getInstance()->encode(temp);
@@ -82,6 +80,10 @@ bool HelloWorld::init()
     __NotificationCenter::getInstance()->addObserver(this, CC_CALLFUNCO_SELECTOR
                                                      (HelloWorld::gotoSeleteMap),
                                                      GO_TO_SELETE_MAP, nullptr);
+    //打开并进入副本
+    __NotificationCenter::getInstance()->addObserver(this, CC_CALLFUNCO_SELECTOR
+                                                     (HelloWorld::openAndGotoFuben),
+                                                     OPEN_AND_INTO_FUBEN, nullptr);
     return true;
 }
 
@@ -110,20 +112,17 @@ void HelloWorld::touch2Move(Ref *obj)
     
     vector<Vec2> *path = new vector<Vec2>();
     path = p_aStar->findPath(playerVec, toVec, path);
-    GlobalModel::getInstance()->findPathMaxSteps = path->size() - 1;
+    
     if (path == nullptr) {
+        GlobalModel::getInstance()->findPathMaxSteps = 0;
         if (p_buildId != -1)
         {
             openByBuildId(p_buildId);
         }
         return;
+    } else {
+        GlobalModel::getInstance()->findPathMaxSteps = path->size() - 1;
     }
-    //设置目标点颜色
-    if (p_sp) p_sp->setColor(p_color);
-    auto land = p_map->getMap()->getLayer(ROAD_LAYER);
-    p_sp = land->getTileAt(toVec);
-    p_color = p_sp->getColor();
-    p_sp->setColor(Color3B::GREEN);
     //进入寻路状态
     p_isFinding = true;
     
@@ -154,7 +153,6 @@ void HelloWorld::initWorldMap(string map)
 {
     //初始化地图
     p_map = StageMapView::create("res/map/" + map + ".tmx");
-//    p_map->setScale(1.5);
     auto mapLayer = LayerManager::getInstance()->getLayerByTag(LayerType::MAP_LAYER);
     mapLayer->addChild(p_map);
     auto land = p_map->getMap()->getLayer(ROAD_LAYER);
@@ -168,8 +166,15 @@ void HelloWorld::initWorldMap(string map)
         if (id == 1)//1:固定是玩家
         {
             auto ve = p_map->tileCoordForPosition(Point(dict["x"].asFloat(), dict["y"].asFloat()));
-            Point pos = LocalDataManager::getInstance()->getPlayerPoint();
-//            pos = p_map->positionForTileCoord(ve);
+            Point pos;
+
+            if (GlobalModel::getInstance()->currFubenId == -1)
+            {
+                pos = LocalDataManager::getInstance()->getPlayerPoint();
+            } else {
+                pos = LocalDataManager::getInstance()->getPlayerPoint4Fuben();
+            }
+            
             if (pos == Point(-1, -1))
             {
                 pos = p_map->positionForTileCoord(ve);
@@ -219,9 +224,24 @@ void HelloWorld::initWorldMap(string map)
                 p_map->addToMap(display, ve);
                 display->setPosition(pos - Point(TILED_SIZE/2, TILED_SIZE/2));
             }
+            else if (obj->type == ObjectType::OT_MONSTER)
+            {
+                auto ve = p_map->tileCoordForPosition(Point(dict["x"].asFloat(), dict["y"].asFloat()));
+#pragma mark 特殊处理建筑坐标减1
+                ve = ve - Point(0, 1);
+                auto pos = p_map->positionForTileCoord(ve);
+                auto vo = MONSTER_TABLE->getMonsterVo(obj->value);
+                auto monster = MapObjMonster::create(vo->character_in);
+                monster->setAnchorPoint(Point(0, 0));
+                monster->setScale(0.5, 0.5);
+                p_map->addToMap(monster, ve);
+                p_map->addMonsterOjbToVec(monster);
+                monster->setPosition(pos - Point(TILED_SIZE/2, TILED_SIZE/2));
+                monster->corrd = ve;
+                monster->buildId = id;
+            }
         }
     }
-    
     p_aStar = new AStarFindPath(land, p_map->getMap()->getMapSize().width, p_map->getMap()->getMapSize().height);
 }
 
@@ -254,6 +274,21 @@ void HelloWorld::updatePlayerZorder(float dt)
 
 void HelloWorld::moveCallBack()
 {
+    if (GlobalModel::getInstance()->currFubenId != -1)
+    {
+        //碰撞是否遇到怪
+        auto pos = m_player->getPosition();
+        auto ve = p_map->tileCoordForPosition(pos);
+        int monsterId = p_map->getMonsterByCoord(ve);
+        if (monsterId != 0)
+        {
+            BattleController::getInstance()->showBattle(GlobalModel::getInstance()->currFubenId, ve, monsterId);
+            this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updateMapByPlayer));
+            this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updatePlayerZorder));
+            m_player->stopAllActions();
+        }
+        return;
+    }
     GlobalModel::getInstance()->MoveSteps--;
     UIComponent::getInstance()->updateLimit(GlobalModel::getInstance()->MoveSteps);
     if (GlobalModel::getInstance()->MoveSteps <= 0)
@@ -261,7 +296,6 @@ void HelloWorld::moveCallBack()
         this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updateMapByPlayer));
         this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updatePlayerZorder));
         m_player->stopAllActions();
-//        resetPlayerPos();
         dieEffect();
         return;
     }
@@ -276,8 +310,7 @@ void HelloWorld::moveCallBack()
         m_player->stopAllActions();
         p_isNull = true;
         p_isFinding = false;
-        p_sp->setColor(p_color);
-        BattleController::getInstance()->showBattle("", Point(0, 0));
+        BattleController::getInstance()->showBattle(GlobalModel::getInstance()->currMapId, Point(0, 0));
         return;
     }
     if (!p_isNull) {
@@ -292,27 +325,26 @@ void HelloWorld::moveCallBack()
 
 void HelloWorld::movesCallBack()
 {
-    //保存数据
-    auto tmpPos = p_map->tileCoordForPosition(m_player->getPosition());
-    LocalDataManager::getInstance()->setPlayerPoint(tmpPos);
-    LocalDataManager::getInstance()->setLimitCount(GlobalModel::getInstance()->MoveSteps);
-    
+    if (GlobalModel::getInstance()->currFubenId == -1)
+    {
+        //保存数据
+        auto tmpPos = p_map->tileCoordForPosition(m_player->getPosition());
+        LocalDataManager::getInstance()->setPlayerPoint(tmpPos);
+        LocalDataManager::getInstance()->setLimitCount(GlobalModel::getInstance()->MoveSteps);
+    } else {
+        //保存数据
+        auto tmpPos = p_map->tileCoordForPosition(m_player->getPosition());
+        LocalDataManager::getInstance()->setPlayerPoint4Fuben(tmpPos);
+    }
     this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updateMapByPlayer));
     this->unschedule(CC_SCHEDULE_SELECTOR(HelloWorld::updatePlayerZorder));
-    
     //寻路结束，设置状态为非寻路状态。
     p_isFinding = false;
-    p_sp->setColor(p_color);
     if (p_buildId != -1)
     {
         openByBuildId(p_buildId);
-        //BigCrystalView
         return;
     }
-//    bool isBattle = BattleController::getInstance()->isEnterBattle();
-//    if (isBattle) {
-//        BattleController::getInstance()->showBattle("", Point(0, 0));
-//    }
 }
 
 void HelloWorld::openByBuildId(int buildId)
@@ -370,7 +402,11 @@ void HelloWorld::gotoSeleteMap(Ref *obj)
     m_player->removeFromParentAndCleanup(true);
     p_map->removeFromParentAndCleanup(true);
     
-    LocalDataManager::getInstance()->setPlayerPoint(Point(-1, -1));
+    if (mapObj->mapType == MapType::MapType_SCENE)
+    {
+        LocalDataManager::getInstance()->setPlayerPoint(Point(-1, -1));
+    }
+    
     p_isNull = true;
     p_isFinding = false;
     delete p_aStar;
@@ -389,12 +425,36 @@ void HelloWorld::gotoSeleteMap(Ref *obj)
     LocalDataManager::getInstance()->setLimitCount(GlobalModel::getInstance()->MoveSteps);
     UIComponent::getInstance()->updateLimit(GlobalModel::getInstance()->MoveSteps);
     
-//    GlobalModel::getInstance()->currMapId = mapObj->mapId;
     GlobalModel::getInstance()->setCurrMapInfo(mapObj->mapId);
     initWorldMap(mapVo->map_name);
     initPosition();
 }
 
+void HelloWorld::openAndGotoFuben(Ref *obj)
+{
+    auto notify = static_cast<NotifiyRef*>(obj);
+    //保存人物在当前地图上的数据
+    auto tmpPos = p_map->tileCoordForPosition(m_player->getPosition());
+    LocalDataManager::getInstance()->setPlayerPoint(tmpPos);
+    LocalDataManager::getInstance()->setLimitCount(GlobalModel::getInstance()->MoveSteps);
+
+    //清理上一张地图资源
+    m_player->removeFromParentAndCleanup(true);
+    p_map->removeFromParentAndCleanup(true);
+ 
+    p_isNull = true;
+    p_isFinding = false;
+    delete p_aStar;
+    
+    //准备打开副本地图
+    auto vo = RAID_MAP_TABLE->getRaid_mapVo(notify->nid);
+    GlobalModel::getInstance()->currFubenId = notify->nid;
+    LocalDataManager::getInstance()->setCurrFubenId(notify->nid);
+    initWorldMap(vo->map_name);
+    initPosition();
+    
+    delete obj;
+}
 //void HelloWorld::menuCloseCallback(Ref* pSender)
 //{
 //    Director::getInstance()->end();
