@@ -75,13 +75,14 @@ public:
     //判断是否遇到怪物并返回怪物id
     int getMonsterByCoord(Point p);
     
-    void onExit();
+    void onExit() override;
     
 private:
     //touch
     bool onTouchBegan(Touch *touch, Event *unused_event);
     void onTouchMoved(Touch *touch, Event *unused_event);
     void onTouchEnded(Touch *touch, Event *unused_event);
+
     
 private:
     TMXTiledMap* p_tmxMap;

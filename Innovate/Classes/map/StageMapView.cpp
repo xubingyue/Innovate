@@ -17,6 +17,7 @@
 #include "../model/GlobalModel.h"
 #include "../LocalDataManager.h"
 
+
 StageMapView* StageMapView::create(std::string map)
 {
     StageMapView * ret = new (std::nothrow) StageMapView();
@@ -100,6 +101,7 @@ void StageMapView::openBuildingById(int buildId)
     else if (vo->type == ObjectType::OT_FUBEN)
     {
         CCLOG("打开副本，副本id为：%d", vo->value);
+        
         NotifiyRef *ref = new NotifiyRef();
         ref->nid = vo->value;
         __NotificationCenter::getInstance()->postNotification(OPEN_AND_INTO_FUBEN, ref);
