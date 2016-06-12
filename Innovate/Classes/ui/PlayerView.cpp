@@ -9,7 +9,7 @@
 #include "PlayerView.h"
 #include "cocostudio/CocoStudio.h"
 #include "../model/PlayerModel.h"
-#include "StringUtil.h"
+#include "../core/utils/StringUtil.h"
 
 USING_NS_CC;
 using namespace cocos2d::ui;

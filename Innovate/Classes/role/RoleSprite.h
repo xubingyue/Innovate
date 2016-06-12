@@ -9,7 +9,7 @@
 #ifndef RoleSprite_hpp
 #define RoleSprite_hpp
 
-#include "MapObjBase.h"
+#include "../map/MapObjBase.h"
 
 using namespace cocos2d;
 

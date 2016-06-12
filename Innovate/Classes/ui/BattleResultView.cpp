@@ -8,11 +8,11 @@
 
 #include "BattleResultView.h"
 #include "cocostudio/CocoStudio.h"
-#include "BattleController.h"
-#include "DataManager.h"
-#include "StringUtil.h"
+#include "../battle/BattleController.h"
+#include "../core/data/DataManager.h"
+#include "../core/utils/StringUtil.h"
 #include "../utils/IconUtil.h"
-#include "BagModel.h"
+#include "../model/BagModel.h"
 
 USING_NS_CC;
 using namespace cocos2d::ui;

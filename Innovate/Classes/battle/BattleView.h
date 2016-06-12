@@ -11,8 +11,8 @@
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
-#include "BattleObjBase.h"
-#include "BattleElf.h"
+#include "../battle/BattleObj/BattleObjBase.h"
+#include "../battle/BattleObj/BattleElf.h"
 
 using namespace std;
 USING_NS_CC;

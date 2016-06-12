@@ -7,10 +7,10 @@
 //
 
 #include "IconUtil.h"
-#include "DataManager.h"
+#include "../core/data/DataManager.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
-#include "StringUtil.h"
+#include "../core/utils/StringUtil.h"
 
 USING_NS_CC;
 using namespace cocos2d::ui;

@@ -8,8 +8,8 @@
 
 #include "MapTransferView.h"
 #include "cocostudio/CocoStudio.h"
-#include "DataManager.h"
-#include "StringUtil.h"
+#include "../core/data/DataManager.h"
+#include "../core/utils/StringUtil.h"
 #include "LocalDataManager.h"
 #include "NotificationType.h"
 

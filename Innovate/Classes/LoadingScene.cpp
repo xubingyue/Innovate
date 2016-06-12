@@ -7,12 +7,12 @@
 //
 
 #include "LoadingScene.h"
-#include "DataManager.h"
+#include "core/data/DataManager.h"
 #include "HelloWorldScene.h"
 #include "model/PlayerModel.h"
 #include "LocalDataManager.h"
-#include "BagModel.h"
-#include "LanguageUtil.h"
+#include "model/BagModel.h"
+#include "core/utils/LanguageUtil.h"
 
 
 USING_NS_CC;

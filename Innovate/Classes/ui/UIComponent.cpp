@@ -9,8 +9,8 @@
 #include "UIComponent.h"
 #include "PlayerView.h"
 #include "../core/data/DataManager.h"
-#include "GlobalModel.h"
-#include "StringUtil.h"
+#include "../model/GlobalModel.h"
+#include "../core/utils/StringUtil.h"
 #include "LocalDataManager.h"
 
 static UIComponent* _instance;

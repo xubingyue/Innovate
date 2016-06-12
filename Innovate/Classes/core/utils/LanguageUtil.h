@@ -9,6 +9,7 @@
 #ifndef LanguageUtil_hpp
 #define LanguageUtil_hpp
 
+#include "cocos2d.h"
 
 class LanguageUtil
 {

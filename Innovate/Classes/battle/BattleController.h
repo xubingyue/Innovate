@@ -11,11 +11,11 @@
 
 #include "cocos2d.h"
 #include "BattleView.h"
-#include "BattleMonster.h"
-#include "BattlePlayer.h"
-#include "BattleElf.h"
-#include "DataManager.h"
-#include "MonsterModel.h"
+#include "../battle/BattleObj/BattleMonster.h"
+#include "../battle/BattleObj/BattlePlayer.h"
+#include "../battle/BattleObj/BattleElf.h"
+#include "../core/data/DataManager.h"
+#include "../model/MonsterModel.h"
 
 class BattleController : public Ref
 {

@@ -5,7 +5,7 @@
 //  Created by YUEBINBIN on 16/5/25.
 //
 //
-
+#include <math.h>
 #include "MonsterModel.h"
 
 MonsterModel::MonsterModel()

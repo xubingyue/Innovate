@@ -9,9 +9,9 @@
 #include "BigCrystalView.h"
 #include "cocostudio/CocoStudio.h"
 #include "UIComponent.h"
-#include "GlobalModel.h"
-#include "DataManager.h"
-#include "StringUtil.h"
+#include "../model/GlobalModel.h"
+#include "../core/data/DataManager.h"
+#include "../core/utils/StringUtil.h"
 #include "BagView.h"
 
 USING_NS_CC;

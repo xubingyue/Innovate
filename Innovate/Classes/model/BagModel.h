@@ -9,6 +9,7 @@
 #ifndef BagModel_hpp
 #define BagModel_hpp
 
+#include "cocos2d.h"
 #include "ModelBase.h"
 
 using namespace std;

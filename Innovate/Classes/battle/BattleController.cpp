@@ -10,8 +10,8 @@
 #include "../LayerManager.h"
 #include "../model/PlayerModel.h"
 #include "NotificationType.h"
-#include "BattleResultView.h"
-#include "GlobalModel.h"
+#include "../ui/BattleResultView.h"
+#include "../model/GlobalModel.h"
 
 
 USING_NS_CC;

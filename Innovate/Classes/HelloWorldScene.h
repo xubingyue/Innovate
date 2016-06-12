@@ -2,10 +2,9 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
-#include "RoleSprite.h"
-//#include "AStarPathSearch.h"
-#include "AStarFindPath.h"
-#include "StageMapView.h"
+#include "role/RoleSprite.h"
+#include "core/algorithm/AStarFindPath.h"
+#include "map/StageMapView.h"
 
 class HelloWorld : public cocos2d::Layer
 {

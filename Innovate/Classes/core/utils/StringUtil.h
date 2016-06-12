@@ -9,6 +9,7 @@
 #ifndef StringUtil_hpp
 #define StringUtil_hpp
 
+#include "cocos2d.h"
 
 class StringUtil
 {

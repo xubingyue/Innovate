@@ -12,7 +12,7 @@
 #include "../UICommon.h"
 #include "BattleController.h"
 #include "../ui/UIComponent.h"
-#include "BattleResultView.h"
+#include "../ui/BattleResultView.h"
 
 
 USING_NS_CC;

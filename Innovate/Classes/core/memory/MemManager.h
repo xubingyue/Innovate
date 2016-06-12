@@ -9,7 +9,7 @@
 #ifndef MemManager_h
 #define MemManager_h
 
-#include <string.h>
+#include "cocos2d.h"
 using namespace std;
 
 struct m_int {

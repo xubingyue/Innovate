@@ -9,6 +9,10 @@
 #ifndef LocalDataUtil_hpp
 #define LocalDataUtil_hpp
 
+#include "cocos2d.h"
+
+using namespace std;
+
 class LocalDataUtil
 {
 public:
@@ -32,13 +36,13 @@ public:
     double  getDoubleForKey(const char* key);
     double getDoubleForKey(const char* key, double defaultValue);
     
-    std::string getStringForKey(const char* key);
-    std::string getStringForKey(const char* key, const std::string & defaultValue);
+    string getStringForKey(const char* key);
+    string getStringForKey(const char* key, const string & defaultValue);
     
     void setIntegerForKey(const char* key, int value);
     void setFloatForKey(const char* key, float value);
     void setDoubleForKey(const char* key, double value);
-    void setStringForKey(const char* key, const std::string & value);
+    void setStringForKey(const char* key, const string & value);
     void setBoolForKey(const char* key, bool value);
     void flush();
     

@@ -9,8 +9,8 @@
 #include "BagView.h"
 #include "cocostudio/CocoStudio.h"
 #include "UIComponent.h"
-#include "GlobalModel.h"
-#include "DataManager.h"
+#include "../model/GlobalModel.h"
+#include "../core/data/DataManager.h"
 #include "../model/BagModel.h"
 #include "../utils/IconUtil.h"
 

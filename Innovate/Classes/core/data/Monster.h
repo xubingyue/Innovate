@@ -1,7 +1,7 @@
 #ifndef __TABLES_Monster_H__
 #define __TABLES_Monster_H__
 #include "cocos2d.h"
-#include "TableHelper.h"
+#include "../../core/data/database/TableHelper.h"
 
 USING_NS_CC;
 

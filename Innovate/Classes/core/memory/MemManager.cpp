@@ -7,8 +7,8 @@
 //
 
 #include "MemManager.h"
-#include "md5.h"
-#include <string.h>
+#include "../../core/utils/md5.h"
+
 
 static MemManager* _instance = nullptr;
 

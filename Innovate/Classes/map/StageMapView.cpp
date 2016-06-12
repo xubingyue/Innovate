@@ -11,9 +11,9 @@
 #include "MapObjBuilding.h"
 #include "MapObjMonster.h"
 #include "../core/data/DataManager.h"
-#include "BigCrystalView.h"
+#include "../ui/BigCrystalView.h"
 #include "LayerManager.h"
-#include "MapTransferView.h"
+#include "../ui/MapTransferView.h"
 #include "../model/GlobalModel.h"
 #include "../LocalDataManager.h"
 
