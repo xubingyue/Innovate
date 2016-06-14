@@ -102,6 +102,13 @@
 		9DD38CBD1D02EE1800B84915 /* MapTransferView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38CBB1D02EE1800B84915 /* MapTransferView.cpp */; };
 		9DD38CC01D0526AB00B84915 /* LanguageUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38CBE1D0526AA00B84915 /* LanguageUtil.cpp */; };
 		9DD38CC31D06A42400B84915 /* MapObjMonster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38CC11D06A42300B84915 /* MapObjMonster.cpp */; };
+		9DD38D611D0FD85C00B84915 /* DCAgent.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38D591D0FD85C00B84915 /* DCAgent.mm */; };
+		9DD38D621D0FD85C00B84915 /* libDataEye_Cocos2d_v2.7.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD38D601D0FD85C00B84915 /* libDataEye_Cocos2d_v2.7.6.a */; };
+		9DD38D641D0FD89600B84915 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD38D631D0FD89600B84915 /* SystemConfiguration.framework */; };
+		9DD38D661D0FD8A400B84915 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD38D651D0FD8A400B84915 /* CoreTelephony.framework */; };
+		9DD38D681D0FD8B100B84915 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD38D671D0FD8B100B84915 /* libz.tbd */; };
+		9DD38D6A1D0FD8C100B84915 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD38D691D0FD8C100B84915 /* Security.framework */; };
+		9DD38D6C1D0FD8C600B84915 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DD38D6B1D0FD8C600B84915 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9DD5F3ED1CE55FC100F34658 /* staticdata in Resources */ = {isa = PBXBuildFile; fileRef = 9DD5F3EC1CE55FC100F34658 /* staticdata */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -292,6 +299,19 @@
 		9DD38CBF1D0526AA00B84915 /* LanguageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageUtil.h; sourceTree = "<group>"; };
 		9DD38CC11D06A42300B84915 /* MapObjMonster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MapObjMonster.cpp; sourceTree = "<group>"; };
 		9DD38CC21D06A42300B84915 /* MapObjMonster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapObjMonster.h; sourceTree = "<group>"; };
+		9DD38D581D0FD85C00B84915 /* DCAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAgent.h; sourceTree = "<group>"; };
+		9DD38D591D0FD85C00B84915 /* DCAgent.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DCAgent.mm; sourceTree = "<group>"; };
+		9DD38D5B1D0FD85C00B84915 /* DCAccountType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCAccountType.h; sourceTree = "<group>"; };
+		9DD38D5C1D0FD85C00B84915 /* DCGender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCGender.h; sourceTree = "<group>"; };
+		9DD38D5D1D0FD85C00B84915 /* DCReportMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCReportMode.h; sourceTree = "<group>"; };
+		9DD38D5E1D0FD85C00B84915 /* DCTaskType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCTaskType.h; sourceTree = "<group>"; };
+		9DD38D5F1D0FD85C00B84915 /* DEAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DEAgent.h; sourceTree = "<group>"; };
+		9DD38D601D0FD85C00B84915 /* libDataEye_Cocos2d_v2.7.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDataEye_Cocos2d_v2.7.6.a; sourceTree = "<group>"; };
+		9DD38D631D0FD89600B84915 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		9DD38D651D0FD8A400B84915 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
+		9DD38D671D0FD8B100B84915 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
+		9DD38D691D0FD8C100B84915 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		9DD38D6B1D0FD8C600B84915 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/AdSupport.framework; sourceTree = DEVELOPER_DIR; };
 		9DD5F3EC1CE55FC100F34658 /* staticdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = staticdata; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -309,10 +329,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DD38D6C1D0FD8C600B84915 /* AdSupport.framework in Frameworks */,
+				9DD38D6A1D0FD8C100B84915 /* Security.framework in Frameworks */,
+				9DD38D681D0FD8B100B84915 /* libz.tbd in Frameworks */,
+				9DD38D661D0FD8A400B84915 /* CoreTelephony.framework in Frameworks */,
+				9DD38D641D0FD89600B84915 /* SystemConfiguration.framework in Frameworks */,
 				ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */,
 				52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */,
 				1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */,
 				D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */,
+				9DD38D621D0FD85C00B84915 /* libDataEye_Cocos2d_v2.7.6.a in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -397,6 +423,11 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9DD38D6B1D0FD8C600B84915 /* AdSupport.framework */,
+				9DD38D691D0FD8C100B84915 /* Security.framework */,
+				9DD38D671D0FD8B100B84915 /* libz.tbd */,
+				9DD38D651D0FD8A400B84915 /* CoreTelephony.framework */,
+				9DD38D631D0FD89600B84915 /* SystemConfiguration.framework */,
 				ED545A7D1B68A1FA00C3958E /* libiconv.dylib */,
 				ED545A7B1B68A1F400C3958E /* libiconv.dylib */,
 				8262943D1AAF051F00CB7CF7 /* Security.framework */,
@@ -434,6 +465,7 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9DD38D571D0FD85C00B84915 /* dataeye */,
 				9DC0BA741CDEFD93003E5BAD /* core */,
 				9D70F8221CF5E7E4007461DF /* model */,
 				9DC407F61CE819BE000E248B /* role */,
@@ -692,6 +724,29 @@
 			path = utils;
 			sourceTree = "<group>";
 		};
+		9DD38D571D0FD85C00B84915 /* dataeye */ = {
+			isa = PBXGroup;
+			children = (
+				9DD38D581D0FD85C00B84915 /* DCAgent.h */,
+				9DD38D591D0FD85C00B84915 /* DCAgent.mm */,
+				9DD38D5A1D0FD85C00B84915 /* libs */,
+			);
+			path = dataeye;
+			sourceTree = "<group>";
+		};
+		9DD38D5A1D0FD85C00B84915 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				9DD38D5B1D0FD85C00B84915 /* DCAccountType.h */,
+				9DD38D5C1D0FD85C00B84915 /* DCGender.h */,
+				9DD38D5D1D0FD85C00B84915 /* DCReportMode.h */,
+				9DD38D5E1D0FD85C00B84915 /* DCTaskType.h */,
+				9DD38D5F1D0FD85C00B84915 /* DEAgent.h */,
+				9DD38D601D0FD85C00B84915 /* libDataEye_Cocos2d_v2.7.6.a */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -855,6 +910,7 @@
 				9D70F7F91CEF1FEC007461DF /* BattleObjBase.cpp in Sources */,
 				9DD38CC31D06A42400B84915 /* MapObjMonster.cpp in Sources */,
 				9D70F8021CF29ED5007461DF /* BattleElf.cpp in Sources */,
+				9DD38D611D0FD85C00B84915 /* DCAgent.mm in Sources */,
 				9DD38C8E1CF832A200B84915 /* BigCrystalView.cpp in Sources */,
 				9D70F8131CF472EB007461DF /* Language.cpp in Sources */,
 				9DD38C941CFC10E100B84915 /* PlayerModel.cpp in Sources */,
@@ -941,7 +997,7 @@
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../Classes/dataeye/libs";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",
@@ -979,7 +1035,7 @@
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../Classes/dataeye/libs";
 				OTHER_LDFLAGS = (
 					"$(_COCOS_LIB_IOS_BEGIN)",
 					"$(_COCOS_LIB_IOS_END)",

@@ -1,5 +1,7 @@
 #include "AppDelegate.h"
 #include "LoadingScene.h"
+#include "DCAgent.h"
+#include "DCReportMode.h"
 
 USING_NS_CC;
 
@@ -73,6 +75,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
 //    }
 
     register_all_packages();
+    
+    DCAgent::setReportMode(DC_DEFAULT);//设置上报模式，在onStart之前调用
+    DCAgent::setDebugMode(true);
+    //YOUR_APPID与YOUR_CHANNELID需要更换为游戏自己的AppId和ChannelId
+    DCAgent::onStart("6D13BFFBC5534E51B2CC1823E357F78D", "AppStore");
     
     // create a scene. it's an autorelease object
     auto scene = LoadingScene::createScene();
