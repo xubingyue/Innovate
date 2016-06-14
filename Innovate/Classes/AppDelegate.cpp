@@ -76,8 +76,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     register_all_packages();
     
+    //DataEye日志初始化
     DCAgent::setReportMode(DC_DEFAULT);//设置上报模式，在onStart之前调用
-    DCAgent::setDebugMode(true);
+    DCAgent::setDebugMode(true);    //测试模式，发布时修改。
     //YOUR_APPID与YOUR_CHANNELID需要更换为游戏自己的AppId和ChannelId
     DCAgent::onStart("6D13BFFBC5534E51B2CC1823E357F78D", "AppStore");
     
