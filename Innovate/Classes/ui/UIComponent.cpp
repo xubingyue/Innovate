@@ -12,6 +12,7 @@
 #include "../model/GlobalModel.h"
 #include "../core/utils/StringUtil.h"
 #include "LocalDataManager.h"
+#include "ShareUtils.h"
 
 static UIComponent* _instance;
 
@@ -86,6 +87,7 @@ void UIComponent::touchEventCallback(Ref *sender, cocos2d::ui::Widget::TouchEven
         } else if (btn->getName() == "elf_btn")
         {
             CCLOG("elf_btn");
+            ShareUtils::shareToWeChat();
         } else if (btn->getName() == "crystal_btn")
         {
             CCLOG("crystal_btn");
