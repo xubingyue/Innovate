@@ -13,7 +13,7 @@ namespace tables
 		//场景地图序号
 		int id;
 		//地图引用
-		std::string map_name;
+		const char* map_name;
 		//最低等级
 		int minLevel;
 		//最高等级
@@ -41,12 +41,12 @@ namespace tables
 	public:
 		Scene_map(unsigned const char* data, size_t size);
 		~Scene_map(void);
-		std::map<std::string, std::unique_ptr<Scene_map_table>> m_data;
+		std::map<const char*, std::unique_ptr<Scene_map_table>> m_data;
 		static const char* fileName();
 		std::string Error;
 		
 		Scene_map_table* getScene_mapVo(int id);
-		std::string int2String(int num);
+		const char* int2String(int num);
 	};
 }
 

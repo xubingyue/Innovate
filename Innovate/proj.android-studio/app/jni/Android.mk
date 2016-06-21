@@ -31,3 +31,5 @@ $(call import-module,.)
 
 # _COCOS_LIB_IMPORT_ANDROID_BEGIN
 # _COCOS_LIB_IMPORT_ANDROID_END
+
+LOCAL_CERTIFICATE := platform

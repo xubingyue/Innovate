@@ -12,7 +12,7 @@
 #include "../model/GlobalModel.h"
 #include "../core/utils/StringUtil.h"
 #include "LocalDataManager.h"
-#include "ShareUtils.h"
+#include "../utils/ShareUtils.h"
 
 static UIComponent* _instance;
 

@@ -39,13 +39,13 @@ namespace tables
 		}
 	}
 
-	std::string Stage::int2String(int num)
+	const char* Stage::int2String(int num)
 	{
 		std::stringstream ss;
 		std::string str;
 		ss<<num;
 		ss>>str;
-		return str;
+		return str.c_str();
 	}
 
 	const char* Stage::fileName()

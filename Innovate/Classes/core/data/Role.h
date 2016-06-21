@@ -13,7 +13,7 @@ namespace tables
 		//id
 		int id;
 		//名字
-		std::string name;
+		const char* name;
 		//血量
 		int hp;
 		//攻击力
@@ -21,7 +21,7 @@ namespace tables
 		//速度
 		float velocity;
 		//战斗内形象
-		std::string character_in;
+		const char* character_in;
 		//技能
 		int ski1;
 		//暗攻击
@@ -71,12 +71,12 @@ namespace tables
 	public:
 		Role(unsigned const char* data, size_t size);
 		~Role(void);
-		std::map<std::string, std::unique_ptr<Role_table>> m_data;
+		std::map<const char*, std::unique_ptr<Role_table>> m_data;
 		static const char* fileName();
 		std::string Error;
 		
 		Role_table* getRoleVo(int id);
-		std::string int2String(int num);
+		const char* int2String(int num);
 	};
 }
 

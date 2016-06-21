@@ -13,7 +13,7 @@ namespace tables
 		//id
 		int id;
 		//地图引用
-		std::string map_name;
+		const char* map_name;
 		//最低等级
 		int minLevel;
 		//最高等级
@@ -32,12 +32,12 @@ namespace tables
 	public:
 		Raid_map(unsigned const char* data, size_t size);
 		~Raid_map(void);
-		std::map<std::string, std::unique_ptr<Raid_map_table>> m_data;
+		std::map<const char*, std::unique_ptr<Raid_map_table>> m_data;
 		static const char* fileName();
 		std::string Error;
 		
 		Raid_map_table* getRaid_mapVo(int id);
-		std::string int2String(int num);
+		const char* int2String(int num);
 	};
 }
 

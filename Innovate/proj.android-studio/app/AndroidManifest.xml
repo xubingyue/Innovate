@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ituuz.innovate"
-    android:installLocation="auto">
+    android:installLocation="auto"
+    >
 
     <uses-feature android:glEsVersion="0x00020000" />
     
@@ -28,5 +29,9 @@
     </application>
 
     <uses-permission android:name="android.permission.INTERNET"/>
+
+
+    <!--在SD卡中创建与删除文件权限-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     
 </manifest>

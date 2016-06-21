@@ -13,7 +13,7 @@ namespace tables
 		//id
 		int id;
 		//数据
-		std::string data;
+		const char* data;
 		Stage_table()
 		{
 			memset(&id, 0, sizeof(id));
@@ -26,12 +26,12 @@ namespace tables
 	public:
 		Stage(unsigned const char* data, size_t size);
 		~Stage(void);
-		std::map<std::string, std::unique_ptr<Stage_table>> m_data;
+		std::map<const char*, std::unique_ptr<Stage_table>> m_data;
 		static const char* fileName();
 		std::string Error;
 		
 		Stage_table* getStageVo(int id);
-		std::string int2String(int num);
+		const char* int2String(int num);
 	};
 }
 

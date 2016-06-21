@@ -44,13 +44,13 @@ namespace tables
 		}
 	}
 
-	std::string Scene_map::int2String(int num)
+	const char* Scene_map::int2String(int num)
 	{
 		std::stringstream ss;
 		std::string str;
 		ss<<num;
 		ss>>str;
-		return str;
+		return str.c_str();
 	}
 
 	const char* Scene_map::fileName()

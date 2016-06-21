@@ -1,7 +1,13 @@
 #include "AppDelegate.h"
 #include "LoadingScene.h"
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS|| CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
 #include "DCAgent.h"
 #include "DCReportMode.h"
+#endif
+
 
 USING_NS_CC;
 
@@ -76,12 +82,16 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     register_all_packages();
     
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS|| CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
     //DataEye日志初始化
     DCAgent::setReportMode(DC_DEFAULT);//设置上报模式，在onStart之前调用
     DCAgent::setDebugMode(true);    //测试模式，发布时修改。
     //YOUR_APPID与YOUR_CHANNELID需要更换为游戏自己的AppId和ChannelId
     DCAgent::onStart("6D13BFFBC5534E51B2CC1823E357F78D", "AppStore");
-    
+#endif
+    CCLOG("into the app!");
     // create a scene. it's an autorelease object
     auto scene = LoadingScene::createScene();
     

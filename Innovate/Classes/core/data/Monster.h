@@ -13,7 +13,7 @@ namespace tables
 		//id
 		int id;
 		//名字
-		std::string name;
+		const char* name;
 		//掉落id
 		int diropId;
 		//血量
@@ -23,7 +23,7 @@ namespace tables
 		//速度
 		float velocity;
 		//形象
-		std::string character_in;
+		const char* character_in;
 		//场景地图序号
 		int sceneID;
 		//玩家等级下限
@@ -56,12 +56,12 @@ namespace tables
 	public:
 		Monster(unsigned const char* data, size_t size);
 		~Monster(void);
-		std::map<std::string, std::unique_ptr<Monster_table>> m_data;
+		std::map<const char*, std::unique_ptr<Monster_table>> m_data;
 		static const char* fileName();
 		std::string Error;
 		
 		Monster_table* getMonsterVo(int id);
-		std::string int2String(int num);
+		const char* int2String(int num);
 	};
 }
 

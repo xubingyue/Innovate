@@ -42,13 +42,13 @@ namespace tables
 		}
 	}
 
-	std::string Object::int2String(int num)
+	const char* Object::int2String(int num)
 	{
 		std::stringstream ss;
 		std::string str;
 		ss<<num;
 		ss>>str;
-		return str;
+		return str.c_str();
 	}
 
 	const char* Object::fileName()

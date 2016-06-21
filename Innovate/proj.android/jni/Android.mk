@@ -60,7 +60,8 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/ui/BagView.cpp \
                    ../../Classes/ui/BattleResultView.cpp \
                    ../../Classes/ui/MapTransferView.cpp \
-                   ../../Classes/utils/IconUtil.cpp
+                   ../../Classes/utils/IconUtil.cpp \
+                   ../../Classes/utils/ShareUtils.cpp
 
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
