@@ -17,8 +17,8 @@ namespace tables
 		{
 			std::unique_ptr<Drop_item_table> r(new Drop_item_table);
 			r->id = atoi(carrier.GetField(i, 0, "id").c_str());
-			r->item_id = carrier.GetField(i, 1, "item_id", true).c_str();
-			r->weight = carrier.GetField(i, 2, "weight", true).c_str();
+			r->item_id = carrier.GetField(i, 1, "item_id", true);
+			r->weight = carrier.GetField(i, 2, "weight", true);
 
 			m_data[KEY] = std::move(r);
 		}
@@ -40,13 +40,13 @@ namespace tables
 		}
 	}
 
-	const char* Drop_item::int2String(int num)
+	std::string Drop_item::int2String(int num)
 	{
 		std::stringstream ss;
 		std::string str;
 		ss<<num;
 		ss>>str;
-		return str.c_str();
+		return str;
 	}
 
 	const char* Drop_item::fileName()

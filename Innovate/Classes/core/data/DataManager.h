@@ -13,10 +13,11 @@
 #include "Role.h"
 #include "Scene_map.h"
 #include "Stage.h"
+#include "Upgrade.h"
 
 USING_NS_CC;
 
-#define TABLESNUM 12
+#define TABLESNUM 13
 typedef std::function<void(int)> loadCallback;
 
 class DataManager
@@ -41,6 +42,7 @@ public:
 	tables::Role* m_Role;
 	tables::Scene_map* m_Scene_map;
 	tables::Stage* m_Stage;
+	tables::Upgrade* m_Upgrade;
 
 #define CONFIG_TABLE (DataManager::getInstance()->m_Config)
 #define GET_CONFIG_DATA	(&(DataManager::getInstance()->m_Config->m_data))
@@ -66,6 +68,8 @@ public:
 #define GET_SCENE_MAP_DATA	(&(DataManager::getInstance()->m_Scene_map->m_data))
 #define STAGE_TABLE (DataManager::getInstance()->m_Stage)
 #define GET_STAGE_DATA	(&(DataManager::getInstance()->m_Stage->m_data))
+#define UPGRADE_TABLE (DataManager::getInstance()->m_Upgrade)
+#define GET_UPGRADE_DATA	(&(DataManager::getInstance()->m_Upgrade->m_data))
 };
 
 #endif  // __APP_DataManager_H__

@@ -47,6 +47,7 @@ void DataManager::loadTable(const loadCallback& callback, std::string localConfi
 	LOAD_TABLE(m_Role, tables::Role, localConfig + "/" + tables::Role::fileName(), callback, count);
 	LOAD_TABLE(m_Scene_map, tables::Scene_map, localConfig + "/" + tables::Scene_map::fileName(), callback, count);
 	LOAD_TABLE(m_Stage, tables::Stage, localConfig + "/" + tables::Stage::fileName(), callback, count);
+	LOAD_TABLE(m_Upgrade, tables::Upgrade, localConfig + "/" + tables::Upgrade::fileName(), callback, count);
 
 }
 

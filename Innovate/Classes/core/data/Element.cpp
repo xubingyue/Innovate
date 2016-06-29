@@ -17,7 +17,7 @@ namespace tables
 		{
 			std::unique_ptr<Element_table> r(new Element_table);
 			r->id = atoi(carrier.GetField(i, 0, "id").c_str());
-			r->name = carrier.GetField(i, 1, "name", true).c_str();
+			r->name = carrier.GetField(i, 1, "name", true);
 			r->type = atoi(carrier.GetField(i, 2, "type").c_str());
 			r->level = atoi(carrier.GetField(i, 3, "level").c_str());
 			r->element1 = atoi(carrier.GetField(i, 4, "element1").c_str());
@@ -25,7 +25,7 @@ namespace tables
 			r->element2 = atoi(carrier.GetField(i, 6, "element2").c_str());
 			r->num2 = atoi(carrier.GetField(i, 7, "num2").c_str());
 			r->quality = atoi(carrier.GetField(i, 8, "quality").c_str());
-			r->icon = carrier.GetField(i, 9, "icon", true).c_str();
+			r->icon = carrier.GetField(i, 9, "icon", true);
 
 			m_data[KEY] = std::move(r);
 		}
@@ -47,13 +47,13 @@ namespace tables
 		}
 	}
 
-	const char* Element::int2String(int num)
+	std::string Element::int2String(int num)
 	{
 		std::stringstream ss;
 		std::string str;
 		ss<<num;
 		ss>>str;
-		return str.c_str();
+		return str;
 	}
 
 	const char* Element::fileName()

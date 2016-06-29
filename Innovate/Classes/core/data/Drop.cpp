@@ -47,13 +47,13 @@ namespace tables
 		}
 	}
 
-	const char* Drop::int2String(int num)
+	std::string Drop::int2String(int num)
 	{
 		std::stringstream ss;
 		std::string str;
 		ss<<num;
 		ss>>str;
-		return str.c_str();
+		return str;
 	}
 
 	const char* Drop::fileName()

@@ -13,7 +13,7 @@ namespace tables
 		//id
 		int id;
 		//名字
-		const char* name;
+		std::string name;
 		//类型
 		int type;
 		//激活等级
@@ -29,7 +29,7 @@ namespace tables
 		//品质
 		int quality;
 		//形象
-		const char* icon;
+		std::string icon;
 		Element_table()
 		{
 			memset(&id, 0, sizeof(id));
@@ -50,12 +50,12 @@ namespace tables
 	public:
 		Element(unsigned const char* data, size_t size);
 		~Element(void);
-		std::map<const char*, std::unique_ptr<Element_table>> m_data;
+		std::map<std::string, std::unique_ptr<Element_table>> m_data;
 		static const char* fileName();
 		std::string Error;
 		
 		Element_table* getElementVo(int id);
-		const char* int2String(int num);
+		std::string int2String(int num);
 	};
 }
 

@@ -50,12 +50,12 @@ namespace tables
 	public:
 		Drop(unsigned const char* data, size_t size);
 		~Drop(void);
-		std::map<const char*, std::unique_ptr<Drop_table>> m_data;
+		std::map<std::string, std::unique_ptr<Drop_table>> m_data;
 		static const char* fileName();
 		std::string Error;
 		
 		Drop_table* getDropVo(int id);
-		const char* int2String(int num);
+		std::string int2String(int num);
 	};
 }
 

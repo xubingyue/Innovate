@@ -17,7 +17,7 @@ namespace tables
 		{
 			std::unique_ptr<Config_table> r(new Config_table);
 			r->id = atoi(carrier.GetField(i, 0, "id").c_str());
-			r->data = carrier.GetField(i, 1, "data", true).c_str();
+			r->data = carrier.GetField(i, 1, "data", true);
 
 			m_data[KEY] = std::move(r);
 		}
@@ -39,13 +39,13 @@ namespace tables
 		}
 	}
 
-	const char* Config::int2String(int num)
+	std::string Config::int2String(int num)
 	{
 		std::stringstream ss;
 		std::string str;
 		ss<<num;
 		ss>>str;
-		return str.c_str();
+		return str;
 	}
 
 	const char* Config::fileName()

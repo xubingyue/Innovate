@@ -37,6 +37,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/core/data/Object.cpp \
                    ../../Classes/core/data/Role.cpp \
                    ../../Classes/core/data/Stage.cpp \
+                   ../../Classes/core/data/Upgrade.cpp \
                    ../../Classes/model/MonsterModel.cpp \
                    ../../Classes/model/ModelBase.cpp \
                    ../../Classes/model/PlayerModel.cpp \

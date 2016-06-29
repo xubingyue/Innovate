@@ -77,6 +77,7 @@
 		9D70F8281CF5E853007461DF /* MonsterModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D70F8261CF5E853007461DF /* MonsterModel.cpp */; };
 		9D70F82B1CF5E879007461DF /* ModelBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D70F8291CF5E879007461DF /* ModelBase.cpp */; };
 		9D70F82F1CF81755007461DF /* UIComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D70F82D1CF81755007461DF /* UIComponent.cpp */; };
+		9D8193B11D210CBB00EEC7A4 /* Upgrade.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D8193AF1D210CBB00EEC7A4 /* Upgrade.cpp */; };
 		9DB18E511D1222B100B0D36C /* res1thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 9DB18E4F1D1222B100B0D36C /* res1thumb.png */; };
 		9DC0BA811CDEFD93003E5BAD /* libcsv.c in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA781CDEFD93003E5BAD /* libcsv.c */; };
 		9DC0BA821CDEFD93003E5BAD /* TableHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA791CDEFD93003E5BAD /* TableHelper.cpp */; };
@@ -255,6 +256,8 @@
 		9D70F82A1CF5E879007461DF /* ModelBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelBase.h; sourceTree = "<group>"; };
 		9D70F82D1CF81755007461DF /* UIComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = UIComponent.cpp; sourceTree = "<group>"; };
 		9D70F82E1CF81755007461DF /* UIComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIComponent.h; sourceTree = "<group>"; };
+		9D8193AF1D210CBB00EEC7A4 /* Upgrade.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Upgrade.cpp; sourceTree = "<group>"; };
+		9D8193B01D210CBB00EEC7A4 /* Upgrade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Upgrade.h; sourceTree = "<group>"; };
 		9DB18E4F1D1222B100B0D36C /* res1thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = res1thumb.png; sourceTree = "<group>"; };
 		9DC0BA771CDEFD93003E5BAD /* csv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = csv.h; sourceTree = "<group>"; };
 		9DC0BA781CDEFD93003E5BAD /* libcsv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = libcsv.c; sourceTree = "<group>"; };
@@ -708,6 +711,8 @@
 				9D70F8101CF472EB007461DF /* Object.h */,
 				9DC0BA7D1CDEFD93003E5BAD /* Role.cpp */,
 				9DC0BA7E1CDEFD93003E5BAD /* Role.h */,
+				9D8193AF1D210CBB00EEC7A4 /* Upgrade.cpp */,
+				9D8193B01D210CBB00EEC7A4 /* Upgrade.h */,
 				9DC0BA7F1CDEFD93003E5BAD /* Stage.cpp */,
 				9DC0BA801CDEFD93003E5BAD /* Stage.h */,
 			);
@@ -971,6 +976,7 @@
 				9DD38D801D10E33F00B84915 /* WeChatHandler.mm in Sources */,
 				9DC0BA851CDEFD93003E5BAD /* Stage.cpp in Sources */,
 				9DD38CBA1D02A64400B84915 /* Scene_map.cpp in Sources */,
+				9D8193B11D210CBB00EEC7A4 /* Upgrade.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				9DD38CA31D0027F500B84915 /* BagModel.cpp in Sources */,
 				9D70F8151CF472EB007461DF /* Object.cpp in Sources */,
