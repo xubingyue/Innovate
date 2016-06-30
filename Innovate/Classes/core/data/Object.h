@@ -22,11 +22,7 @@ namespace tables
 		std::string res;
 		Object_table()
 		{
-			memset(&id, 0, sizeof(id));
-			memset(&name, 0, sizeof(name));
-			memset(&type, 0, sizeof(type));
-			memset(&value, 0, sizeof(value));
-			memset(&res, 0, sizeof(res));
+			
 		}
 	};
 
@@ -35,7 +31,7 @@ namespace tables
 	public:
 		Object(unsigned const char* data, size_t size);
 		~Object(void);
-		std::map<std::string, std::unique_ptr<Object_table>> m_data;
+		std::map<std::string, Object_table> m_data;
 		static const char* fileName();
 		std::string Error;
 		

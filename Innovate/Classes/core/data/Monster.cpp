@@ -15,7 +15,7 @@ namespace tables
 
 		for (size_t i = 0; i < carrier.GetRecordCount(); i++)
 		{
-			std::unique_ptr<Monster_table> r(new Monster_table);
+			Monster_table *r = new Monster_table();
 			r->id = atoi(carrier.GetField(i, 0, "id").c_str());
 			r->name = carrier.GetField(i, 1, "name", true);
 			r->diropId = atoi(carrier.GetField(i, 2, "diropId").c_str());
@@ -29,7 +29,7 @@ namespace tables
 			r->raidID = atoi(carrier.GetField(i, 10, "raidID").c_str());
 			r->monsterPoint = atoi(carrier.GetField(i, 11, "monsterPoint").c_str());
 
-			m_data[KEY] = std::move(r);
+			m_data[KEY] = *r;
 		}
 	}
 
@@ -45,7 +45,7 @@ namespace tables
 		{
 			return nullptr;
 		} else {
-			return &(*(*it).second);
+			return &((*it).second);
 		}
 	}
 

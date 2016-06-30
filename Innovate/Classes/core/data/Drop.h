@@ -32,16 +32,7 @@ namespace tables
 		float weight3;
 		Drop_table()
 		{
-			memset(&id, 0, sizeof(id));
-			memset(&num, 0, sizeof(num));
-			memset(&dropID0, 0, sizeof(dropID0));
-			memset(&weight0, 0, sizeof(weight0));
-			memset(&dropID1, 0, sizeof(dropID1));
-			memset(&weight1, 0, sizeof(weight1));
-			memset(&dropID2, 0, sizeof(dropID2));
-			memset(&weight2, 0, sizeof(weight2));
-			memset(&dropID3, 0, sizeof(dropID3));
-			memset(&weight3, 0, sizeof(weight3));
+			
 		}
 	};
 
@@ -50,7 +41,7 @@ namespace tables
 	public:
 		Drop(unsigned const char* data, size_t size);
 		~Drop(void);
-		std::map<std::string, std::unique_ptr<Drop_table>> m_data;
+		std::map<std::string, Drop_table> m_data;
 		static const char* fileName();
 		std::string Error;
 		

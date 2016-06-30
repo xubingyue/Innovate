@@ -32,16 +32,7 @@ namespace tables
 		std::string icon;
 		Element_table()
 		{
-			memset(&id, 0, sizeof(id));
-			memset(&name, 0, sizeof(name));
-			memset(&type, 0, sizeof(type));
-			memset(&level, 0, sizeof(level));
-			memset(&element1, 0, sizeof(element1));
-			memset(&num1, 0, sizeof(num1));
-			memset(&element2, 0, sizeof(element2));
-			memset(&num2, 0, sizeof(num2));
-			memset(&quality, 0, sizeof(quality));
-			memset(&icon, 0, sizeof(icon));
+			
 		}
 	};
 
@@ -50,7 +41,7 @@ namespace tables
 	public:
 		Element(unsigned const char* data, size_t size);
 		~Element(void);
-		std::map<std::string, std::unique_ptr<Element_table>> m_data;
+		std::map<std::string, Element_table> m_data;
 		static const char* fileName();
 		std::string Error;
 		

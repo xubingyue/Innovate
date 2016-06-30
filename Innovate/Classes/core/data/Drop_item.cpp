@@ -15,12 +15,12 @@ namespace tables
 
 		for (size_t i = 0; i < carrier.GetRecordCount(); i++)
 		{
-			std::unique_ptr<Drop_item_table> r(new Drop_item_table);
+			Drop_item_table *r = new Drop_item_table();
 			r->id = atoi(carrier.GetField(i, 0, "id").c_str());
 			r->item_id = carrier.GetField(i, 1, "item_id", true);
 			r->weight = carrier.GetField(i, 2, "weight", true);
 
-			m_data[KEY] = std::move(r);
+			m_data[KEY] = *r;
 		}
 	}
 
@@ -36,7 +36,7 @@ namespace tables
 		{
 			return nullptr;
 		} else {
-			return &(*(*it).second);
+			return &((*it).second);
 		}
 	}
 

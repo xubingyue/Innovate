@@ -22,11 +22,7 @@ namespace tables
 		int elf_num;
 		Upgrade_table()
 		{
-			memset(&level, 0, sizeof(level));
-			memset(&level_next, 0, sizeof(level_next));
-			memset(&exp_get, 0, sizeof(exp_get));
-			memset(&step, 0, sizeof(step));
-			memset(&elf_num, 0, sizeof(elf_num));
+			
 		}
 	};
 
@@ -35,7 +31,7 @@ namespace tables
 	public:
 		Upgrade(unsigned const char* data, size_t size);
 		~Upgrade(void);
-		std::map<std::string, std::unique_ptr<Upgrade_table>> m_data;
+		std::map<std::string, Upgrade_table> m_data;
 		static const char* fileName();
 		std::string Error;
 		

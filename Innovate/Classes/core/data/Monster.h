@@ -36,18 +36,7 @@ namespace tables
 		int monsterPoint;
 		Monster_table()
 		{
-			memset(&id, 0, sizeof(id));
-			memset(&name, 0, sizeof(name));
-			memset(&diropId, 0, sizeof(diropId));
-			memset(&hp, 0, sizeof(hp));
-			memset(&attack, 0, sizeof(attack));
-			memset(&velocity, 0, sizeof(velocity));
-			memset(&character_in, 0, sizeof(character_in));
-			memset(&sceneID, 0, sizeof(sceneID));
-			memset(&minLevel, 0, sizeof(minLevel));
-			memset(&maxLevel, 0, sizeof(maxLevel));
-			memset(&raidID, 0, sizeof(raidID));
-			memset(&monsterPoint, 0, sizeof(monsterPoint));
+			
 		}
 	};
 
@@ -56,7 +45,7 @@ namespace tables
 	public:
 		Monster(unsigned const char* data, size_t size);
 		~Monster(void);
-		std::map<std::string, std::unique_ptr<Monster_table>> m_data;
+		std::map<std::string, Monster_table> m_data;
 		static const char* fileName();
 		std::string Error;
 		

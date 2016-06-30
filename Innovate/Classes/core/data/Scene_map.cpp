@@ -15,16 +15,16 @@ namespace tables
 
 		for (size_t i = 0; i < carrier.GetRecordCount(); i++)
 		{
-			std::unique_ptr<Scene_map_table> r(new Scene_map_table);
+			Scene_map_table *r = new Scene_map_table();
 			r->id = atoi(carrier.GetField(i, 0, "id").c_str());
-			r->map_name = carrier.GetField(i, 1, "map_name", true).c_str();
+			r->map_name = carrier.GetField(i, 1, "map_name", true);
 			r->minLevel = atoi(carrier.GetField(i, 2, "minLevel").c_str());
 			r->maxLevel = atoi(carrier.GetField(i, 3, "maxLevel").c_str());
 			r->probability = atof(carrier.GetField(i, 4, "probability").c_str());
 			r->probability_grow = atof(carrier.GetField(i, 5, "probability_grow").c_str());
 			r->attenuation = atof(carrier.GetField(i, 6, "attenuation").c_str());
 
-			m_data[KEY] = std::move(r);
+			m_data[KEY] = *r;
 		}
 	}
 
@@ -40,7 +40,7 @@ namespace tables
 		{
 			return nullptr;
 		} else {
-			return &(*(*it).second);
+			return &((*it).second);
 		}
 	}
 

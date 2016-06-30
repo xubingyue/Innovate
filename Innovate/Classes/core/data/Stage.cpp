@@ -15,11 +15,11 @@ namespace tables
 
 		for (size_t i = 0; i < carrier.GetRecordCount(); i++)
 		{
-			std::unique_ptr<Stage_table> r(new Stage_table);
+			Stage_table *r = new Stage_table();
 			r->id = atoi(carrier.GetField(i, 0, "id").c_str());
 			r->data = carrier.GetField(i, 1, "data", true);
 
-			m_data[KEY] = std::move(r);
+			m_data[KEY] = *r;
 		}
 	}
 
@@ -35,7 +35,7 @@ namespace tables
 		{
 			return nullptr;
 		} else {
-			return &(*(*it).second);
+			return &((*it).second);
 		}
 	}
 

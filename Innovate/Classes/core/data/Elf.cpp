@@ -15,7 +15,7 @@ namespace tables
 
 		for (size_t i = 0; i < carrier.GetRecordCount(); i++)
 		{
-			std::unique_ptr<Elf_table> r(new Elf_table);
+			Elf_table *r = new Elf_table();
 			r->id = atoi(carrier.GetField(i, 0, "id").c_str());
 			r->name = carrier.GetField(i, 1, "name", true);
 			r->hp = atoi(carrier.GetField(i, 2, "hp").c_str());
@@ -23,7 +23,7 @@ namespace tables
 			r->velocity = atof(carrier.GetField(i, 4, "velocity").c_str());
 			r->character_in = carrier.GetField(i, 5, "character_in", true);
 
-			m_data[KEY] = std::move(r);
+			m_data[KEY] = *r;
 		}
 	}
 
@@ -39,7 +39,7 @@ namespace tables
 		{
 			return nullptr;
 		} else {
-			return &(*(*it).second);
+			return &((*it).second);
 		}
 	}
 

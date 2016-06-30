@@ -26,13 +26,7 @@ namespace tables
 		float attenuation;
 		Scene_map_table()
 		{
-			memset(&id, 0, sizeof(id));
-			memset(&map_name, 0, sizeof(map_name));
-			memset(&minLevel, 0, sizeof(minLevel));
-			memset(&maxLevel, 0, sizeof(maxLevel));
-			memset(&probability, 0, sizeof(probability));
-			memset(&probability_grow, 0, sizeof(probability_grow));
-			memset(&attenuation, 0, sizeof(attenuation));
+			
 		}
 	};
 
@@ -41,7 +35,7 @@ namespace tables
 	public:
 		Scene_map(unsigned const char* data, size_t size);
 		~Scene_map(void);
-		std::map<std::string, std::unique_ptr<Scene_map_table>> m_data;
+		std::map<std::string, Scene_map_table> m_data;
 		static const char* fileName();
 		std::string Error;
 		

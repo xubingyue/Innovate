@@ -24,12 +24,7 @@ namespace tables
 		std::string character_in;
 		Elf_table()
 		{
-			memset(&id, 0, sizeof(id));
-			memset(&name, 0, sizeof(name));
-			memset(&hp, 0, sizeof(hp));
-			memset(&attack, 0, sizeof(attack));
-			memset(&velocity, 0, sizeof(velocity));
-			memset(&character_in, 0, sizeof(character_in));
+			
 		}
 	};
 
@@ -38,7 +33,7 @@ namespace tables
 	public:
 		Elf(unsigned const char* data, size_t size);
 		~Elf(void);
-		std::map<std::string, std::unique_ptr<Elf_table>> m_data;
+		std::map<std::string, Elf_table> m_data;
 		static const char* fileName();
 		std::string Error;
 		

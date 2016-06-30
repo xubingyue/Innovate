@@ -15,7 +15,7 @@ namespace tables
 
 		for (size_t i = 0; i < carrier.GetRecordCount(); i++)
 		{
-			std::unique_ptr<Element_table> r(new Element_table);
+			Element_table *r = new Element_table();
 			r->id = atoi(carrier.GetField(i, 0, "id").c_str());
 			r->name = carrier.GetField(i, 1, "name", true);
 			r->type = atoi(carrier.GetField(i, 2, "type").c_str());
@@ -27,7 +27,7 @@ namespace tables
 			r->quality = atoi(carrier.GetField(i, 8, "quality").c_str());
 			r->icon = carrier.GetField(i, 9, "icon", true);
 
-			m_data[KEY] = std::move(r);
+			m_data[KEY] = *r;
 		}
 	}
 
@@ -43,7 +43,7 @@ namespace tables
 		{
 			return nullptr;
 		} else {
-			return &(*(*it).second);
+			return &((*it).second);
 		}
 	}
 

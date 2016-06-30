@@ -16,8 +16,7 @@ namespace tables
 		std::string data;
 		Config_table()
 		{
-			memset(&id, 0, sizeof(id));
-			memset(&data, 0, sizeof(data));
+			
 		}
 	};
 
@@ -26,7 +25,7 @@ namespace tables
 	public:
 		Config(unsigned const char* data, size_t size);
 		~Config(void);
-		std::map<std::string, std::unique_ptr<Config_table>> m_data;
+		std::map<std::string, Config_table> m_data;
 		static const char* fileName();
 		std::string Error;
 		

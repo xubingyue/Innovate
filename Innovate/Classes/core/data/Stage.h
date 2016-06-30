@@ -16,8 +16,7 @@ namespace tables
 		std::string data;
 		Stage_table()
 		{
-			memset(&id, 0, sizeof(id));
-			memset(&data, 0, sizeof(data));
+			
 		}
 	};
 
@@ -26,7 +25,7 @@ namespace tables
 	public:
 		Stage(unsigned const char* data, size_t size);
 		~Stage(void);
-		std::map<std::string, std::unique_ptr<Stage_table>> m_data;
+		std::map<std::string, Stage_table> m_data;
 		static const char* fileName();
 		std::string Error;
 		

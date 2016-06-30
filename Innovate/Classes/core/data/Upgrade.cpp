@@ -15,14 +15,14 @@ namespace tables
 
 		for (size_t i = 0; i < carrier.GetRecordCount(); i++)
 		{
-			std::unique_ptr<Upgrade_table> r(new Upgrade_table);
+			Upgrade_table *r = new Upgrade_table();
 			r->level = atoi(carrier.GetField(i, 0, "level").c_str());
 			r->level_next = atoi(carrier.GetField(i, 1, "level_next").c_str());
 			r->exp_get = atoi(carrier.GetField(i, 2, "exp_get").c_str());
 			r->step = atoi(carrier.GetField(i, 3, "step").c_str());
 			r->elf_num = atoi(carrier.GetField(i, 4, "elf_num").c_str());
 
-			m_data[KEY] = std::move(r);
+			m_data[KEY] = *r;
 		}
 	}
 
@@ -38,7 +38,7 @@ namespace tables
 		{
 			return nullptr;
 		} else {
-			return &(*(*it).second);
+			return &((*it).second);
 		}
 	}
 

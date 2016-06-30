@@ -20,10 +20,7 @@ namespace tables
 		int maxLevel;
 		Raid_map_table()
 		{
-			memset(&id, 0, sizeof(id));
-			memset(&map_name, 0, sizeof(map_name));
-			memset(&minLevel, 0, sizeof(minLevel));
-			memset(&maxLevel, 0, sizeof(maxLevel));
+			
 		}
 	};
 
@@ -32,7 +29,7 @@ namespace tables
 	public:
 		Raid_map(unsigned const char* data, size_t size);
 		~Raid_map(void);
-		std::map<std::string, std::unique_ptr<Raid_map_table>> m_data;
+		std::map<std::string, Raid_map_table> m_data;
 		static const char* fileName();
 		std::string Error;
 		
