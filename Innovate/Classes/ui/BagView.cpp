@@ -51,6 +51,21 @@ bool BagView::init()
     
     p_btnNode = p_root->getChildByName("btn_node");
     
+    p_btn_1 = static_cast<Button*>(Helper::seekWidgetByName(static_cast<Layout*>(p_btnNode), "btn_1"));
+    p_btn_1->addTouchEventListener(CC_CALLBACK_2(BagView::shiftBagEvent, this));
+    
+    p_btn_2 = static_cast<Button*>(Helper::seekWidgetByName(static_cast<Layout*>(p_btnNode), "btn_2"));
+    p_btn_2->addTouchEventListener(CC_CALLBACK_2(BagView::shiftBagEvent, this));
+    
+    p_btn_3 = static_cast<Button*>(Helper::seekWidgetByName(static_cast<Layout*>(p_btnNode), "btn_3"));
+    p_btn_3->addTouchEventListener(CC_CALLBACK_2(BagView::shiftBagEvent, this));
+    
+    p_btn_4 = static_cast<Button*>(Helper::seekWidgetByName(static_cast<Layout*>(p_btnNode), "btn_4"));
+    p_btn_4->addTouchEventListener(CC_CALLBACK_2(BagView::shiftBagEvent, this));
+    
+    p_btn_5 = static_cast<Button*>(Helper::seekWidgetByName(static_cast<Layout*>(p_btnNode), "btn_5"));
+    p_btn_5->addTouchEventListener(CC_CALLBACK_2(BagView::shiftBagEvent, this));
+    
     return true;
 }
 
@@ -64,11 +79,14 @@ void BagView::setContentSize(cocos2d::Size s)
 
 void BagView::open(int index)
 {
+    p_scrollView->removeAllChildrenWithCleanup(true);
     vector<BagItemWithCount*> *itemList;
-    if (index == 0) //元素背包
+    if (index == 1) //元素背包
     {
         itemList = BagModel::getInstance()->eleItemList;
     }
+    
+    if (itemList == nullptr) return;
     
     int jiange = 74;    //图标直接的固定间隔
     int x = 10;
@@ -85,6 +103,61 @@ void BagView::open(int index)
         if (i !=0 && (i % 6) == 0)
         {
             y -= jiange;
+        }
+    }
+}
+
+void BagView::shiftBagEvent(Ref *sender, cocos2d::ui::Widget::TouchEventType controlEvent)
+{
+    if (controlEvent == Widget::TouchEventType::ENDED) {
+        auto btn = static_cast<Button*>(sender);
+        if (btn->getName() == "btn_1")
+        {
+            open(1);
+            p_btn_1->setEnabled(false);
+            p_btn_2->setEnabled(true);
+            p_btn_3->setEnabled(true);
+            p_btn_4->setEnabled(true);
+            p_btn_5->setEnabled(true);
+        } else if (btn->getName() == "btn_2")
+        {
+            open(2);
+            p_btn_1->setEnabled(true);
+            p_btn_2->setEnabled(false);
+            p_btn_3->setEnabled(true);
+            p_btn_4->setEnabled(true);
+            p_btn_5->setEnabled(true);
+        } else if (btn->getName() == "btn_3")
+        {
+            open(3);
+            p_btn_1->setEnabled(true);
+            p_btn_2->setEnabled(true);
+            p_btn_3->setEnabled(false);
+            p_btn_4->setEnabled(true);
+            p_btn_5->setEnabled(true);
+        } else if (btn->getName() == "btn_4")
+        {
+            open(4);
+            p_btn_1->setEnabled(true);
+            p_btn_2->setEnabled(true);
+            p_btn_3->setEnabled(true);
+            p_btn_4->setEnabled(false);
+            p_btn_5->setEnabled(true);
+        } else if (btn->getName() == "btn_5")
+        {
+            open(5);
+            p_btn_1->setEnabled(true);
+            p_btn_2->setEnabled(true);
+            p_btn_3->setEnabled(true);
+            p_btn_4->setEnabled(true);
+            p_btn_5->setEnabled(false);
+        } else {
+            open(1);
+            p_btn_1->setEnabled(false);
+            p_btn_2->setEnabled(true);
+            p_btn_3->setEnabled(true);
+            p_btn_4->setEnabled(true);
+            p_btn_5->setEnabled(true);
         }
     }
 }
