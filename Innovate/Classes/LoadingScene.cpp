@@ -61,7 +61,7 @@ bool LoadingScene::init()
     auto player = ROLE_TABLE->getRoleVo(1);
     if(!LocalDataManager::getInstance()->getFirstOpen())
     {
-        PlayerModel::getInstance()->init(1, player->hp, player->attack, player->velocity,
+        PlayerModel::getInstance()->init(1, 0, player->hp, player->attack, player->velocity,
                                          player->darkAttack, player->darkResist, player->fireAttack,
                                          player->fireResist, player->windAttack, player->windResist, player->ski1,
                                          player->soilAttack, player->soilResist, player->recover, player->absorb);
@@ -71,7 +71,8 @@ bool LoadingScene::init()
         LocalDataManager::getInstance()->setCurrFubenId(-1);
     } else {
         int level = LocalDataManager::getInstance()->getPlayerLv();
-        PlayerModel::getInstance()->init(level, player->hp, player->attack, player->velocity,
+        int exp = LocalDataManager::getInstance()->getPlayerExp();
+        PlayerModel::getInstance()->init(level, exp, player->hp, player->attack, player->velocity,
                                          player->darkAttack, player->darkResist, player->fireAttack,
                                          player->fireResist, player->windAttack, player->windResist, player->ski1,
                                          player->soilAttack, player->soilResist, player->recover, player->absorb);

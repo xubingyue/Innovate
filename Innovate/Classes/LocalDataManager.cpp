@@ -84,6 +84,18 @@ void LocalDataManager::setPlayerLv(int lv)
     LocalDataUtil::getInstance()->setIntegerForKey(key.c_str(), lv);
 }
 
+int LocalDataManager::getPlayerExp()
+{
+    string key = KEY + "getPlayerExp";
+    return LocalDataUtil::getInstance()->getIntegerForKey(key.c_str());
+}
+void LocalDataManager::setPlayerExp(int exp)
+{
+    string key = KEY + "getPlayerExp";
+    LocalDataUtil::getInstance()->setIntegerForKey(key.c_str(), exp);
+}
+
+
 Point LocalDataManager::getPlayerPoint()
 {
     string key = KEY + "getPlayerPoint";

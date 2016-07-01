@@ -43,23 +43,17 @@ bool HelloWorld::init()
     
     if (fubenId == -1)
     {
-        CCLOG("aaa====");
         int mapId = LocalDataManager::getInstance()->getCurrMapId();
         if (mapId == 0)
         {
-            CCLOG("ccc====");
             mapId = 1;
             LocalDataManager::getInstance()->setCurrMapId(1);
         }
-        CCLOG("ddd==== %d", mapId);
-
         //初始化世界地图
         auto mapVo = SCENE_MAP_TABLE->getScene_mapVo(mapId);
         GlobalModel::getInstance()->setCurrMapInfo(mapId);
-        CCLOG("eeee==== %s", mapVo->map_name);
         initWorldMap(mapVo->map_name);
     } else {
-        CCLOG("bbb====");
         auto raidVo = RAID_MAP_TABLE->getRaid_mapVo(fubenId);
         GlobalModel::getInstance()->currFubenId = fubenId;
         initWorldMap(raidVo->map_name);
@@ -364,7 +358,7 @@ void HelloWorld::dieResetPos(Ref *obj)
 void HelloWorld::resetPlayerPos()
 {
     p_isFinding = false;
-    p_sp->setColor(p_color);
+//    p_sp->setColor(p_color);
     LocalDataManager::getInstance()->setPlayerPoint(p_initPos);
     auto vo = CONFIG_TABLE->getConfigVo(2);
     int limit = StringUtil::stringToInt(vo->data);

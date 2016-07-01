@@ -13,6 +13,8 @@
 #include "../core/utils/StringUtil.h"
 #include "../utils/IconUtil.h"
 #include "../model/BagModel.h"
+#include "../model/PlayerModel.h"
+#include "LocalDataManager.h"
 
 USING_NS_CC;
 using namespace cocos2d::ui;
@@ -68,6 +70,7 @@ bool BattleResultView::init(int flag, int monsterId)
     
     if (flag == BattleResultType::WIN)
     {
+        //处理掉落
         vector<DropItem> *dropList = new vector<DropItem>();
         getDorpList(monsterId, *dropList);
 
@@ -90,6 +93,16 @@ bool BattleResultView::init(int flag, int monsterId)
         //销毁
         dropList->clear();
         delete dropList;
+        
+        //处理人物经验
+        auto upgradeVo = UPGRADE_TABLE->getUpgradeVo(PlayerModel::getInstance()->level);
+        int expGet = upgradeVo->exp_get;
+        PlayerModel::getInstance()->exp += expGet;
+        if (PlayerModel::getInstance()->exp >= upgradeVo->level_next)
+        {
+            PlayerModel::getInstance()->level++;
+            LocalDataManager::getInstance()->setPlayerLv(PlayerModel::getInstance()->level);
+        }
     }
     else if (flag == BattleResultType::FAIL)
     {

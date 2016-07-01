@@ -45,6 +45,10 @@ public:
     int getPlayerLv();
     void setPlayerLv(int lv);
     
+    //玩家等级
+    int getPlayerExp();
+    void setPlayerExp(int exp);
+    
     //玩家地图位置
     Point getPlayerPoint();
     void setPlayerPoint(Point p);
