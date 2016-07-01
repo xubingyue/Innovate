@@ -85,7 +85,7 @@ void BattleView::touchEventCallback(Ref *sender, Widget::TouchEventType controlE
         this->unschedule(CC_SCHEDULE_SELECTOR(BattleView::updateTimer));
         isExitBattle = true;
         CCLOG("------->>>>退出战斗！");
-        BattleController::getInstance()->showResultUI(BattleResultType::ESCAPE);
+        BattleController::getInstance()->showResultUI(BattleResultType::WIN);
     }
 }
 

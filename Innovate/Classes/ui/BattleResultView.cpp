@@ -61,7 +61,7 @@ bool BattleResultView::init(int flag, int monsterId)
             resultTxt->setString("战斗失败");
             break;
         case BattleResultType::ESCAPE:
-            resultTxt->setString("战斗失败");
+            resultTxt->setString("逃跑");
             break;
         default:
             resultTxt->setString("战斗失败");
