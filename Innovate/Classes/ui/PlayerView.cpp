@@ -10,6 +10,7 @@
 #include "cocostudio/CocoStudio.h"
 #include "../model/PlayerModel.h"
 #include "../core/utils/StringUtil.h"
+#include "BagView.h"
 
 USING_NS_CC;
 using namespace cocos2d::ui;
@@ -48,7 +49,14 @@ bool PlayerView::init()
     
     Button *backBtn = static_cast<Button*>(Helper::seekWidgetByName(static_cast<Layout*>(p_root), "back_btn"));
     backBtn->addTouchEventListener(CC_CALLBACK_2(PlayerView::touchEventCallback, this));
-
+    
+    //初始化down部分背包
+    ImageView *downBg = static_cast<ImageView*>(Helper::seekWidgetByName(static_cast<Layout*>(p_root), "down_node"));
+    BagView *bv = BagView::create();
+    bv->setContentSize(downBg->getContentSize());
+    bv->open();
+    downBg->addChild(bv);
+    
     //初始化center部分
     ImageView *centerBg = static_cast<ImageView*>(Helper::seekWidgetByName(static_cast<Layout*>(p_root), "center_bg"));
     p_playerNode = centerBg->getChildByName("player_node");
