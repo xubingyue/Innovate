@@ -88,6 +88,8 @@
 		9DC407F91CE81A04000E248B /* RoleSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC407F71CE81A04000E248B /* RoleSprite.cpp */; };
 		9DC63C741D26834E001B243F /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC63C731D26834E001B243F /* FBSDKCoreKit.framework */; };
 		9DC63C761D26871B001B243F /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC63C751D26871B001B243F /* FBSDKShareKit.framework */; };
+		9DC63C811D2BAF42001B243F /* Item_compose.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC63C7D1D2BAF42001B243F /* Item_compose.cpp */; };
+		9DC63C821D2BAF42001B243F /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC63C7F1D2BAF42001B243F /* Item.cpp */; };
 		9DD38C8B1CF82E0500B84915 /* PlayerView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38C891CF82E0500B84915 /* PlayerView.cpp */; };
 		9DD38C8E1CF832A200B84915 /* BigCrystalView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38C8C1CF832A200B84915 /* BigCrystalView.cpp */; };
 		9DD38C911CF853F400B84915 /* LocalDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38C8F1CF853F400B84915 /* LocalDataManager.cpp */; };
@@ -278,6 +280,10 @@
 		9DC408011CE8909C000E248B /* NotificationType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationType.h; sourceTree = "<group>"; };
 		9DC63C731D26834E001B243F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		9DC63C751D26871B001B243F /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
+		9DC63C7D1D2BAF42001B243F /* Item_compose.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Item_compose.cpp; sourceTree = "<group>"; };
+		9DC63C7E1D2BAF42001B243F /* Item_compose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item_compose.h; sourceTree = "<group>"; };
+		9DC63C7F1D2BAF42001B243F /* Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Item.cpp; sourceTree = "<group>"; };
+		9DC63C801D2BAF42001B243F /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		9DD38C891CF82E0500B84915 /* PlayerView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerView.cpp; sourceTree = "<group>"; };
 		9DD38C8A1CF82E0500B84915 /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
 		9DD38C8C1CF832A200B84915 /* BigCrystalView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BigCrystalView.cpp; sourceTree = "<group>"; };
@@ -701,6 +707,10 @@
 				9D70F8081CF472EB007461DF /* Config.h */,
 				9DD38C9E1D00276600B84915 /* Element.cpp */,
 				9DD38C9F1D00276600B84915 /* Element.h */,
+				9DC63C7D1D2BAF42001B243F /* Item_compose.cpp */,
+				9DC63C7E1D2BAF42001B243F /* Item_compose.h */,
+				9DC63C7F1D2BAF42001B243F /* Item.cpp */,
+				9DC63C801D2BAF42001B243F /* Item.h */,
 				9DD38CA51D0073BB00B84915 /* Drop_item.cpp */,
 				9DD38CA61D0073BB00B84915 /* Drop_item.h */,
 				9DD38CA71D0073BB00B84915 /* Drop.cpp */,
@@ -974,9 +984,11 @@
 				9DD38C971CFC241A00B84915 /* StringUtil.cpp in Sources */,
 				9D70F8211CF5B5FA007461DF /* MapObjBuilding.cpp in Sources */,
 				9D70F7F91CEF1FEC007461DF /* BattleObjBase.cpp in Sources */,
+				9DC63C811D2BAF42001B243F /* Item_compose.cpp in Sources */,
 				9DD38CC31D06A42400B84915 /* MapObjMonster.cpp in Sources */,
 				9D70F8021CF29ED5007461DF /* BattleElf.cpp in Sources */,
 				9DD38D611D0FD85C00B84915 /* DCAgent.mm in Sources */,
+				9DC63C821D2BAF42001B243F /* Item.cpp in Sources */,
 				9DD38D791D10DCD900B84915 /* ShareUtils.cpp in Sources */,
 				9DD38C8E1CF832A200B84915 /* BigCrystalView.cpp in Sources */,
 				9D70F8131CF472EB007461DF /* Language.cpp in Sources */,

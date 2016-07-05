@@ -40,6 +40,8 @@ void DataManager::loadTable(const loadCallback& callback, std::string localConfi
 	LOAD_TABLE(m_Drop_item, tables::Drop_item, localConfig + "/" + tables::Drop_item::fileName(), callback, count);
 	LOAD_TABLE(m_Element, tables::Element, localConfig + "/" + tables::Element::fileName(), callback, count);
 	LOAD_TABLE(m_Elf, tables::Elf, localConfig + "/" + tables::Elf::fileName(), callback, count);
+	LOAD_TABLE(m_Item, tables::Item, localConfig + "/" + tables::Item::fileName(), callback, count);
+	LOAD_TABLE(m_Item_compose, tables::Item_compose, localConfig + "/" + tables::Item_compose::fileName(), callback, count);
 	LOAD_TABLE(m_Language, tables::Language, localConfig + "/" + tables::Language::fileName(), callback, count);
 	LOAD_TABLE(m_Monster, tables::Monster, localConfig + "/" + tables::Monster::fileName(), callback, count);
 	LOAD_TABLE(m_Object, tables::Object, localConfig + "/" + tables::Object::fileName(), callback, count);

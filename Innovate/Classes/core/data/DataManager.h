@@ -6,6 +6,8 @@
 #include "Drop_item.h"
 #include "Element.h"
 #include "Elf.h"
+#include "Item.h"
+#include "Item_compose.h"
 #include "Language.h"
 #include "Monster.h"
 #include "Object.h"
@@ -17,7 +19,7 @@
 
 USING_NS_CC;
 
-#define TABLESNUM 13
+#define TABLESNUM 15
 typedef std::function<void(int)> loadCallback;
 
 class DataManager
@@ -35,6 +37,8 @@ public:
 	tables::Drop_item* m_Drop_item;
 	tables::Element* m_Element;
 	tables::Elf* m_Elf;
+	tables::Item* m_Item;
+	tables::Item_compose* m_Item_compose;
 	tables::Language* m_Language;
 	tables::Monster* m_Monster;
 	tables::Object* m_Object;
@@ -54,6 +58,10 @@ public:
 #define GET_ELEMENT_DATA	(&(DataManager::getInstance()->m_Element->m_data))
 #define ELF_TABLE (DataManager::getInstance()->m_Elf)
 #define GET_ELF_DATA	(&(DataManager::getInstance()->m_Elf->m_data))
+#define ITEM_TABLE (DataManager::getInstance()->m_Item)
+#define GET_ITEM_DATA	(&(DataManager::getInstance()->m_Item->m_data))
+#define ITEM_COMPOSE_TABLE (DataManager::getInstance()->m_Item_compose)
+#define GET_ITEM_COMPOSE_DATA	(&(DataManager::getInstance()->m_Item_compose->m_data))
 #define LANGUAGE_TABLE (DataManager::getInstance()->m_Language)
 #define GET_LANGUAGE_DATA	(&(DataManager::getInstance()->m_Language->m_data))
 #define MONSTER_TABLE (DataManager::getInstance()->m_Monster)

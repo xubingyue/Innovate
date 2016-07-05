@@ -77,8 +77,9 @@ void BagView::setContentSize(cocos2d::Size s)
     p_scrollView->setInnerContainerSize(s);
 }
 
-void BagView::open(int index)
+void BagView::open(int index, bool isShowBtn)
 {
+    p_btnNode->setVisible(isShowBtn);
     p_scrollView->removeAllChildrenWithCleanup(true);
     vector<BagItemWithCount*> *itemList;
     if (index == 1) //元素背包

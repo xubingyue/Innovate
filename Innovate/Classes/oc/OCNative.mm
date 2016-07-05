@@ -36,7 +36,7 @@ void OCNative::shareToFB()
 {
     FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
     content.contentURL = [NSURL URLWithString:@"https://developers.facebook.com"];
-    [FBSDKShareDialog showFromViewController:[AppController controllerView]
-                                 withContent:content
-                                    delegate:nil];
+//    [FBSDKShareDialog showFromViewController:[AppController controllerView]
+//                                 withContent:content
+//                                    delegate:nil];
 }
