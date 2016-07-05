@@ -90,6 +90,7 @@
 		9DC63C761D26871B001B243F /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC63C751D26871B001B243F /* FBSDKShareKit.framework */; };
 		9DC63C811D2BAF42001B243F /* Item_compose.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC63C7D1D2BAF42001B243F /* Item_compose.cpp */; };
 		9DC63C821D2BAF42001B243F /* Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC63C7F1D2BAF42001B243F /* Item.cpp */; };
+		9DC63C881D2BB149001B243F /* ElementItemUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC63C861D2BB149001B243F /* ElementItemUtils.cpp */; };
 		9DD38C8B1CF82E0500B84915 /* PlayerView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38C891CF82E0500B84915 /* PlayerView.cpp */; };
 		9DD38C8E1CF832A200B84915 /* BigCrystalView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38C8C1CF832A200B84915 /* BigCrystalView.cpp */; };
 		9DD38C911CF853F400B84915 /* LocalDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38C8F1CF853F400B84915 /* LocalDataManager.cpp */; };
@@ -284,6 +285,8 @@
 		9DC63C7E1D2BAF42001B243F /* Item_compose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item_compose.h; sourceTree = "<group>"; };
 		9DC63C7F1D2BAF42001B243F /* Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Item.cpp; sourceTree = "<group>"; };
 		9DC63C801D2BAF42001B243F /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		9DC63C861D2BB149001B243F /* ElementItemUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ElementItemUtils.cpp; sourceTree = "<group>"; };
+		9DC63C871D2BB149001B243F /* ElementItemUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElementItemUtils.h; sourceTree = "<group>"; };
 		9DD38C891CF82E0500B84915 /* PlayerView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerView.cpp; sourceTree = "<group>"; };
 		9DD38C8A1CF82E0500B84915 /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
 		9DD38C8C1CF832A200B84915 /* BigCrystalView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BigCrystalView.cpp; sourceTree = "<group>"; };
@@ -773,6 +776,8 @@
 				9DD38CB01D0175D100B84915 /* IconUtil.h */,
 				9DD38D771D10DCD900B84915 /* ShareUtils.cpp */,
 				9DD38D781D10DCD900B84915 /* ShareUtils.h */,
+				9DC63C861D2BB149001B243F /* ElementItemUtils.cpp */,
+				9DC63C871D2BB149001B243F /* ElementItemUtils.h */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -1009,6 +1014,7 @@
 				9DD38CBD1D02EE1800B84915 /* MapTransferView.cpp in Sources */,
 				9D675BA11CE5A7CB00E9A98A /* md5.cpp in Sources */,
 				9DC0BA811CDEFD93003E5BAD /* libcsv.c in Sources */,
+				9DC63C881D2BB149001B243F /* ElementItemUtils.cpp in Sources */,
 				9D70F7E91CECA9B1007461DF /* LocalDataUtil.cpp in Sources */,
 				9D70F8281CF5E853007461DF /* MonsterModel.cpp in Sources */,
 				9DD38CB11D0175D200B84915 /* IconUtil.cpp in Sources */,

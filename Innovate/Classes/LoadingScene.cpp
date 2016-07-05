@@ -1,4 +1,4 @@
-//
+
 //  LoadingScene.cpp
 //  Innovate
 //
@@ -13,6 +13,7 @@
 #include "LocalDataManager.h"
 #include "model/BagModel.h"
 #include "core/utils/LanguageUtil.h"
+#include "utils/ElementItemUtils.h"
 
 
 USING_NS_CC;
@@ -91,9 +92,11 @@ bool LoadingScene::init()
     //初始化语言
     LanguageUtil::initLanguage(LanguageType::CHINESE);
     
+    //初始化元素数据
+    ElementItemUtils::getInstance()->initComposeData();
     //------test---------
     
-    
+    auto vo = ElementItemUtils::getInstance()->getItemComposeVo(1, 2);
    
     //---------------------------------------------
     this->schedule(schedule_selector(LoadingScene::runOnce), 1, 1, 0);
