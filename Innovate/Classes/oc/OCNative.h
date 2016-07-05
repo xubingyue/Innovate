@@ -13,6 +13,8 @@ class OCNative {
 public:
     
     static void shareToWeChat();
+    
+    static void shareToFB();
 };
 
 #endif /* OCNative_hpp */

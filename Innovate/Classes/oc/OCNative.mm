@@ -8,6 +8,9 @@
 
 #include "OCNative.h"
 #import "WXApi.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
+#import "AppController.h"
 
 #define BUFFER_SIZE 1024 * 100
 
@@ -15,7 +18,7 @@ void OCNative::shareToWeChat()
 {
     WXMediaMessage *message = [WXMediaMessage message];
     message.title = @"this is title!";
-//    message.description = @"descriotion on here!";
+    message.description = @"descriotion on here!";
     [message setThumbImage:[UIImage imageNamed:@"res1thumb.png"]];
     
     WXWebpageObject *obj = [WXWebpageObject object];
@@ -27,4 +30,13 @@ void OCNative::shareToWeChat()
     req.message = message;
     req.scene = WXSceneTimeline;
     [WXApi sendReq:req];
+}
+
+void OCNative::shareToFB()
+{
+    FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
+    content.contentURL = [NSURL URLWithString:@"https://developers.facebook.com"];
+    [FBSDKShareDialog showFromViewController:[AppController controllerView]
+                                 withContent:content
+                                    delegate:nil];
 }

@@ -14,6 +14,8 @@ class ShareUtils
 public:
 
     static void shareToWeChat();
+    
+    static void shareToFB();
 };
 
 #endif /* ShareUtils_hpp */

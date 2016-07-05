@@ -86,6 +86,8 @@
 		9DC0BA851CDEFD93003E5BAD /* Stage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0BA7F1CDEFD93003E5BAD /* Stage.cpp */; };
 		9DC407F51CE7570D000E248B /* LayerManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC407F31CE7570D000E248B /* LayerManager.cpp */; };
 		9DC407F91CE81A04000E248B /* RoleSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DC407F71CE81A04000E248B /* RoleSprite.cpp */; };
+		9DC63C741D26834E001B243F /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC63C731D26834E001B243F /* FBSDKCoreKit.framework */; };
+		9DC63C761D26871B001B243F /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DC63C751D26871B001B243F /* FBSDKShareKit.framework */; };
 		9DD38C8B1CF82E0500B84915 /* PlayerView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38C891CF82E0500B84915 /* PlayerView.cpp */; };
 		9DD38C8E1CF832A200B84915 /* BigCrystalView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38C8C1CF832A200B84915 /* BigCrystalView.cpp */; };
 		9DD38C911CF853F400B84915 /* LocalDataManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DD38C8F1CF853F400B84915 /* LocalDataManager.cpp */; };
@@ -274,6 +276,8 @@
 		9DC407F71CE81A04000E248B /* RoleSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RoleSprite.cpp; sourceTree = "<group>"; };
 		9DC407F81CE81A04000E248B /* RoleSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoleSprite.h; sourceTree = "<group>"; };
 		9DC408011CE8909C000E248B /* NotificationType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationType.h; sourceTree = "<group>"; };
+		9DC63C731D26834E001B243F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		9DC63C751D26871B001B243F /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		9DD38C891CF82E0500B84915 /* PlayerView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerView.cpp; sourceTree = "<group>"; };
 		9DD38C8A1CF82E0500B84915 /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
 		9DD38C8C1CF832A200B84915 /* BigCrystalView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BigCrystalView.cpp; sourceTree = "<group>"; };
@@ -360,6 +364,7 @@
 				9DD38D661D0FD8A400B84915 /* CoreTelephony.framework in Frameworks */,
 				9DD38D641D0FD89600B84915 /* SystemConfiguration.framework in Frameworks */,
 				ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */,
+				9DC63C761D26871B001B243F /* FBSDKShareKit.framework in Frameworks */,
 				52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */,
 				1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */,
 				D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */,
@@ -372,6 +377,7 @@
 				BF1712471292920000B8313A /* libz.dylib in Frameworks */,
 				BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */,
 				D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */,
+				9DC63C741D26834E001B243F /* FBSDKCoreKit.framework in Frameworks */,
 				D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */,
 				D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */,
 			);
@@ -449,6 +455,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9DC63C751D26871B001B243F /* FBSDKShareKit.framework */,
+				9DC63C731D26834E001B243F /* FBSDKCoreKit.framework */,
 				9DD38D751D0FE3BD00B84915 /* libc++.tbd */,
 				9DD38D731D0FE3AA00B84915 /* libsqlite3.0.tbd */,
 				9DD38D6B1D0FD8C600B84915 /* AdSupport.framework */,
@@ -1041,6 +1049,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = /Users/yuebinbin/Documents/FacebookSDK;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1084,6 +1093,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = /Users/yuebinbin/Documents/FacebookSDK;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ios/Prefix.pch;

@@ -25,3 +25,12 @@ void ShareUtils::shareToWeChat()
     OCNative::shareToWeChat();
 #endif
 }
+
+void ShareUtils::shareToFB()
+{
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS|| CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
+    OCNative::shareToFB();
+#endif
+}

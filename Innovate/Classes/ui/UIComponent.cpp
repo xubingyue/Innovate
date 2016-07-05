@@ -90,6 +90,7 @@ void UIComponent::touchEventCallback(Ref *sender, cocos2d::ui::Widget::TouchEven
             ShareUtils::shareToWeChat();
         } else if (btn->getName() == "crystal_btn")
         {
+            ShareUtils::shareToFB();
             CCLOG("crystal_btn");
         }
     }

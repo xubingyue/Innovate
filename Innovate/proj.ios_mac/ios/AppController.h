@@ -9,5 +9,7 @@
 
 @property(nonatomic, readonly) RootViewController* viewController;
 
++ (instancetype)controllerView;
+
 @end
 

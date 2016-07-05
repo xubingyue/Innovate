@@ -28,6 +28,7 @@
 #import "AppDelegate.h"
 #import "RootViewController.h"
 #import "WeChatHandler.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @implementation AppController
 
@@ -36,6 +37,7 @@
 
 // cocos2d application instance
 static AppDelegate s_sharedApplication;
+static AppController *instance;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 
@@ -86,10 +88,17 @@ static AppDelegate s_sharedApplication;
     cocos2d::Director::getInstance()->setOpenGLView(glview);
 
     app->run();
-    
+    instance = self;
     [WXApi registerApp:@"wx2cab9e78788c139c"];
+    
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
 
     return YES;
+}
+
++(instancetype)controllerView {
+    return instance;
 }
 
 
@@ -108,6 +117,7 @@ static AppDelegate s_sharedApplication;
      */
      //We don't need to call this method any more. It will interupt user defined game pause&resume logic
     /* cocos2d::Director::getInstance()->resume(); */
+    [FBSDKAppEvents activateApp];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -137,7 +147,14 @@ static AppDelegate s_sharedApplication;
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    return [WXApi handleOpenURL:url delegate:[WeChatHandler sharedManager]];
+//    return [WXApi handleOpenURL:url delegate:[WeChatHandler sharedManager]];
+    
+    BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                                  openURL:url
+                                                        sourceApplication:sourceApplication
+                                                               annotation:annotation
+                    ];
+    return handled;
 }
 
 #pragma mark -
