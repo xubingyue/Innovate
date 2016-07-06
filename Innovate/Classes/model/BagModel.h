@@ -14,8 +14,8 @@
 
 using namespace std;
 
-enum class BagType {
-    ELEMENT = 1
+enum BagType {
+    BagType_ELEMENT = 1
 };
 
 //背包中物品item

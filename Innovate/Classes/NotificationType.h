@@ -35,5 +35,7 @@ public:
 #define GO_TO_SELETE_MAP "go_to_selete_map"
 //打开并进入副本
 #define OPEN_AND_INTO_FUBEN "open_and_into_fuben"
+//点击背包物品
+#define CLICK_BAG_ELEMENT "click_bag_element"
 
 #endif /* NotificationType_h */

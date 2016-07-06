@@ -76,7 +76,7 @@ void BagModel::initData(string ele)
 //向背包中添加物品
 void BagModel::addItem(BagItem *item, int count)
 {
-    if(item->type == BagType::ELEMENT)
+    if(item->type == BagType::BagType_ELEMENT)
     {
         for (int i = 0; i < count; i++)
         {

@@ -87,7 +87,7 @@ bool BattleResultView::init(int flag, int monsterId)
             auto eleVo = ELEMENT_TABLE->getElementVo(di.dropId);
             BagItem *item = new BagItem();
             item->itemId = eleVo->id;
-            item->type = BagType::ELEMENT;
+            item->type = BagType::BagType_ELEMENT;
             BagModel::getInstance()->addItem(item, di.count);
         }
         //销毁
