@@ -97,8 +97,6 @@ void BagView::open(BagType index, bool isShowBtn)
     for (int i = 0; i < itemList->size(); i++)
     {
         auto icon = IconUtil::getInstance()->getIconById(IconType::IconType_ELEMENT, (*itemList)[i]->item->itemId, (*itemList)[i]->count);
-//        icon->addTouchEventListener();
-//        >addTouchEventListener(CC_CALLBACK_2(BattleResultView::touchEventCallback, this));
         p_scrollView->addChild(icon);
         icon->setPosition(x, y);
         x += jiange;

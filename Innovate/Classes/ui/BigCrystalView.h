@@ -41,6 +41,8 @@ private:
     int p_selectedId1;
     //已选元素2
     int p_selectedId2;
+    //所选按钮
+    int p_selectedBtn;
 };
 
 #pragma mark ---------------------元素合成界面---------------------

@@ -35,7 +35,8 @@ BigCrystalView* BigCrystalView::create()
 
 BigCrystalView::BigCrystalView()
 {
-    
+    p_selectedId1 = 0;
+    p_selectedId2 = 0;
 }
 
 BigCrystalView::~BigCrystalView()
@@ -107,14 +108,14 @@ void BigCrystalView::touchEventCallback(Ref *sender, Widget::TouchEventType cont
             CCLOG("go_btn");
         } else if (btn->getName() == "ele_1_btn")
         {
-            CCLOG("ele_1_btn");
+            p_selectedBtn = 1;
             BagView *bv = BagView::create();
             bv->setContentSize(Size(580, 480));
             bv->open(BagType::BagType_ELEMENT, p_selectedId1, p_selectedId2, false);
             p_bagNode->addChild(bv);
         } else if (btn->getName() == "ele_2_btn")
         {
-            CCLOG("ele_2_btn");
+            p_selectedBtn = 2;
             BagView *bv = BagView::create();
             bv->setContentSize(Size(580, 480));
             bv->open(BagType::BagType_ELEMENT, p_selectedId1, p_selectedId2, false);
@@ -127,7 +128,6 @@ void BigCrystalView::shiftPageCallback(Ref *sender, cocos2d::ui::Widget::TouchEv
 {
     if (controlEvent == Widget::TouchEventType::ENDED) {
         Button *btn = static_cast<Button*>(sender);
-        CCLOG("name===>%s",btn->getName().c_str());
         if (btn->getName() == "find_btn")
         {
             p_viewNode->removeAllChildrenWithCleanup(true);
@@ -152,7 +152,13 @@ void BigCrystalView::shiftPageCallback(Ref *sender, cocos2d::ui::Widget::TouchEv
 
 void BigCrystalView::touchBagEle(Ref *obj)
 {
-    
+    auto o = static_cast<NotifiyRef*>(obj);
+    if (p_selectedBtn == 1)
+    {
+        p_selectedId1 = o->nid;
+    } else {
+        p_selectedId2 = o->nid;
+    }
     delete obj;
 }
 
